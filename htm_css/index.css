@@ -2,14 +2,22 @@
 
 *{
     margin: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    font-family: Inter;
 }
 .size{
+    /* Size and position */
  width: 100%;
-    height: 100px;
+   /* height: 100px; */
     max-width: 600px;
     height: 100vh;
+    min-height: 400px;
+    max-height: 500px;
  
  background-color: rgb(137, 143, 141);   
+
+ /* Border properties */
  border-width: 4px;
  border-style: solid;
  border-color: black;
@@ -18,16 +26,89 @@
 }
 
 .font{
+    /* font size  */
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
-  font-family: Inter,Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: black;
+
+  /* border short cut */
   border: 2px solid rgb(219, 77, 77);
   border-radius: 2px;
   padding: 5px;
   margin: 6px;
 }
+/* Box model example */
+.box-model{
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+padding: 10px 6px;
+margin: 10px;
+border-bottom: 2px solid rgb(61, 42, 228);
+border-left: 2px solid rgb(61, 42, 228);
+border-right: 2px solid rgb(61, 42, 228);
+border-top: 2px solid rgb(61, 42, 228);
+border-radius: 2px; 
+}
 
+.box{
+    display: flex;
+}
+
+/* shadows */
+.shadow{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin: 10px;
+    /* x,y,blur,color */
+    box-shadow: 10px 10px 20px rgb(230, 10, 10);
+}
+
+.text-shadow{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(10, 10, 10);
+    margin: 10px;
+    /* x,y,blur,color */
+    text-shadow: 10px 10px 20px rgb(230, 10, 10);
+    text-align: center;
+}
+
+/* Media queries */
+/* break point 480px */
+@media(max-width: 480px){
+.size{
+font-size: small;
+background-color: blueviolet;
+
+}
+}
+
+@media(max-width: 640px){
+.size{
+font-size: medium;
+background-color:rgb(247, 247, 248);
+
+}
+}
+
+/* Pseudo selector */
+.button:hover{
+    opacity: 50%;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: rgb(238, 174, 174);
+}
+.button{
+    background-color: rgb(70, 28, 224);
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 2px;
+    padding: 5px;
+    margin: 6px;
+    size: 50px;
+}
 
 

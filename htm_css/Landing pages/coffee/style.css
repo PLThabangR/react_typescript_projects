@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* Creating variables for main color and promary color */
+:root{
+    --main-color:#deab5f;
+    --primary-color:#312e2e;
+}
+/* Utility classes */
+button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 0px;
+    /* use the background of the main color */
+    background-color: var(--main-color);
+    /* Use the color of the primary color */
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Reset default styles */
+ *{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  
+    font-family: 'Playfair Display', serif;
+} 
+
+body{
+    background: #100e0f;
+}
+
+/* nav */
+
+
+
+
+

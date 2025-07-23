@@ -1,0 +1,51 @@
+.container{
+    background-color: rgb(126, 129, 131);
+    width: 90%;
+    height: 500px;
+    border: 5px solid black;
+     margin: 2px auto;
+
+     /* Flex */
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center; 
+     flex-wrap: wrap;  
+
+    /* Align items work on the y axis */
+    align-items: center;
+   
+  
+
+    
+}
+
+.one{
+    background-color: red;
+
+}
+.two{
+    background-color: rgb(150, 130, 130);
+    
+}
+.three{
+    background-color: rgb(36, 142, 184);
+    
+}
+.four{
+    background-color: rgb(180, 23, 146);
+    
+}
+.five{
+    background-color: rgb(117, 209, 31);
+    
+}
+
+.d{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    
+    /* border: 5px solid black; */
+    
+}
