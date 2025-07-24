@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ebeae9;
+    margin: 1rem;
+
+}
+
+/* nav start */
+
+.wrapper-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding : 20px;
+    color: white;
+    margin-bottom: 5rem;
+}
+
+
+
+nav ul{
+    margin-left: 5rem;
+    list-style: none;
+    
+    
+}
+li a{
+    text-decoration: none;
+    color:black;
+}
+
+nav .burger{
+    margin-left: 5rem;
+    cursor: pointer;
+
+}
+
+nav .burger span{
+    
+    border: 2px solid black;
+    height: 4px;
+    margin: 5px;
+    background: black;
+}
+
+
+/* Nav end */
+
+/* Header    */
+header{
+    margin: 6rem;
+}
+
+.main-headings{
+    width: 50%;
+    font-size: 3rem;
+    font-weight: 600;
+    
+
+}
+.primary-headings{
+    max-width: 50%;
+    margin-top: 3rem;
+    font-size:1.5rem;
+    line-height: 30px;
+}
+
+.bg-gray{
+    background: rgb(53,53,53);
+    color:white;
+    padding: 2px 10px;
+    font-weight: bold;
+
+
+}
+/* End of header */
+
+/* Start of main */
+main{
+    margin: 0 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:40px
+}
+.img{
+    width: 40%;
+    margin:10px;
+}
+/* End of main */
+
+/* section three */
+
+.section-three{
+margin-left: 6rem;
+
+}
+
+.section-three .primary-headings{
+    margin-bottom: 10rem;
+}
+
+.list{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-three img{
+    width:400px;
+    height: 500px;
+    margin: 50px;
+
+}
+
+.section-three .item h1{
+    font-size:2rem;
+    color: rgb(53,53,53);
+    margin: 50px;
+}
