@@ -12,7 +12,7 @@ app.use(express.json())//parse json
 
 
 app.get("/", async (req:Request, res:Response) => {
-    res.json({"message":"Hello World!"})
+    res.json({message:"Hello "})
 })
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`))   
