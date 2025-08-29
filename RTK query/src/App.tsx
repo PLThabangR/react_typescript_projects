@@ -1,13 +1,10 @@
-import { useState } from 'react'
-
 import './App.css'
+import AllProducts from './components/home/AllProducts'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-     hello
+     <AllProducts />
     </>
   )
 }

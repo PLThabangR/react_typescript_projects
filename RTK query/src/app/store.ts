@@ -13,11 +13,13 @@ reducer:{
     and the react redux toolkit we use this
     productApi: ProductApi.reducer
     */
+   // Add the generated reducer as a specific top-level slice
 [ProductApi.reducerPath]: ProductApi.reducer
 },
 
 //middleware
-// Allows ProductApi to handle asynchronous API requests.
+// Adding the api middleware enables caching, invalidation, polling,
+  // and other useful features of `rtk-query`
 middleware: (getDefaultMiddleware) =>
     
      getDefaultMiddleware().concat(ProductApi.middleware),
@@ -25,3 +27,7 @@ middleware: (getDefaultMiddleware) =>
 
 //setup the listeners for data caching
 setupListeners(store.dispatch)
+
+//export the store with typescript
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
