@@ -18,7 +18,8 @@ export const ProductApi = createApi({
         getAllProducts: builder.query({
             //we gonna be sending request to this specific url /products
             //query parameter limit our respond 
-            query: () => '/porducts',
+            query: () => '/products',
+            transformResponse: (response: { products: Product[] }) => response.products,
         }),  // end of get produdcts endpoint
 
     })//end of endpoints builder
