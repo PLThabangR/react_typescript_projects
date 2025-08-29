@@ -22,7 +22,16 @@ export const ProductApi = createApi({
             transformResponse: (response: { products: Product[] }) => response.products,
         }),  // end of get produdcts endpoint
 
-    })//end of endpoints builder
+
+         getProductById: builder.query({
+        query: (id: number) => `/products/${id}`,
+
+           transformResponse: (response: { products: Product[] }) => response.products,
+    })
+
+    }),//end of endpoints builder
+
+   
 
 });//end of createApi
 //we export getAllProducts method from the dummpyApi
@@ -33,4 +42,4 @@ plai javasxript export
 export const {useGetAllProductsQuery} = ProductApi
 */
 //export with typescript generated hook
-export const {useGetAllProductsQuery} = ProductApi
+export const {useGetAllProductsQuery,useGetProductByIdQuery} = ProductApi
