@@ -2,3 +2,5 @@
 # 1.Create the store
 # 2.main file import store and provoder and wrap the app
 # 3.Create all the logic inside our dummyData file
+# 4.Register the getAllProducts inside the store so it can be used globally
+#  -import the setuplistener inside the store file
