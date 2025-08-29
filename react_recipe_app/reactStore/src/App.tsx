@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 import './App.css'
+import { BrowserRouter as Router} from 'react-router'
+import SideBar from './component/SideBar'
 
 function App() {
  
@@ -8,9 +10,15 @@ function App() {
   return (
    <>
    
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+    <Router>
+    <div className=' flex h-screen'>
+
+      <SideBar/>
+
+
+    </div>
+
+    </Router>
    
    
    </>
