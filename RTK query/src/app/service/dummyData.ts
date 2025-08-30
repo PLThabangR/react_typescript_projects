@@ -39,7 +39,7 @@ export const ProductApi = createApi({
         }),
     }),//end of add new product
  updateProduct: builder.mutation({
-    query: ( {id, product}) => ({ //passing the product of type product
+    query: ({id ,product}) => ({ //passing the product of type product
         url: `/products/${id}`,// the method  put
         method: 'PUT', //method type
          headers: { 'Content-type': 'application/json; charset=UTF-8' },
@@ -47,7 +47,7 @@ export const ProductApi = createApi({
     }),//end of query
  }),//end of update product
   deleteProduct: builder.mutation({
-    query: (id: number) => ({ //passing the product of type product
+    query: (id) => ({ //passing the product of type product
         url: `/products/${id}`,// the method  put
         method: 'DELETE', //method type
     }),
