@@ -34,13 +34,31 @@ export const ProductApi = createApi({
         query: (product: Product) => ({ //passing the product of type product
             url: '/products/add',// the urlwe post to
             method: 'POST', //method type
+            headers: { 'Content-type': 'application/json; charset=UTF-8' },
             body: product,//passing the product we want to add
         }),
-    })//end of add new product
+    }),//end of add new product
+ updateProduct: builder.mutation({
+    query: ( {id, product}) => ({ //passing the product of type product
+        url: `/products/${id}`,// the method  put
+        method: 'PUT', //method type
+         headers: { 'Content-type': 'application/json; charset=UTF-8' },
+        body: product,//passing the product we want to add
+    }),//end of query
+ }),//end of update product
+  deleteProduct: builder.mutation({
+    query: (id: number) => ({ //passing the product of type product
+        url: `/products/${id}`,// the method  put
+        method: 'DELETE', //method type
+    }),
+  })//end of delete function
+ 
 
 
+    
 
-    }),//end of endpoints builder
+
+}),//end of endpoints builder
 
    
 
@@ -53,4 +71,4 @@ plai javasxript export
 export const {useGetAllProductsQuery} = ProductApi
 */
 //export with typescript generated hook
-export const {useGetAllProductsQuery,useGetProductByIdQuery,useAddNewProductMutation} = ProductApi
+export const {useGetAllProductsQuery,useGetProductByIdQuery,useAddNewProductMutation,useDeleteProductMutation,useUpdateProductMutation} = ProductApi

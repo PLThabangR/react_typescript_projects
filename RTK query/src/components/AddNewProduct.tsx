@@ -1,5 +1,5 @@
 import { useAddNewProductMutation } from '../../src/app/service/dummyData'
-import type { Product } from '../types/Product'
+
 
 
 const AddNewProduct = () => {
