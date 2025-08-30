@@ -28,7 +28,17 @@ export const ProductApi = createApi({
         query: (id: number) => `/products/${id}`,
             //we ar modifying our response to oly return arrys
           //we do need transform to transform the response cuz no array is returned
-    })
+    }),//end of get product by id
+
+    addNewProduct: builder.mutation({ //mutation coz we change data
+        query: (product: Product) => ({ //passing the product of type product
+            url: '/products/add',// the urlwe post to
+            method: 'POST', //method type
+            body: product,//passing the product we want to add
+        }),
+    })//end of add new product
+
+
 
     }),//end of endpoints builder
 
@@ -43,4 +53,4 @@ plai javasxript export
 export const {useGetAllProductsQuery} = ProductApi
 */
 //export with typescript generated hook
-export const {useGetAllProductsQuery,useGetProductByIdQuery} = ProductApi
+export const {useGetAllProductsQuery,useGetProductByIdQuery,useAddNewProductMutation} = ProductApi

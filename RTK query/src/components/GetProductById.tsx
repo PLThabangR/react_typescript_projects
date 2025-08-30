@@ -11,7 +11,7 @@ if(isFetching){
 if(isError){
     return <h1>Error</h1>
 }
-console.log(data)
+
     // if(data){
     //    setProductId({
     //     id: data.id,

@@ -1,4 +1,5 @@
 import './App.css'
+import AddNewProduct from './components/AddNewProduct'
 import GetProductById from './components/GetProductById'
 import AllProducts from './components/home/AllProducts'
 
@@ -7,6 +8,7 @@ function App() {
     <>
      <AllProducts />
      <GetProductById />
+     <AddNewProduct />
     </>
   )
 }
