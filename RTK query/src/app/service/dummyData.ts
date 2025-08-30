@@ -19,14 +19,15 @@ export const ProductApi = createApi({
             //we gonna be sending request to this specific url /products
             //query parameter limit our respond 
             query: () => '/products?limit=10',
+            //transform the response modifying our response to only return array
             transformResponse: (response: { products: Product[] }) => response.products,
         }),  // end of get produdcts endpoint
 
 
          getProductById: builder.query({
         query: (id: number) => `/products/${id}`,
-
-           transformResponse: (response: { products: Product[] }) => response.products,
+            //we ar modifying our response to oly return arrys
+          //we do need transform to transform the response cuz no array is returned
     })
 
     }),//end of endpoints builder

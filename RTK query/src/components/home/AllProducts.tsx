@@ -10,7 +10,7 @@ const [products, setProducts] = useState<Product[]|null>([])
 
 
    
-console.log(products)
+
 
  // Whenever data changes, update local state
   useEffect(() => {
