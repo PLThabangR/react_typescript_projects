@@ -13,6 +13,7 @@ const DeleteProduct = () => {
     }
   return (
     <div>
+        <h1>Delete Product</h1>
                 { isLoading && <h1>Loading...</h1>}
                 { isSuccess && <h1>Product Deleted</h1>}
                 { isError && <h1>Something went wrong</h1>}
