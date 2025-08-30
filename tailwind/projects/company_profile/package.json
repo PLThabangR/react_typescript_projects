@@ -1,0 +1,17 @@
+{
+  "name": "company_profile",
+  "version": "1.0.0",
+  "description": "company website",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/input.css -o ./src/output.css",
+    "watch": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+
+  },
+  "author": "thabangr",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "tailwindcss": "^4.1.12"
+  }
+}
