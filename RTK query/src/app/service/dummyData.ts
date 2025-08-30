@@ -46,6 +46,8 @@ export const ProductApi = createApi({
         body: product,//passing the product we want to add
     }),//end of query
  }),//end of update product
+ 
+ //start of delete function
   deleteProduct: builder.mutation({
     query: (id) => ({ //passing the product of type product
         url: `/products/${id}`,// the method  put

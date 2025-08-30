@@ -1,5 +1,6 @@
 import './App.css'
 import AddNewProduct from './components/AddNewProduct'
+import DeleteProduct from './components/DeleteProduct'
 import GetProductById from './components/GetProductById'
 import AllProducts from './components/home/AllProducts'
 import UpdateProduct from './components/UpdateProduct'
@@ -27,6 +28,8 @@ function App() {
      <GetProductById />
      <AddNewProduct /> */}
      <UpdateProduct  product={2}/>
+
+     <DeleteProduct />
      
     </>
   )
