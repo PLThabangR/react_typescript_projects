@@ -2,28 +2,35 @@ import { useEffect, useState } from 'react'
 interface Product{
     category: string
 }
-
+//interface for fetching data
 interface FetchResponse{
     products: Product[]
 }
 
 const SideBar = () => {
+        //string of arrays000
     const [categories, setCategories] = useState<string[]>([]);  
     const [keyWords, setKeyWords] = useState<string[]>([
         "Apple","Watch","Fashion","Trend","Shoes","Camera","Laptop","Mobile","Accessories"
     ]);
+
 
  
 
     //fetching data from api using use effect
     const fetchCategories = async () => {
         try {
+          
+            //fetching the data
             const response = await fetch('https://dummyjson.com/products');
+           
+            //converting the data to javascript json
             const data: FetchResponse = await response.json();
-               //get unique categories from the date with set 
-               //Set removes the duplicates then we use map to loop through the array
-               //and get the unique categories array
-               //Array from is useful for converting iterables / array-like objects into real arrays
+              
+            /*get unique categories from the date with set 
+               - Set removes the duplicates then we use map to loop through the array
+               - and get the unique categories array
+               - Array from is useful for converting iterables / array-like objects into real arrays*/
     const uniqueCategories = Array.from(new Set(data.products.map((product) => product.category)));
                 //update the state with the unique categories
             setCategories(uniqueCategories);
@@ -31,7 +38,7 @@ const SideBar = () => {
         } catch (error) {
             console.error('Error fetching categories:', error);
         }
-    }
+    }//end of fecth categories
     useEffect(() => {
         //calling the function
         fetchCategories()
@@ -39,7 +46,7 @@ const SideBar = () => {
     },[])
   return (
     <div className='w-64 p-5 h-screen'>
-        <h1 className='text-2xl font-bold mb-10 mt-4'>Home store</h1>
+        <h1 className='text-2xl font-bold mb-10 mt-4'>Store</h1>
 
     <section>
         <div>
