@@ -1,7 +1,7 @@
 //configure store
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { ProductApi } from './service/dummyData'
+import { ProductApi } from './service/data'
 
 
 export const store = configureStore({
