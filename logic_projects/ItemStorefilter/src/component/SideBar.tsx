@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useGetAllProductsQuery } from '../app/service/data';
+
 interface Product{
     category: string
 }
@@ -8,6 +10,8 @@ interface FetchResponse{
 }
 
 const SideBar = () => {
+    //rtk hooks
+    
         //string of arrays000
     const [categories, setCategories] = useState<string[]>([]);  
     const [keywords, setKeyWords] = useState<string[]>([
