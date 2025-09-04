@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  setMaxPrice, setMinPrice, setSearchQuery, setSelectedCategory,setKeywords } from '../app/features/productlogic';
 import { useGetAllProductsQuery } from '../app/service/data';
 import { useEffect, useState } from 'react';
-import { Tally2 } from 'lucide-react';
+import { Tally2, Tally3 } from 'lucide-react';
 
 const MainContent = () => {
     const dispatch=useDispatch()
@@ -14,7 +14,7 @@ const MainContent = () => {
  const [products, setProducts] = useState<any>([]);
  const [filter, setFilter] = useState("all");
  const [currentPage, setCurrentPage] = useState(1);
- const [dropDownOpen, setDropDownOpen] = useState(true);
+ const [dropDownOpen, setDropDownOpen] = useState(false);
  const itemsPerPage=15;
 
 const fetchAllData=async()=>{
@@ -89,13 +89,14 @@ getFilteredProducts()
     <section className='xl:w-[55rem] lg:w-[45rem] md:w-[35rem] sm:w-[25rem] p-5 bg-amber-50 '>
             <div className='mb-5'>
                 <div className='fex flex-col sm:flex-row justify-between items-center'>
-                    <div className='relative m-5 mt-5'>
+                    <div className='relative m-5 mt-5' onClick={() => setDropDownOpen(!dropDownOpen)}>
                         <button className='border px-4 rounded-full py-2  flex items-center'>
-                            <Tally2/>
-                            {/* {dropDownOpen && the filter logic */}
-                            { filter === "all"? filter.charAt(0).toLowerCase()+filter.slice(1):filter}
+                            <Tally3 className='mr-2'/>
+                            {/* {dropDownOpen && dynamic renderong of value inside button */}
+                              { filter ==="all"?"Filter":filter.charAt(0).toLowerCase()+filter.slice(1)}
 
                         </button>
+                      
                     {dropDownOpen && (
                         <div className='absolute bg-white border border-gray-300 rounded mt-2 w-full sm:w-40 '>
                             <button onClick={()=> {setFilter("cheap")}} className='block px-4 py-2 w-full text-left hover:bg-gray-200'> cheap</button>
