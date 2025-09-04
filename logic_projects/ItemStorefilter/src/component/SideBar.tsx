@@ -10,8 +10,8 @@ interface FetchResponse{
 const SideBar = () => {
         //string of arrays000
     const [categories, setCategories] = useState<string[]>([]);  
-    const [keyWords, setKeyWords] = useState<string[]>([
-        "Apple","Watch","Fashion","Trend","Shoes","Camera","Laptop","Mobile","Accessories"
+    const [keywords, setKeyWords] = useState<string[]>([
+        "Apple","Watch","Fashion","Trend"
     ]);
 
 
@@ -45,12 +45,12 @@ const SideBar = () => {
 
     },[])
   return (
-    <div className='w-64 p-5 h-screen'>
+    <div className='w-64 p-5 h-screen bg-amber-200' >
         <h1 className='text-2xl font-bold mb-10 mt-4'>Store</h1>
 
     <section>
         <div>
- <input type="text" placeholder='Search' className='border-2 rounded px-2 sm:mb:0'  />
+ <input type="text" placeholder='Search' className='border-2 rounded-2xl px-2 sm:mb:0'  />
         </div>
        
 
@@ -61,11 +61,11 @@ const SideBar = () => {
 
 {/* catergories */}
     <div className='mb-5'>
-    <h1 className='text-xl font-semibold mb-3'> categories</h1>
+    <h2 className='text-xl font-semibold mb-3'> categories</h2>
              {
         categories.map((category, index) => (
             <label key={index} className='block mb-2'>
-                <input type="radio" name='category' className='mr-2 w-[15px] h-[16px]'  value={category}/>
+                <input type="radio" name='category' className='mr-2 w-[16px] h-[16px]'  value={category}/>
                 {category.toUpperCase()}
             </label>
         ))
@@ -73,18 +73,23 @@ const SideBar = () => {
     </div>
 
 
-        {/* key words */}
+     <section>
+
+           {/* key words */}
         <div>
-            <h1 className='text-xl font-semibold mb-3'> key words</h1>
+            <h2 className='text-xl font-semibold mb-3'> keywords</h2>
             {
-        keyWords.map((keyWord, index) => (
-            <label key={index} className='block mb-2'>
-                <input type="checkbox" name='keyWords' className='mr-2 w-[15px] h-[16px]'  value={keyWord.toUpperCase()}/>
-                {keyWord.toUpperCase()}
-            </label>
+        keywords.map((keyword, index) => (
+         
+                <button key={index} name='keyword' className='block mb-2 px-4 w-full text-left border rounded-2xl hover:bg-gray-200'  value={keyword.toUpperCase()}>
+                {keyword.toUpperCase()}
+                </button>
         ))
     }
         </div>
+
+        <button className='w-full mb-[4-rem] mt-5  bg-black text-white  py-2 rounded-2xl hover:bg-gray-600'>Clear</button>
+     </section>
    
     </section>
     </div>
