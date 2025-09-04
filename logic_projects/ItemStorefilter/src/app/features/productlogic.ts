@@ -24,7 +24,7 @@ const productSlice=createSlice({
     name:'product',
     initialState,
     reducers:{
-        //setting the state with our reducers
+        //update the state with our reducers
         setSearchQuery(state,action){state.searchQuery=action.payload},
         setSelectedCategory(state,action){state.selectedCategory=action.payload},
         setMinPrice(state,action){state.minPrice=action.payload},

@@ -59,7 +59,7 @@ const SideBar = () => {
     }//end of fecth categories
 const handleSearch=(e:ChangeEvent<HTMLInputElement>)=>{
     const searchTerm=e.target.value;
-    console.log(searchTerm)
+    
     dispatch(setSearchQuery(searchTerm))
 }
 
@@ -70,7 +70,7 @@ const handleMin=(e:ChangeEvent<HTMLInputElement>)=>{
 }
 const handleMax=(e:ChangeEvent<HTMLInputElement>)=>{
     const maxPrice=Number(e.target.value)
-    console.log(maxPrice)
+    console.log("max",maxPrice)
     dispatch(setMaxPrice(maxPrice?parseFloat(maxPrice.toString()):undefined))
 }
 
@@ -80,8 +80,8 @@ const handleCategoryinput=(category:string)=>{
 }
 
 const handleKeywordinput=(keyword:string)=>{
-    console.log(keyword)
-    dispatch(setKeyW(keyword))
+    console.log(keyword.toLowerCase())
+    dispatch(setKeyW(keyword.toLowerCase()))
 }
 
 const handleClear=()=>{

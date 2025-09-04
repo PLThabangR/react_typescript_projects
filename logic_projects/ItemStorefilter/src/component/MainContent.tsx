@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  setMaxPrice, setMinPrice, setSearchQuery, setSelectedCategory,setKeywords } from '../app/features/productlogic';
 import { useGetAllProductsQuery } from '../app/service/data';
 import { useEffect, useState } from 'react';
-import { Tally1, Tally2, Tally3 } from 'lucide-react';
+import { Tally2 } from 'lucide-react';
 
 const MainContent = () => {
     const dispatch=useDispatch()
@@ -11,11 +11,11 @@ const MainContent = () => {
     //const {data,isLoading,isError}= useGetAllProductsQuery({})
 
 //create our states 
- const [products, setProducts] = useState([]);
+ const [products, setProducts] = useState<any>([]);
  const [filter, setFilter] = useState("all");
  const [currentPage, setCurrentPage] = useState(1);
  const [dropDownOpen, setDropDownOpen] = useState(true);
- const itemsPerPage=10;
+ const itemsPerPage=15;
 
 const fetchAllData=async()=>{
     //get the current page
@@ -38,8 +38,51 @@ const fetchAllData=async()=>{
  useEffect(() => {
    fetchAllData();
     
-    
+    console.log(getFilteredProducts())
   }, []);
+
+
+const getFilteredProducts =()=>{
+    //create a variable to hold our filtered products
+    let filteredProducts = products;
+
+    if (selectedCategory) {
+        filteredProducts = filteredProducts.filter((product: any) => product.category === selectedCategory);
+      }
+    //min price
+      if (minPrice) {
+        filteredProducts = filteredProducts.filter((product: any) => product.price >= minPrice);
+      }
+    // max 
+      if (maxPrice ) {
+        filteredProducts = filteredProducts.filter((product: any) => product.price <= maxPrice);
+      }
+    //search by keyword
+      if (keywords) {
+        filteredProducts = filteredProducts.filter((product: any) => product.title.toLowerCase().includes(keywords.toLowerCase()));
+      }
+      //search
+      if(searchQuery){
+        filteredProducts = filteredProducts.filter((product: any) => product.title.toLowerCase().includes(searchQuery.toLowerCase()));
+      }
+      // sort by cheap
+      if (filter === "cheap") {
+        filteredProducts = filteredProducts.sort((a: any, b: any) => a.price - b.price);
+      }
+    
+      // sort by expensive
+      if (filter === "expensive") {
+        filteredProducts = filteredProducts.sort((a: any, b: any) => b.price - a.price);
+      } 
+
+      console.log(filteredProducts)
+      return filteredProducts;
+
+
+}//end
+
+getFilteredProducts()
+
 
 
   return (
