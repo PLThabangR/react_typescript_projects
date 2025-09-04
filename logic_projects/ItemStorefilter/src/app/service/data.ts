@@ -15,7 +15,7 @@ export const ProductApi = createApi({
             
             
         }),//end of get produdcts endpoint
-        searchQuery: builder.query({
+        searchProduct: builder.query({
             query: (searchQuery) => `/products/search?q=${searchQuery}`
         }),
         selectedCategory: builder.query({
@@ -41,5 +41,5 @@ export const ProductApi = createApi({
 
 
 export const {
-    useGetAllProductsQuery,useKeywordsQuery,useSelectedCategoryQuery,useMinPriceQuery,useMaxPriceQuery
+    useGetAllProductsQuery,useKeywordsQuery,useSelectedCategoryQuery,useMinPriceQuery,useMaxPriceQuery,useSearchProductQuery
 } = ProductApi

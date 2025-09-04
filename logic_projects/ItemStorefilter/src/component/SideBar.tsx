@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
-import { useGetAllProductsQuery } from '../app/service/data';
+import { useEffect, useState, type ChangeEvent } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux';
+import {  setMaxPrice, setMinPrice, setSearchQuery, setSelectedCategory,setKeywords as setKeyW } from '../app/features/productlogic';
 
 interface Product{
     category: string
@@ -10,8 +12,20 @@ interface FetchResponse{
 }
 
 const SideBar = () => {
-    //rtk hooks
+    //inotialize dispatch
+    const dispatch=useDispatch()
+
+
+    //destructuring the data from the store
+    const {searchQuery,selectedCategory,minPrice,maxPrice,keywords:keywordS,sortBy,currentPage}=useSelector((state:any)=>state.product)
+    //get functions 
+  
+   
+
     
+
+
+
         //string of arrays000
     const [categories, setCategories] = useState<string[]>([]);  
     const [keywords, setKeyWords] = useState<string[]>([
@@ -43,6 +57,46 @@ const SideBar = () => {
             console.error('Error fetching categories:', error);
         }
     }//end of fecth categories
+const handleSearch=(e:ChangeEvent<HTMLInputElement>)=>{
+    const searchTerm=e.target.value;
+    console.log(searchTerm)
+    dispatch(setSearchQuery(searchTerm))
+}
+
+const handleMin=(e:ChangeEvent<HTMLInputElement>)=>{
+    const minPrice=e.target.value;
+    console.log(minPrice)
+    dispatch(setMinPrice(minPrice))
+}
+const handleMax=(e:ChangeEvent<HTMLInputElement>)=>{
+    const maxPrice=Number(e.target.value)
+    console.log(maxPrice)
+    dispatch(setMaxPrice(maxPrice?parseFloat(maxPrice.toString()):undefined))
+}
+
+const handleCategoryinput=(category:string)=>{
+    console.log(category)
+    dispatch(setSelectedCategory(category))
+}
+
+const handleKeywordinput=(keyword:string)=>{
+    console.log(keyword)
+    dispatch(setKeyW(keyword))
+}
+
+const handleClear=()=>{
+    dispatch(setSearchQuery(''))
+    dispatch(setSelectedCategory(''))
+    dispatch(setMinPrice(undefined))
+    dispatch(setMaxPrice(undefined))
+    dispatch(setKeyW(undefined))
+}
+
+// const handleMin=(minPrice:string)=>{
+//     console.log(minPrice)
+//     dispatch(setMinPrice(minPrice))
+// }
+
     useEffect(() => {
         //calling the function
         fetchCategories()
@@ -54,13 +108,13 @@ const SideBar = () => {
 
     <section>
         <div>
- <input type="text" placeholder='Search' className='border-2 rounded-2xl px-2 sm:mb:0'  />
+ <input type="text" placeholder='Search' className='border-2 rounded-2xl px-2 sm:mb:0' value={searchQuery} onChange={handleSearch} />
         </div>
        
 
         <div className='flex justify-center items-center'>
-            <input type="text" placeholder='min' className='border-2 mr-2 px-5 py-3 mb-3 w-full'  />
-            <input type="text" placeholder='max' className='border-2 mr-2 px-5 py-3 mb-3 w-full'  />
+            <input type="text" placeholder='min' className='border-2 mr-2 px-5 py-3 mb-3 w-full' value={minPrice??""} onChange={handleMin}  />
+            <input type="text" placeholder='max' className='border-2 mr-2 px-5 py-3 mb-3 w-full' value={maxPrice??""} onChange={handleMax}   />
         </div>
 
 {/* catergories */}
@@ -69,7 +123,7 @@ const SideBar = () => {
              {
         categories.map((category, index) => (
             <label key={index} className='block mb-2'>
-                <input type="radio" name='category' className='mr-2 w-[16px] h-[16px]'  value={category}/>
+                <input type="radio" name='category' className='mr-2 w-[16px] h-[16px]'checked={category===selectedCategory}  value={category} onChange={()=>handleCategoryinput(category)}/>
                 {category.toUpperCase()}
             </label>
         ))
@@ -85,14 +139,14 @@ const SideBar = () => {
             {
         keywords.map((keyword, index) => (
          
-                <button key={index} name='keyword' className='block mb-2 px-4 w-full text-left border rounded-2xl hover:bg-gray-200'  value={keyword.toUpperCase()}>
+                <button key={index} name='keyword' className='block mb-2 px-4 w-full text-left border rounded-2xl hover:bg-gray-200'  value={keyword.toUpperCase()} onClick={()=>handleKeywordinput(keyword)} >
                 {keyword.toUpperCase()}
                 </button>
         ))
     }
         </div>
 
-        <button className='w-full mb-[4-rem] mt-5  bg-black text-white  py-2 rounded-2xl hover:bg-gray-600'>Clear</button>
+        <button onClick={handleClear} className='w-full mb-[4-rem] mt-5  bg-black text-white  py-2 rounded-2xl hover:bg-gray-600'>Clear</button>
      </section>
    
     </section>
