@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {  setMaxPrice, setMinPrice, setSearchQuery, setSelectedCategory,setKeywords } from '../app/features/productlogic';
-import { useGetAllProductsQuery } from '../app/service/data';
+
 import { useEffect, useState } from 'react';
-import { Tally2, Tally3 } from 'lucide-react';
+import {  Tally3 } from 'lucide-react';
+import ProductCard from './ProductCard';
+
 
 const MainContent = () => {
-    const dispatch=useDispatch()
+   // const dispatch=useDispatch()
     const {searchQuery,selectedCategory,minPrice,maxPrice,keywords}=useSelector((state:any)=>state.product) 
 
     //const {data,isLoading,isError}= useGetAllProductsQuery({})
@@ -38,8 +39,8 @@ const fetchAllData=async()=>{
  useEffect(() => {
    fetchAllData();
     
-    console.log(getFilteredProducts())
-  }, []);
+   
+  }, [keywords,currentPage]);
 
 
 const getFilteredProducts =()=>{
@@ -80,8 +81,8 @@ const getFilteredProducts =()=>{
 
 
 }//end
-
-getFilteredProducts()
+//get filtered products from the function 
+const filteredProducts=getFilteredProducts()
 
 
 
@@ -90,7 +91,7 @@ getFilteredProducts()
             <div className='mb-5'>
                 <div className='fex flex-col sm:flex-row justify-between items-center'>
                     <div className='relative m-5 mt-5' onClick={() => setDropDownOpen(!dropDownOpen)}>
-                        <button className='border px-4 rounded-full py-2  flex items-center'>
+                        <button className='border px-4 rounded-full py-2  flex items-center hover:bg-gray-200'>
                             <Tally3 className='mr-2'/>
                             {/* {dropDownOpen && dynamic renderong of value inside button */}
                               { filter ==="all"?"Filter":filter.charAt(0).toLowerCase()+filter.slice(1)}
@@ -112,7 +113,10 @@ getFilteredProducts()
                     {/* Render our card */}
 
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-
+                            {/* Reander product  */}
+                            {filteredProducts.map((product: any) => (
+                                <ProductCard key={product.id} id={product.id} title={product.title} thumbnail={product.thumbnail} price={product.price} />
+                            ))}
                     </div>
 
             </div>
