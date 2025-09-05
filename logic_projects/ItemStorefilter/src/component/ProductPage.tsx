@@ -1,4 +1,4 @@
-import React, { use, useEffect } from 'react'
+import  {  useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router';
 
 
@@ -17,7 +17,7 @@ const ProductPage = () => {
 
     const navigate = useNavigate();
 
-    const [product ,setProduct] = React.useState<Product | null>(null);
+    const [product ,setProduct] = useState<Product | null>(null);
 
     const getProduct = async () => {
         if(!id) throw new Error('ID is required');

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 
 import { useEffect, useState } from 'react';
 import {  Tally3 } from 'lucide-react';
@@ -150,7 +150,7 @@ const filteredProducts=getFilteredProducts()
 
 
   return (
-    <section className='xl:w-[50rem] lg:w-[40rem] md:w-[30rem] sm:w-[20rem] p-5'>
+    <section className='xl:w-[40rem] lg:w-[40rem] md:w-[30rem] sm:w-[20rem] p-5'>
             <div className='mb-5'>
                 <div className='fex flex-col sm:flex-row justify-between items-center'>
                     <div className='relative m-5 mt-5' >

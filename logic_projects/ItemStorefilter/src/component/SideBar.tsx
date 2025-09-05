@@ -17,7 +17,7 @@ const SideBar = () => {
 
 
     //destructuring the data from the store
-    const {searchQuery,selectedCategory,minPrice,maxPrice,keywords:keywordS,sortBy,currentPage}=useSelector((state:any)=>state.product)
+    const {searchQuery,selectedCategory,minPrice,maxPrice}=useSelector((state:any)=>state.product)
     //get functions 
   
    
@@ -103,18 +103,18 @@ const handleClear=()=>{
 
     },[])
   return (
-    <div className='w-55 p-3 h-screen text-sm' >
+    <div className='w-64 p-5 h-screen overflow-y' >
         <h1 className='text-2xl font-bold mb-10 mt-4'>Store</h1>
 
     <section>
         <div>
- <input type="text" placeholder='Search' className='border-1  rounded-2xl px-2 sm:mb:0' value={searchQuery} onChange={handleSearch} />
+ <input type="text" placeholder='Search' className='border-1 w-full rounded px-2 sm:mb:0' value={searchQuery} onChange={handleSearch} />
         </div>
        
 
-        <div className='flex justify-center items-center'>
-            <input type="text" placeholder='min' className='border-2 mr-2 px-5 py-3 mb-3 w-full' value={minPrice??""} onChange={handleMin}  />
-            <input type="text" placeholder='max' className='border-2 mr-2 px-5 py-3 mb-3 w-full' value={maxPrice??""} onChange={handleMax}   />
+        <div className='flex justify-center items-center mt-3'>
+            <input type="text" placeholder='min' className='border mr-2 px-5 py-3 mb-3 w-full' value={minPrice??""} onChange={handleMin}  />
+            <input type="text" placeholder='max' className='border mr-2 px-5 py-3 mb-3 w-full' value={maxPrice??""} onChange={handleMax}   />
         </div>
 
 {/* catergories */}

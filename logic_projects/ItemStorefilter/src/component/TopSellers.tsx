@@ -55,7 +55,7 @@ useEffect(()=>{
   return (
     <>
     
-    <div className="bg-white p-4 mx-1 mt-[5rem] border w-[23rem] rounded  ">
+    <div className="bg-white p-5 mx-5 mt-[5rem] border w-[23rem] rounded  ">
 
     <h1 className="font-bold text-xl mb-5">Top Sellers</h1>
 

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 
 import './App.css'
 import { Route, BrowserRouter as Router, Routes} from 'react-router'
@@ -19,7 +18,7 @@ function App() {
 
       <SideBar/>
 
-<div className='w-full rounded-2xl flex justify-between fllex-wrap'>
+<div className='w-full rounded-2xl flex justify-between  '>
 
 <Routes>
 <Route path='/' element={<MainContent/>}></Route>

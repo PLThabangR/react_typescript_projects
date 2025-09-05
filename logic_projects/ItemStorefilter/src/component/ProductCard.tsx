@@ -1,5 +1,4 @@
-import { current } from '@reduxjs/toolkit'
-import React from 'react'
+
 import { Link } from 'react-router'
 
 interface ProductCardProps {
@@ -10,9 +9,7 @@ interface ProductCardProps {
 
 }
 
-const handlePageChange = (page: number) => { 
 
-};
 const ProductCard = ({id,title,thumbnail,price}:ProductCardProps) => {
   return (
     <>
