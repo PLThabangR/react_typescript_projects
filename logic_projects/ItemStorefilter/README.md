@@ -1,6 +1,6 @@
 # 📌 Store filtering Application (React + TypeScript)
 
-![Dashboard Screenshot](https://github.com/PLThabangR/Job-Tracker/blob/main/public/jobtrackerUI.png)
+![Dashboard Screenshot](https://github.com/PLThabangR/react_typescript_1/blob/main/logic_projects/ItemStorefilter/public/homeStore.png)
 
 
 # A simple Data filtering application built with **React** and **TypeScript**, state management with **react toolkit**.
