@@ -16,7 +16,7 @@ const MainContent = () => {
  const [filter, setFilter] = useState("all");
  const [currentPage, setCurrentPage] = useState(1);
  const [dropDownOpen, setDropDownOpen] = useState(false);
- const itemsPerPage=15;
+ const itemsPerPage=10;
 
  //declaring variables for pagination
  //calcul;ate the total number of pages needed to display all the products
@@ -33,9 +33,41 @@ const handlePageChange = (page: number) => {
         // Update the current page
       setCurrentPage(page);
     }
+}//end of handle page
+ 
+//function for pages
+const getPagination = () => {
+    //create an array to hold the pages
+    const buttons: number[] = [];
+    //loop through the total number of pages
+    let startPage=Math.max(1, currentPage - 2);
+        //
+    let endPage = Math.min(totalPages, currentPage + 2);
+    
+   if(currentPage -2<1 ){
+    endPage= Math.min(totalPages,endPage+(2-currentPage-1));
+   }
+   if(currentPage +2>totalPages){
+    startPage= Math.min(2,startPage-(2-totalPages-currentPage));
+   }
+
+    for (let page = startPage; page <= endPage; page++) {
+      buttons.push(page);
+    }
+    return buttons;
+    
+  
 }
+
 const fetchAllData=async()=>{
     //get the current page
+    //skip mean how many items to skip
+    /**
+     * For example, if currentPage is 2 and itemsPerPage is 10, 
+     * the skip value would be (2-1)*10 = 10, 
+     * which means the query would skip the first 10 items (i.e. the first page)
+     *  and return the next 10 items (i.e. the second page).
+     */
     let url =`https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currentPage-1)*itemsPerPage}`
      //if we have a keyword
     if(keywords){
@@ -137,11 +169,26 @@ const filteredProducts=getFilteredProducts()
 
 
                     {/*pagination  */}
-         <div className='flex flex-col sm:flex-row justify-between items-center'>
+         <div className='flex flex-col sm:flex-row justify-between items-center'hidden={filteredProducts.length<itemsPerPage}>
               {/* previous page */}
               < button onClick={()=>handlePageChange(currentPage-1)} disabled={currentPage===1}  className='border  mb-2 mt-2 px-4 py-2 rounded-full' > Previous</ button >
+
+                {/* 1,2,3,4,5 */}
+                            {getPagination().map((page, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handlePageChange(page)}
+                                    className={`border px-4 py-2 mx-1 rounded-full ${
+                                        currentPage === page ? "bg-black text-white" : ""
+                                    }`}
+                                >
+                                    {page}
+                                </button>
+                            ))}
+
+
                         {/* Next page */}
-              < button onClick={()=>handlePageChange(currentPage+1)}  className='border px-4 py-2 rounded-full' >Next</ button >
+              < button onClick={()=>handlePageChange(currentPage+1)} disabled={currentPage===totalPages} className='border px-4 py-2 rounded-full' >Next</ button >
 
          </div>
       
