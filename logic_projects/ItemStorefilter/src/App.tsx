@@ -4,6 +4,7 @@ import './App.css'
 import { Route, BrowserRouter as Router, Routes} from 'react-router'
 import SideBar from './component/SideBar'
 import MainContent from './component/MainContent'
+import ProductPage from './component/ProductPage'
 
 function App() {
  
@@ -20,6 +21,7 @@ function App() {
 
 <Routes>
 <Route path='/' element={<MainContent/>}></Route>
+<Route path='/product/:id' element={<ProductPage/>}></Route>
 
 </Routes>
 </div>

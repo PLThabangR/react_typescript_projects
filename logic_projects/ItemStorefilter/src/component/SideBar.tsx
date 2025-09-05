@@ -29,7 +29,7 @@ const SideBar = () => {
         //string of arrays000
     const [categories, setCategories] = useState<string[]>([]);  
     const [keywords] = useState<string[]>([
-        "shirt","shoes","watch","apple"
+        "shirt","shoes","watch","apple","phones"
     ]);
 
 

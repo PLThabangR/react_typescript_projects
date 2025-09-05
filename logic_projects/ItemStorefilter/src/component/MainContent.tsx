@@ -23,9 +23,9 @@ const MainContent = () => {
  //calcul;ate the total number of pages needed to display all the products
  const totalPages = Math.ceil(totalProduct / itemsPerPage);
  //calculate the start 
- const startIndex = (currentPage - 1) * itemsPerPage;
+// const startIndex = (currentPage - 1) * itemsPerPage;
  //calculate the end to be displayed on current page
- const endIndex = startIndex + itemsPerPage;
+// const endIndex = startIndex + itemsPerPage;
 
 
 const handlePageChange = (page: number) => {
@@ -153,8 +153,8 @@ const filteredProducts=getFilteredProducts()
     <section className='xl:w-[55rem] lg:w-[45rem] md:w-[35rem] sm:w-[25rem] p-5 bg-amber-50 '>
             <div className='mb-5'>
                 <div className='fex flex-col sm:flex-row justify-between items-center'>
-                    <div className='relative m-5 mt-5' onClick={() => setDropDownOpen(!dropDownOpen)}>
-                        <button className='border px-4 rounded-full py-2  flex items-center hover:bg-gray-200'>
+                    <div className='relative m-5 mt-5' >
+                        <button className='border px-4 rounded-full py-2  flex items-center hover:bg-gray-200' onClick={() => setDropDownOpen(!dropDownOpen)}>
                             <Tally3 className='mr-2'/>
                             {/* {dropDownOpen && dynamic renderong of value inside button */}
                               { filter ==="all"?"Filter":filter.charAt(0).toLowerCase()+filter.slice(1)}
