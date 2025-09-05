@@ -5,6 +5,9 @@
 
 # A simple Data filtering application built with **React** and **TypeScript**, state management with **react toolkit**.
 
+
+live demo
+https://deluxe-licorice-5369b6.netlify.app/
 ---
 ## step 1
 - Clone this project using git clone 
