@@ -1,10 +1,13 @@
 # 📌 Store filtering Application (React + TypeScript)
 
-![Dashboard Screenshot](https://github.com/PLThabangR/Job-Tracker/blob/main/public/jobtrackerUI.png)
+![Dashboard Screenshot](https://github.com/PLThabangR/react_typescript_1/blob/main/logic_projects/ItemStorefilter/public/homeStore.png)
 
 
 # A simple Data filtering application built with **React** and **TypeScript**, state management with **react toolkit**.
 
+
+live demo
+https://deluxe-licorice-5369b6.netlify.app/
 ---
 ## step 1
 - Clone this project using git clone 
@@ -43,6 +46,8 @@ Built with React + TypeScript for scalability
 
 📸 Screenshots
 
-![Dashboard Screenshot](https://github.com/PLThabangR/Job-Tracker/blob/main/public/jobtracker.png)
+![Dashboard Screenshot](https://github.com/PLThabangR/react_typescript_1/blob/main/logic_projects/ItemStorefilter/public/moredetails.png)
 
-![Dashboard Screenshot](https://github.com/PLThabangR/jobtracker-firebase/blob/main/public/job%20modal.png)
+![Dashboard Screenshot](https://github.com/PLThabangR/react_typescript_1/blob/main/logic_projects/ItemStorefilter/public/pagenationsrore.png)
+
+![Dashboard Screenshot](https://github.com/PLThabangR/react_typescript_1/blob/main/logic_projects/ItemStorefilter/public/applekeyword.png)
