@@ -3,7 +3,7 @@
 ![Dashboard Screenshot](https://github.com/PLThabangR/Job-Tracker/blob/main/public/jobtrackerUI.png)
 
 
-# A simple Data filtering application built with **React** and **TypeScript**, powered by backend data from **dummyjson.com**.
+# A simple Data filtering application built with **React** and **TypeScript**, state management with **react toolkit**.
 
 ---
 ## step 1
@@ -37,8 +37,8 @@ Built with React + TypeScript for scalability
 
 - TypeScript (Type safety)
 - Tailwind (UI Design)
-- Zustand (State management)
-- Firestore DB (Real time)
+- React toolkit (State management)
+- dummyData (json)
 - Vite (Fast development environment)
 
 📸 Screenshots
