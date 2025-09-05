@@ -103,12 +103,12 @@ const handleClear=()=>{
 
     },[])
   return (
-    <div className='w-64 p-5 h-screen' >
+    <div className='w-55 p-3 h-screen text-sm' >
         <h1 className='text-2xl font-bold mb-10 mt-4'>Store</h1>
 
     <section>
         <div>
- <input type="text" placeholder='Search' className='border-2 rounded-2xl px-2 sm:mb:0' value={searchQuery} onChange={handleSearch} />
+ <input type="text" placeholder='Search' className='border-1  rounded-2xl px-2 sm:mb:0' value={searchQuery} onChange={handleSearch} />
         </div>
        
 

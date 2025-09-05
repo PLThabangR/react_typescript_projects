@@ -5,6 +5,8 @@ import { Route, BrowserRouter as Router, Routes} from 'react-router'
 import SideBar from './component/SideBar'
 import MainContent from './component/MainContent'
 import ProductPage from './component/ProductPage'
+import TopSellers from './component/TopSellers'
+import PopularBlogs from './component/PopularBlogs'
 
 function App() {
  
@@ -25,6 +27,8 @@ function App() {
 
 </Routes>
 </div>
+    <TopSellers/>
+    <PopularBlogs/>
 
     </div>
 
