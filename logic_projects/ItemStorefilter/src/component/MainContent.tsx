@@ -16,11 +16,12 @@ const MainContent = () => {
  const [filter, setFilter] = useState("all");
  const [currentPage, setCurrentPage] = useState(1);
  const [dropDownOpen, setDropDownOpen] = useState(false);
- const itemsPerPage=10;
+ const itemsPerPage=12;
 
  //declaring variables for pagination
+ const totalProduct = 100;
  //calcul;ate the total number of pages needed to display all the products
- const totalPages = Math.ceil(products.length / itemsPerPage);
+ const totalPages = Math.ceil(totalProduct / itemsPerPage);
  //calculate the start 
  const startIndex = (currentPage - 1) * itemsPerPage;
  //calculate the end to be displayed on current page
@@ -39,18 +40,32 @@ const handlePageChange = (page: number) => {
 const getPagination = () => {
     //create an array to hold the pages
     const buttons: number[] = [];
-    //loop through the total number of pages
+        //calculate starting page base on the current page
+     //max make sure we don't go below 1
+     //if you're on page 5 start page is 3
+     //if you on page 1 start page is 1
     let startPage=Math.max(1, currentPage - 2);
-        //
+
+        //calculate ending page based on the current page
+        //end 2 pages after the current page
+        //if you're on page 5 end page is 7
+        //if you're on page 1 end page is 3
+        
     let endPage = Math.min(totalPages, currentPage + 2);
     
+    //ending page
+       //-2 means we want to show 2 pages before the current page
    if(currentPage -2<1 ){
-    endPage= Math.min(totalPages,endPage+(2-currentPage-1));
-   }
-   if(currentPage +2>totalPages){
-    startPage= Math.min(2,startPage-(2-totalPages-currentPage));
+    //if near end shift forward
+    endPage= Math.min(totalPages,endPage+(2-(currentPage-1)));
    }
 
+   //if near end shift backward 
+   //+2 means we want to show 2 pages after the current page
+   if(currentPage +2>totalPages){
+    startPage= Math.max(1,startPage-(currentPage+2-totalPages));
+   }
+    //loop through the pages
     for (let page = startPage; page <= endPage; page++) {
       buttons.push(page);
     }
@@ -169,9 +184,9 @@ const filteredProducts=getFilteredProducts()
 
 
                     {/*pagination  */}
-         <div className='flex flex-col sm:flex-row justify-between items-center'hidden={filteredProducts.length<itemsPerPage}>
+         <div className='flex flex-col sm:flex-row justify-between items-center mt-5'hidden={filteredProducts.length<itemsPerPage}>
               {/* previous page */}
-              < button onClick={()=>handlePageChange(currentPage-1)} disabled={currentPage===1}  className='border  mb-2 mt-2 px-4 py-2 rounded-full' > Previous</ button >
+              < button onClick={()=>handlePageChange(currentPage-1)} disabled={currentPage===1}  className='border   mt-2 px-4 py-2 rounded-full' > Previous</ button >
 
                 {/* 1,2,3,4,5 */}
                             {getPagination().map((page, index) => (
@@ -188,6 +203,7 @@ const filteredProducts=getFilteredProducts()
 
 
                         {/* Next page */}
+                        {/* disabled if current page == total page */}
               < button onClick={()=>handlePageChange(currentPage+1)} disabled={currentPage===totalPages} className='border px-4 py-2 rounded-full' >Next</ button >
 
          </div>
