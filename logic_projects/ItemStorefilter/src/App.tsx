@@ -26,10 +26,15 @@ function App() {
 <Route path='/product/:id' element={<ProductPage/>}></Route>
 
 </Routes>
-</div>
-    <TopSellers/>
+<div>
+     <TopSellers/>
     <PopularBlogs/>
 
+   </div>
+</div>
+
+
+   
     </div>
 
     </Router>
