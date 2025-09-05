@@ -1,3 +1,4 @@
+import { current } from '@reduxjs/toolkit'
 import React from 'react'
 import { Link } from 'react-router'
 
@@ -8,16 +9,23 @@ interface ProductCardProps {
     price: number
 
 }
+
+const handlePageChange = (page: number) => { 
+
+};
 const ProductCard = ({id,title,thumbnail,price}:ProductCardProps) => {
   return (
     <>
       <div className='border p-4 rounded-2xl'>
         <Link to={`/product/${id}`}>
         <img src={thumbnail} alt={title} className='w-full h-32 object-cover' />
-        <h1>{title}</h1>
-        <h2>${price}</h2>
+        <h1 className='font-bold'>{title}</h1>
+        <p className='font-light'>${price}</p>
         </Link>
-        </div>  
+        </div> 
+
+         
+
 
     </>
   )

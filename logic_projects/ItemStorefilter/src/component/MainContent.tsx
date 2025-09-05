@@ -18,6 +18,22 @@ const MainContent = () => {
  const [dropDownOpen, setDropDownOpen] = useState(false);
  const itemsPerPage=15;
 
+ //declaring variables for pagination
+ //calcul;ate the total number of pages needed to display all the products
+ const totalPages = Math.ceil(products.length / itemsPerPage);
+ //calculate the start 
+ const startIndex = (currentPage - 1) * itemsPerPage;
+ //calculate the end to be displayed on current page
+ const endIndex = startIndex + itemsPerPage;
+
+
+const handlePageChange = (page: number) => {
+    // Check if the page number is within the valid range
+    if (page >= 1 && page <= totalPages) {
+        // Update the current page
+      setCurrentPage(page);
+    }
+}
 const fetchAllData=async()=>{
     //get the current page
     let url =`https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currentPage-1)*itemsPerPage}`
@@ -118,6 +134,16 @@ const filteredProducts=getFilteredProducts()
                                 <ProductCard key={product.id} id={product.id} title={product.title} thumbnail={product.thumbnail} price={product.price} />
                             ))}
                     </div>
+
+
+                    {/*pagination  */}
+         <div className='flex flex-col sm:flex-row justify-between items-center'>
+              {/* previous page */}
+              < button onClick={()=>handlePageChange(currentPage-1)} disabled={currentPage===1}  className='border  mb-2 mt-2 px-4 py-2 rounded-full' > Previous</ button >
+              < button  className='border px-4 py-2 rounded-full' >Next</ button >
+
+         </div>
+      
 
             </div>
 
