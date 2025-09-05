@@ -8,7 +8,7 @@ interface Product {
     description: string;
     price: number;
     category: string;
-    image: string;
+    images: string;
     rating: number
 }
 const ProductPage = () => {
@@ -30,11 +30,20 @@ const ProductPage = () => {
 
     useEffect(() => {
         getProduct();
-    })
+    },[id]);
+
+    if(!product) return <h1>Loading</h1>;
   return (
-    <div>
-
-
+    <div className='p-5 w-[60%]'>
+    <button onClick={() => navigate(-1)} className='mb-5 bg-black text-white py-2 px-4 rounded'>Back</button>
+        {/* product image we wanna show the first image [0] */}
+        <img src={product.images[0]} alt={product.title} className='w-[50%] h-auto m-5'/>
+        <h1 className='font-bold text-2xl mb-4'>{product.title}</h1>
+        <p className='font-light mb-4 text-gray w-[70%]'>{product.description}</p>
+      <div className='flex  ml-10'>
+              <p >R{product.price}</p>
+              <p className='ml-5'>Rating: {product.rating}</p>
+      </div>
 
     </div>
   )
