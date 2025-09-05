@@ -103,7 +103,7 @@ const handleClear=()=>{
 
     },[])
   return (
-    <div className='w-64 p-5 h-screen bg-amber-200' >
+    <div className='w-64 p-5 h-screen' >
         <h1 className='text-2xl font-bold mb-10 mt-4'>Store</h1>
 
     <section>

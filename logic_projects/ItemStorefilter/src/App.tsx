@@ -17,7 +17,7 @@ function App() {
 
       <SideBar/>
 
-<div className='w-full bg-amber-700 rounded-2xl flex justify-between fllex-wrap'>
+<div className='w-full rounded-2xl flex justify-between fllex-wrap'>
 
 <Routes>
 <Route path='/' element={<MainContent/>}></Route>

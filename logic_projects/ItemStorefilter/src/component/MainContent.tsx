@@ -150,7 +150,7 @@ const filteredProducts=getFilteredProducts()
 
 
   return (
-    <section className='xl:w-[55rem] lg:w-[45rem] md:w-[35rem] sm:w-[25rem] p-5 bg-amber-50 '>
+    <section className='xl:w-[55rem] lg:w-[45rem] md:w-[35rem] sm:w-[25rem] p-5'>
             <div className='mb-5'>
                 <div className='fex flex-col sm:flex-row justify-between items-center'>
                     <div className='relative m-5 mt-5' >
