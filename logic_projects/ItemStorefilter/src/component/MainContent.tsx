@@ -140,7 +140,8 @@ const filteredProducts=getFilteredProducts()
          <div className='flex flex-col sm:flex-row justify-between items-center'>
               {/* previous page */}
               < button onClick={()=>handlePageChange(currentPage-1)} disabled={currentPage===1}  className='border  mb-2 mt-2 px-4 py-2 rounded-full' > Previous</ button >
-              < button  className='border px-4 py-2 rounded-full' >Next</ button >
+                        {/* Next page */}
+              < button onClick={()=>handlePageChange(currentPage+1)}  className='border px-4 py-2 rounded-full' >Next</ button >
 
          </div>
       
