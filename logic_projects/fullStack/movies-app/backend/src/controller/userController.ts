@@ -104,3 +104,21 @@ export  const loginUser = async(req: Request, res: Response) => {
 
 
 }
+
+export const logoutUser = async(req: Request, res: Response) => {
+ 
+    try {
+           //clear cookie
+    res.cookie('jwt', '', {
+        httpOnly: true,
+       expires: new Date(0),
+        
+       
+    })
+    //send response
+    res.status(200).json({message: 'Logout successful'})
+        
+    } catch (error) {
+        res.status(401).json({error: (error as Error).message});
+    }
+}
