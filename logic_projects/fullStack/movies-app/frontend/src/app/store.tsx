@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {setupListeners} from '@reduxjs/toolkit/query/react'
 import authRducer  from './features/auth/auth';
+import { apiSlice } from './api/apiSlice';
 
 
 
@@ -15,7 +16,7 @@ const store = configureStore({
 
     // Adding the api middleware enables caching, invalidation, polling,
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(api.middleware),
+        getDefaultMiddleware().concat(apiSlice.middleware),
     devTools:true
 });
 
