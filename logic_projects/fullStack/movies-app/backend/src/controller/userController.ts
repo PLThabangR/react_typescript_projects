@@ -68,7 +68,7 @@ if(password.length <6){
 export  const loginUser = async(req: Request, res: Response) => {
    const { email, password } = req.body;
 
-  console.log(email,password)
+  
 
    try {
 
@@ -134,4 +134,64 @@ export const getAllUsers = async(req: Request, res: Response) => {
         //throw error 
         res.status(401).json({message: (error as Error).message});
     }
-}   
+} 
+
+interface CustomRequest extends Request {
+  user?: any; // or specify the type of the 'user' property
+}
+
+export const getCurrentUSer = async(req: CustomRequest, res: Response) => {
+   
+    try {
+        //get user without password from database
+        const user = await User.findById(req.user?._id).select('-password');
+            //if user not found
+        if(!user){
+            res.status(401)
+            throw new Error("User not found");
+        }
+        //send response with user details
+        res.status(200).json(user);
+    } catch (error) {
+        //throw error 
+        res.status(401).json({message: (error as Error).message});
+    }
+}
+
+export const updateUserDetails = async(req: CustomRequest, res: Response) => {
+   
+    try {
+        //get user without password from database
+        const user = await User.findById(req.user?._id);
+        //if user not found
+        if(!user){
+            res.status(404)
+            throw new Error("User not found");
+        }
+
+        //update user details with new details || stick to old details 
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        //if password is provided then update
+        if(req.body.password){
+            //hash password
+            const salt = await bcryptjs.genSalt(10);
+            //generate hash
+            const hashedPassword = await bcryptjs.hash(req.body.password, salt);
+            //update password
+            user.password = hashedPassword;
+        }
+        //save user to the database
+       const updatedUser = await user.save();
+        //send response with user details
+        res.status(200).json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin
+        });
+    } catch (error) {
+        //throw error 
+        res.status(401).json({message: (error as Error).message});
+    }
+}

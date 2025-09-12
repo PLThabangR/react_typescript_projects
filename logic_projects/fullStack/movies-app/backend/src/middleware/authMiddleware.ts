@@ -47,7 +47,7 @@ try {
     }
     
 } catch (error) {
- res.status(500).json({error: (error as Error).message});    
+ res.status(500).json({message: (error as Error).message});    
 }
 }
 
@@ -56,13 +56,17 @@ try {
 //check if user is admin or not
 const authorizationAdmin =(req: AuthRerquest, res: Response, next: NextFunction) => {
 
-    //check if user exists and is admin 
+   try {
+     //check if user exists and is admin 
     if(req.user && req.user.isAdmin){
         next();
     }else{
         res.status(401)
         throw new Error("Unauthorized: User not authorized for admin role")
     }
+   } catch (error) {
+     res.status(500).json({message: (error as Error).message});  
+   }
 }
 
 

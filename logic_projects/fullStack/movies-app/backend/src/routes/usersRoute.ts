@@ -1,6 +1,6 @@
 
 import express from "express";
-import { createUser, loginUser, logoutUser ,getAllUsers} from "../controller/userController";
+import { createUser, loginUser, logoutUser ,getAllUsers,updateUserDetails,getCurrentUSer} from "../controller/userController";
 //import middlewares
 import { authenticateUser, authorizationAdmin } from "../middleware/authMiddleware";
 
@@ -15,6 +15,9 @@ const router = express.Router();
 // Define routes
 router.post("/", createUser)
 router.get("/",authenticateUser, authorizationAdmin,getAllUsers);
+router.get("/profile", authenticateUser,getCurrentUSer)
+router.put("/profile",authenticateUser,updateUserDetails);
+
 router.post("/login",loginUser);
 router.post("/logout", logoutUser);
 
