@@ -9,9 +9,12 @@ import { apiSlice } from './api/apiSlice';
 
 
 const store = configureStore({
+    
     reducer: {
-        // Add the generated reducer as a specific top-level slice
-       auth: authRducer
+        // this is the syntax for react redux toolkit for defining our reducers
+       auth: authRducer,
+       // this is the syntax for rtk query for defining our reducers
+        [apiSlice.reducerPath]: apiSlice.reducer
     },
 
     // Adding the api middleware enables caching, invalidation, polling,

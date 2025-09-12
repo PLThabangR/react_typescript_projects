@@ -13,7 +13,9 @@ import Home from './Pages/Home.tsx'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
+        
         <Route path='/' element={<App/>}>
+            {/* home component */}
         <Route index={true} path="/" element={<Home/>}/>
 
 
