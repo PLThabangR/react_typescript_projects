@@ -5,23 +5,24 @@ import { asyncHandler } from './asyncHandler';
 
 import dotenv from 'dotenv';
 
+//Dotenv
 dotenv.config();
 
 //extend the request so typescript will know user is any
 interface AuthRerquest extends Request{
-    user: any
+    user?: any
 }
 
 //check if user is authenticated
-const authenticate = asyncHandler(async (req: AuthRerquest, res: Response, next: NextFunction) => {
+const authenticateUser = async (req: AuthRerquest, res: Response, next: NextFunction) => {
    let token;
   //Get jwt from cookies and save it in new variable token
      token = req.cookies.jwt;
 
+try {
+     if(token){
 
-    if(token){
-
-        try {
+        
          //if token available then verify
        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
        const user = await User.findById(decoded.userId).select('-password');
@@ -34,28 +35,26 @@ const authenticate = asyncHandler(async (req: AuthRerquest, res: Response, next:
        
        //save user in the request
        req.user = user;
-
+       
        //if user found move to the next function
        next();
    
-        } catch (error) {
-            //if token is not valid
-             res.status(401)
-            throw new Error("Unauthorized: token failed")
-        }
+
+        
     }else{
-        //if token is not available
         res.status(401)
         throw new Error("Unauthorized: No token provided")
     }
-
-
-})
+    
+} catch (error) {
+ res.status(500).json({error: (error as Error).message});    
+}
+}
 
 
 
 //check if user is admin or not
-const authorization =(req: AuthRerquest, res: Response, next: NextFunction) => {
+const authorizationAdmin =(req: AuthRerquest, res: Response, next: NextFunction) => {
 
     //check if user exists and is admin 
     if(req.user && req.user.isAdmin){
@@ -68,5 +67,5 @@ const authorization =(req: AuthRerquest, res: Response, next: NextFunction) => {
 
 
 
-export {authenticate,authorization}
+export {authenticateUser,authorizationAdmin}
 

@@ -61,7 +61,7 @@ if(password.length <6){
     }
     
 } catch (error) {
-    res.status(401).json({error: (error as Error).message});
+    res.status(401).json({message: (error as Error).message});
 }
 }
 
@@ -99,7 +99,7 @@ export  const loginUser = async(req: Request, res: Response) => {
         })
     
    } catch (error) {
-    res.status(401).json({error: (error as Error).message});
+    res.status(401).json({message: (error as Error).message});
    }
 
 
@@ -119,6 +119,19 @@ export const logoutUser = async(req: Request, res: Response) => {
     res.status(200).json({message: 'Logout successful'})
         
     } catch (error) {
-        res.status(401).json({error: (error as Error).message});
+        res.status(401).json({message: (error as Error).message});
     }
 }
+
+export const getAllUsers = async(req: Request, res: Response) => {
+    //get all users
+    try {
+        //get all users without password from database
+        const users = await User.find({}).select('-password');
+        //send response with all users
+        res.status(200).json(users);
+    } catch (error) {
+        //throw error 
+        res.status(401).json({message: (error as Error).message});
+    }
+}   
