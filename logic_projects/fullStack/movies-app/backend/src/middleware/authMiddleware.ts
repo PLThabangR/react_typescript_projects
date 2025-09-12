@@ -12,7 +12,7 @@ interface AuthRerquest extends Request{
     user: any
 }
 
-
+//check if user is authenticated
 const authenticate = asyncHandler(async (req: AuthRerquest, res: Response, next: NextFunction) => {
    let token;
   //Get jwt from cookies and save it in new variable token
