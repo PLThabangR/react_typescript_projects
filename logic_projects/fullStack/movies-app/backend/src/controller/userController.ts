@@ -2,6 +2,7 @@ import  { Response, Request } from "express";
 import User from "../model/User";
 import bcryptjs from 'bcryptjs';
 import generateToken from "../utils/genetrateToken";
+import { User as UserType } from "../types/User";
 
 
 
@@ -64,6 +65,42 @@ if(password.length <6){
 }
 }
 
-export  const loginUser = (req: Request, res: Response) => {
-    res.send('user logged in');
+export  const loginUser = async(req: Request, res: Response) => {
+   const { email, password } = req.body;
+
+  console.log(email,password)
+
+   try {
+
+    const user = await User.findOne({email});
+
+    if(!user){
+        res.status(400);
+        throw new Error('Invalid user credentials');
+       
+    }
+
+ const isPasswordMatch = await bcryptjs.compare(password, user?.password);
+
+    if(!isPasswordMatch){
+        res.status(400);
+        throw new Error('Invalid credentials');
+       
+    }
+
+     //send token
+        generateToken(res,user._id)
+        res.status(201).json({
+            _id: user?._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+           
+        })
+    
+   } catch (error) {
+    res.status(401).json({error: (error as Error).message});
+   }
+
+
 }
