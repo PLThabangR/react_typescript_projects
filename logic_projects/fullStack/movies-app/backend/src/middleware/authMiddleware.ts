@@ -34,16 +34,17 @@ const authenticate = asyncHandler(async (req: AuthRerquest, res: Response, next:
        
        //save user in the request
        req.user = user;
+
        //if user found move to the next function
        next();
-    
-            
+   
         } catch (error) {
-            
+            //if token is not valid
              res.status(401)
             throw new Error("Unauthorized: token failed")
         }
     }else{
+        //if token is not available
         res.status(401)
         throw new Error("Unauthorized: No token provided")
     }

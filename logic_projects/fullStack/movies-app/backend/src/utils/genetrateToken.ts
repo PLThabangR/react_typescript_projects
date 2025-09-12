@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 
 //function to generate token
-const generateToken = (res: Response,userId: string ) => {
+const generateToken = (res: Response,userId: object ) => {
    //create JWT token
     const token = jwt.sign({ userId }, process.env.JWT_SECRET!, {//create token
         expiresIn: '30d',//token expires in 30 days
