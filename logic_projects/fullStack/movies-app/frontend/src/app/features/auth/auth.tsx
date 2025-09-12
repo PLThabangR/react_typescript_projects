@@ -2,8 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { UserType } from '../../../Pages/User/UserType';
 
+    interface AuthState {
+        userInfo: UserType | null
+    }
 //declare initial state variable
-const initialState: { userInfo: UserType | null } = {
+const initialState:AuthState = {
    
     // get user infor from local storage if exist
     userInfo: localStorage.getItem('userInfo')? JSON.parse(localStorage.getItem('userInfo') as string) : null
@@ -11,7 +14,7 @@ const initialState: { userInfo: UserType | null } = {
 
 const authSlice = createSlice({
     name: 'auth',
-    initialState: initialState,
+    initialState,
 
     reducers: {
 
