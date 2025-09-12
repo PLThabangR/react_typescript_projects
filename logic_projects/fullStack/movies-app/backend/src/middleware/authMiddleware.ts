@@ -7,8 +7,13 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+//extend the request so typescript will know user is any
+interface AuthRerquest extends Request{
+    user: any
+}
 
-const authenticate = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+
+const authenticate = asyncHandler(async (req: AuthRerquest, res: Response, next: NextFunction) => {
    let token;
   //Get jwt from cookies and save it in new variable token
      token = req.cookies.jwt;
@@ -27,6 +32,8 @@ const authenticate = asyncHandler(async (req: Request, res: Response, next: Next
         throw new Error("Unauthorized: User not found")
        }
        
+       //save user in the request
+       req.user = user;
        //if user found move to the next function
        next();
     
@@ -46,5 +53,19 @@ const authenticate = asyncHandler(async (req: Request, res: Response, next: Next
 
 
 
+//check if user is admin or not
+const authorization =(req: AuthRerquest, res: Response, next: NextFunction) => {
 
+    //check if user exists and is admin 
+    if(req.user && req.user.isAdmin){
+        next();
+    }else{
+        res.status(401)
+        throw new Error("Unauthorized: User not authorized for admin role")
+    }
+}
+
+
+
+export {authenticate,authorization}
 
