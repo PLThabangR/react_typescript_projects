@@ -1,23 +1,27 @@
 import { apiSlice } from "./apiSlice";
-import {USERS_URL} from '../constants';
+import {USER_URL} from '../constants';
 
 
-
+///We use injectEndpoints to create endpoints
 export const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (credentials) => ({
-                url: `${USERS_URL}/auth`,
+                url: `${USER_URL}/auth`,
                 method: 'POST',
                 body: {...credentials}
             })
         }),
         register: builder.mutation({
             query: (credentials) => ({
-                url: `${USERS_URL}`,
+                url: `${USER_URL}`,
                 method: 'POST',
                 body: {...credentials}
             })
         })
     })
 })
+
+
+
+export const {useLoginMutation, useRegisterMutation} = usersApiSlice;
