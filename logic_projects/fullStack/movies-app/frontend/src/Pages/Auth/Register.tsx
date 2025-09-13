@@ -46,9 +46,11 @@ const handleRegister = async(e: React.FormEvent<HTMLFormElement>) => {
 }
 
 try {
-
+    //register function from rtk
     const res = await register({name,email,password}).unwrap();
+    //We call the setCredentials function using dispatch
     dispatch(setCredentials({...res}));
+    //redirect user to login
     navigate(redirect);
     
 } catch (error:any) {
