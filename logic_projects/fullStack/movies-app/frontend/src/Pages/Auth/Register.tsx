@@ -43,10 +43,19 @@ const handleRegister = async(e: React.FormEvent<HTMLFormElement>) => {
     if(password !== confirmPassword){
         toast.error('Password do not match');
         return;
+}
 
+try {
 
-        
-    }
+    const res = await register({name,email,password}).unwrap();
+    dispatch(setCredentials({...res}));
+    navigate(redirect);
+    
+} catch (error:any) {
+    toast.error(error?.data?.message || error.message );
+}
+
+}
 
 
 useEffect(() => {
