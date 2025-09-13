@@ -52,7 +52,7 @@ try {
     dispatch(setCredentials({...res}));
     //redirect user to login
     navigate(redirect);
-    
+    toast.success('User registered successfully');
 } catch (error:any) {
     toast.error(error?.data?.message || error.message );
 }
