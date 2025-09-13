@@ -1,8 +1,108 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
+//import from redux toolkit
+import { useDispatch, useSelector } from 'react-redux';
+import { setCredentials } from '../../app/features/auth/auth';
+
+//import from react router
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+//import component
+import Loader from '../../components/Loader';
+
+//toast 
+import {  toast } from 'react-toastify';
+
+//import from RTK
+import { useRegisterMutation } from '../../app/api/userEndpoints'
+
 
 const Register = () => {
+    //intance of hooks
+const navigate = useNavigate();
+const dispatch = useDispatch();
+const [register, {isLoading}] = useRegisterMutation();
+const {userInfo}= useSelector((state:any) => state.auth);
+
+//use location 
+const {search}= useLocation();
+
+//search params
+const sp = new URLSearchParams(search);
+//redirect user to home page
+const redirect = sp.get('redirect') || '/';
+
+// user states
+const [name,setName]= useState('');
+const [email,setEmail]= useState('');
+const [password,setPassword]= useState('');
+const [confirmPassword,setConfirmPassword]= useState('');
+
+
+const handleRegister = async(e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if(password !== confirmPassword){
+        toast.error('Password do not match');
+        return;
+
+
+        
+    }
+
+
+useEffect(() => {
+    //we are searching for user info
+    if(userInfo){
+        navigate(redirect);
+    }
+
+    
+},[navigate,userInfo,redirect]);
   return (
-    <div>Register</div>
+    <>
+ <div className="pl-[10rem] flex flex-wrap">
+        <div className='mr-[4rem] mt-[1rem]'>
+        <h1 className='text-[2rem] font-bold mb-4'>Register</h1>
+
+        <form onSubmit={handleRegister} className='container w-[30rem]'>
+
+            <div className="my-[2rem]">
+                <label htmlFor="name" className="block text-sm font-medium text-white">Name</label>
+                <input type="text" className="mt-1 block p-2 w-full rounded bg-white " id="name" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
+
+              <div className="my-[2rem]">
+                <label htmlFor="email" className="block text-sm font-medium text-white">Email</label>
+                <input type="email" className="mt-1 block p-2 w-full rounded bg-white " id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+
+              <div className="my-[2rem]">
+                <label htmlFor="password" className="block text-sm font-medium text-white">Password</label>
+                <input type="text" className="mt-1 block p-2 w-full rounded bg-white " id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+
+            <div className="my-[2rem]">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-white">Confirm Password</label>
+                <input type="text" className="mt-1 block p-2 w-full rounded bg-white " id="confirmPassword" placeholder="confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+            </div>
+
+            <button disabled={isLoading} type="submit" className='rounded text-white py-2 px-4 bg-teal-500 cursor-pointer my-[1rem] '>
+                {isLoading ? "Registering..." : 'Register'}
+            </button>
+
+            <div className='text-white'>
+                Already have an account? <Link to='/login' className='text-teal-500 hover:underline'>Login</Link>
+            </div>
+            {isLoading && <Loader/>}
+
+        </form>
+        </div>
+
+        <img src={"https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNpbmVtYXxlbnwwfHwwfHx8MA%3D%3D"}
+        className='w-[50%] h-[100%]  mx-[2px] rounded-lg  cover-center'
+        />
+ </div>
+    
+    </>
   )
 }
 
