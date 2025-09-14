@@ -62,11 +62,11 @@ const Navigation = () => {
              </div>
 
 
-            {/* section 2 */}
+            {/* section 2  if Userr is logged in display this section */}
             <div className='relative'>
-                <button onClick={handleDropdown} className='text-gray-800 focus:outline-none'>{userInfo ? (<span className='text-white'>{userInfo.username}</span>):(<></>)}
-                
-                    { userInfo && (<MdOutlineArrowDropDownCircle viewBox='0 0 24 24' stroke="white" className={`h-4 w-4 ml-1 ${dropdownOpen?"transform rotate-180" :""}`} size={26}/>)    }
+                <button onClick={handleDropdown} className='text-gray-800 focus:outline-none'>{userInfo ? (<span className='text-white'>{userInfo.name}</span>):(<></>)}
+                        {/* this sectin `` make the icon to rotate */}
+                    { userInfo && (<MdOutlineArrowDropDownCircle  className={`color-white  ml-1 ${dropdownOpen?"transform rotate-180" :""}`} size={26}/>)    }
                 
                 </button>
 
@@ -92,7 +92,7 @@ const Navigation = () => {
                         </ul>
 
                     )}
-
+        {/* If user is not logged in display this part */}
                     {
                         !userInfo && (
                             <ul  className='flex'>
