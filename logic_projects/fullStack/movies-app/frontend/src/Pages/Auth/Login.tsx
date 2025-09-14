@@ -100,7 +100,7 @@ useEffect(() => {
         </form>
         </div>
 
-        <img src={"https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNpbmVtYXxlbnwwfHwwfHx8MA%3D%3D"}
+        <img src={"https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2luZW1hfGVufDB8fDB8fHww"}
         className='w-[50%] h-[100%]  mx-[2px] rounded-lg  cover-center'
         />
  </div>

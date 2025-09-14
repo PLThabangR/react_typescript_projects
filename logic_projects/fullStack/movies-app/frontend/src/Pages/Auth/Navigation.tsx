@@ -11,11 +11,13 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 //import from RTK
-import { useLoginMutation } from '../../app/api/userEndpoints'
+import { useLogoutUserMutation } from '../../app/api/userEndpoints'
 
 //import from redux 
 import { logout } from '../../app/features/auth/auth';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
 
 
 
@@ -28,7 +30,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   // communicate to the backend using RTK
-  const [logoutApiCall] = useLoginMutation();
+ const [logoutUser] = useLogoutUserMutation();
 
   //create dropdawon
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -39,10 +41,19 @@ const Navigation = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const handleLogout=()=>{
-   // logoutApiCall();
+  const handleLogout=async()=>{
+   try {
+        //logout user from the backend
+   await logoutUser({}).unwrap();
+   //logout user from redux
     dispatch(logout());
+
+    toast.success("Logout successful");
+    //redirect user to login page
     navigate('/login');
+   } catch (error:any) {
+    console.log(error.data.message);
+   }
   }
 
   return (
@@ -80,10 +91,10 @@ const Navigation = () => {
                                     </Link>
                            ) }
 
-                           <li><Link to='/profile' className='block px-4 py-2 hover:bg-gray-100 '>Profile</Link></li>
+                           <li><Link to='/profile' className='block px-4 py-2  text-white hover:bg-gray-100 hover:text-gray-500 '>Profile</Link></li>
 
                             <li >
-                                <button onClick={handleLogout} className='block px-4 py-2 hover:bg-gray-100 '>Logout</button>
+                                <button onClick={handleLogout} className='block px-4 py-2 text-white  hover:bg-gray-100  hover:text-gray-500 '>Logout</button>
                             </li>
 
 
