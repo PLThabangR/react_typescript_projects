@@ -1,15 +1,15 @@
 
 import './App.css'
+import Home from './Home'
+import Nav from './Nav'
 
 function App() {
 
 
   return (
    <>
-  <div className="bg-gradient-to-r from-black via-purple-500 to-black h-full ">
-
-wewihewihjnwe
-  </div>
+    <Nav/>
+    <Home/>
    </>
   )
 }
