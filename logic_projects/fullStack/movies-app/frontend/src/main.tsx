@@ -7,6 +7,8 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements} f
 import Home from './Pages/Home.tsx'
 import Register from './Pages/Auth/Register.tsx'
 import Login from './Pages/Auth/Login.tsx'
+import PrivateRoute from './Pages/Auth/PrivateRoute.tsx'
+import Profile from './Pages/User/Profile.tsx'
 
 //Auth 
 
@@ -17,11 +19,18 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         
         <Route path='/' element={<App/>}>
-            {/* home component */}
+            {/* Public routes */}
         <Route index={true} path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+            {/* end of public routes  */}
 
+        {/* private routes */}
+        <Route path="" element={<PrivateRoute/>}>
+            <Route path="/profile" element={<Profile/>}/>
+
+        </Route>
+        {/* end of private routes */}
         </Route>
         
     )
