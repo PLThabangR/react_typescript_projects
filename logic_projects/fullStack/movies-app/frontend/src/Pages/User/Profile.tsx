@@ -20,7 +20,9 @@ const Profile = () => {
     //intance of hooks
 const navigate = useNavigate();
 const dispatch = useDispatch();
-const [register, {isLoading}] = useProfileMutation();
+const [profile, {isLoading}] = useProfileMutation();
+
+//Grab the user information from the store
 const {userInfo}= useSelector((state:any) => state.auth);
 
 //use location 
@@ -38,7 +40,7 @@ const [password,setPassword]= useState('');
 const [confirmPassword,setConfirmPassword]= useState('');
 
 
-const handleRegister = async(e: React.FormEvent<HTMLFormElement>) => {
+const handleUpdateUser = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if(password !== confirmPassword){
         toast.error('Password do not match');
@@ -46,13 +48,15 @@ const handleRegister = async(e: React.FormEvent<HTMLFormElement>) => {
 }
 
 try {
-    //register function from rtk
-    const res = await register({name,email,password}).unwrap();
+    //profile update function from rtk
+    const res = await profile({
+        _id:userInfo?._id,
+        name,email,password}).unwrap();
     //We call the setCredentials function using dispatch
     dispatch(setCredentials({...res}));
-    //redirect user to login
-    navigate(redirect);
-    toast.success('User registered successfully');
+    //redirect user to home
+    // navigate(redirect);
+    toast.success('Profile updated successfully');
 } catch (error:any) {
     toast.error(error?.data?.message || error.message );
 }
@@ -61,20 +65,19 @@ try {
 
 
 useEffect(() => {
-    //we are searching for user info
-    if(userInfo){
-        navigate(redirect);
-    }
+    //set user states with current user information
+  setName(userInfo?.name);
+  setEmail(userInfo?.email);
 
     
-},[navigate,userInfo,redirect]);
+}, [userInfo?.name,userInfo?.email]);
   return (
     <>
  <div className="pl-[10rem] flex flex-wrap">
         <div className='mr-[4rem] mt-[1rem]'>
         <h1 className='text-[2rem] font-bold mb-4'>User Profile</h1>
 
-        <form onSubmit={handleRegister} className='container w-[30rem]'>
+        <form onSubmit={handleUpdateUser} className='container w-[30rem]'>
 
             <div className="my-[2rem]">
                 <label htmlFor="name" className="block text-sm font-medium text-white">Name</label>
@@ -97,20 +100,15 @@ useEffect(() => {
             </div>
 
             <button disabled={isLoading} type="submit" className='rounded text-white py-2 px-4 bg-teal-500 cursor-pointer my-[1rem] '>
-                {isLoading ? "Registering..." : 'Register'}
+                {isLoading ? "Updating..." : 'Update info'}
             </button>
 
-            <div className='text-white'>
-                Already have an account? <Link to='/login' className='text-teal-500 hover:underline'>Login</Link>
-            </div>
+          
             {isLoading && <Loader/>}
 
         </form>
         </div>
 
-        <img src={"https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNpbmVtYXxlbnwwfHwwfHx8MA%3D%3D"}
-        className='w-[50%] h-[100%]  mx-[2px] rounded-lg  cover-center'
-        />
  </div>
     
     </>

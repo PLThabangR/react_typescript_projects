@@ -1,6 +1,6 @@
 import { apiSlice } from "./apiSlice";
 import {USER_URL} from '../constants';
-import { profile } from "console";
+
 
 
 ///We use injectEndpoints to create endpoints
@@ -29,7 +29,8 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         profile: builder.mutation({
             query: (data) => ({
                 url: `${USER_URL}/profile`,
-                method: 'PUT'
+                method: 'PUT',
+                body: {...data}
             })
         })
     })
