@@ -47,12 +47,12 @@ const Navigation = () => {
 
   return (
     <>
-    <div className='fixed bottom-10 bg-[@0f0f0f] left-[30rem] transform translate-x-1/2  transform translate-y-1/2  z-50  border-2 border w-[30%] px-[4rem] mb-[2rem] rounded'>
+    <div className='fixed bottom-10 bg-[@0f0f0f] left-[30rem]  translate-x-1/2  transform translate-y-1/2  z-50  border-2  w-[30%] px-[4rem] mb-[2rem] rounded'>
         <section className='flex justify-between items-center'>
             {/* section 1 */}
 
             <div className='flex justify-center items-center mb-[2rem]'>
-                <Link to='/' className='flex items-center transition-transform'><AiOutlineHome className="mr-2 mt-[3rem]" size={26}/>
+                <Link to='/' className='flex items-center transition-transform  hover:translate-x-2 ml-[1rem] '><AiOutlineHome className="mr-2 mt-[3rem]" size={26}/>
                     <span className='hidden nav-item  mt-[3rem]'>Home</span>
                 </Link>
 
