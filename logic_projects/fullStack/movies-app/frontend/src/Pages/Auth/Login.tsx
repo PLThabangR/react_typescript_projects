@@ -94,6 +94,7 @@ useEffect(() => {
             <div className='text-white'>
                 Don't have an account? <Link to='/register' className='text-teal-500 hover:underline'>Register</Link>
             </div>
+            {/* Render the loader when app is loading */}
             {isLoading && <Loader/>}
 
         </form>
