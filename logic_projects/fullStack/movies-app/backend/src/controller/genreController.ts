@@ -101,3 +101,27 @@ export const updateGenre = async(req: Request, res: Response) => {
             res.status(500).json({message: (error as Error).message})
         }
         }
+
+
+
+        //genre byt id
+        export const getGenreById = async(req: Request, res: Response) => {
+            const { id } = req.params;
+            try {
+                //Defenssive programmig
+                if(!id){
+                    throw new Error("No genre id");
+                }
+                //get genre from database
+                const existingGenre = await Genre.findById(id);
+                //if existingGenre not found
+                if(!existingGenre){
+                   throw new Error("Genre not found");
+                }
+                //send response with existingGenre details
+                res.status(200).json(existingGenre);
+            } catch (error) {
+                //throw error 
+                res.status(500).json({message: (error as Error).message})
+            }
+        }
