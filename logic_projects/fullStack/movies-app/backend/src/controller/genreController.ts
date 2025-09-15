@@ -32,10 +32,10 @@ export const createGnere = async(req: Request, res: Response) => {
     }
 };
 
-const getAllGenres = async(req: Request, res: Response) => {
+export const getAllGenres = async(req: Request, res: Response) => {
     try {
         //get all genres from database
-        const genres = await Genre.find({}).select('-_id -__v');
+        const genres = await Genre.find({});
         //send response with all genres
         res.status(200).json(genres);
     } catch (error) {

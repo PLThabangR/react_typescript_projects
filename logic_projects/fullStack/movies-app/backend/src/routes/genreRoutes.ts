@@ -1,7 +1,7 @@
 import express from "express";
 //import middlewares
 import { authenticateUser, authorizationAdmin } from "../middleware/authMiddleware";
-import { createGnere, deleteGenre, updateGenre } from "../controller/genreController";
+import { createGnere, deleteGenre, getAllGenres, updateGenre } from "../controller/genreController";
 
 const router = express.Router();
 
@@ -9,6 +9,7 @@ const router = express.Router();
 router.post("/",authenticateUser, authorizationAdmin,createGnere)
 router.put("/:id",authenticateUser, authorizationAdmin,updateGenre)
 router.delete("/:id",authenticateUser, authorizationAdmin,deleteGenre)
+router.get("/",authenticateUser, authorizationAdmin,getAllGenres)
 
 
 
