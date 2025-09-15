@@ -9,7 +9,7 @@ const Project = () => {
   <h1 className="text-2xl font-bold text-center">Projects</h1> 
 <div className="flex flex-col gap-5 m-2  p-2 justify-center items-center md:flex-row xl:flex-row md:flex-wrap xl:flex-wrap ">
 
- <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300  hover:translate-y-2">
+ <div className="max-w-md bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300  hover:translate-y-2">
       {/* Image */}
       <img
         src={jobTracker}
@@ -37,7 +37,7 @@ const Project = () => {
     </div>
 
     {/* more cards */}
- <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
+ <div className="max-w-md bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
         src={appleKeyword}
@@ -154,7 +154,7 @@ const Project = () => {
 
     {/* more */}
 
-    <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
+    <div className="max-w-md bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
         src={appleKeyword}
@@ -183,7 +183,7 @@ const Project = () => {
     </div>
 
     {/* more */}
-    <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
+    <div className="max-w-md bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
         src={appleKeyword}
