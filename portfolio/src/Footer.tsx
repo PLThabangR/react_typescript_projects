@@ -12,7 +12,7 @@ const Footer = () => {
         {/* Social Links */}
         <div className="flex space-x-6 mt-4 md:mt-0">
           <a
-            href=""
+            href="https://www.linkedin.com/in/ttrakgoropo/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
@@ -20,7 +20,7 @@ const Footer = () => {
             <FaGithub size={20} />
           </a>
           <a
-            href="https://linkedin.com/in/your-profile"
+            href="https://github.com/PLThabangR"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"

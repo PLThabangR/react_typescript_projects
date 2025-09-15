@@ -1,33 +1,65 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { FaBars, FaTimes } from "react-icons/fa";
+import Experience from './Experience';
+import { Link } from 'react-router-dom';
+import Services from './Services';
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
- <div className="flex justify-between items-center h-full bg-amber-300   m-5 p-4">
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Home 
-      </h1>
-    </div>
+    <>
+    <nav className="bg-gray-900 text-white px-6 py-4">
+      <div className="max-w-6xl mx-auto flex justify-between items-center">
+        {/* Logo / Brand */}
+        <h1 className="text-xl font-bold">TR IT</h1>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex space-x-6">
+           <Link to="/home">
+           <li className="block hover:text-indigo-400">Home</li>
+          </Link>
+           <Link to="/experience">
+           <li className="block hover:text-indigo-400">Experience</li>
+          </Link>
+          <Link to="/projects">
+           <li className="block hover:text-indigo-400"> Projects</li>
+          </Link>
+           <Link to="/services">
+           <li className="block hover:text-indigo-400"> Services</li>
+          </Link>
+        </ul>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <ul className="md:hidden mt-4 space-y-4 bg-gray-800 p-4 rounded-lg">
+          <Link to="/home">
+           <li className="block hover:text-indigo-400">Home</li>
+          </Link>
+           <Link to="/experience">
+           <li className="block hover:text-indigo-400">Experience</li>
+          </Link>
+          <Link to="/projects">
+           <li className="block hover:text-indigo-400"> Projects</li>
+          </Link>
+           <Link to="/services">
+           <li className="block hover:text-indigo-400"> Services</li>
+          </Link>
 
 
-     <div className='flex space-x-4'>
-      <h1 className="text-3xl font-bold underline">
-        Projects
-      </h1>
+         
+        </ul>
+      )}
+    </nav>
 
-      <h1 className="text-3xl font-bold underline">
-        Experinces
-      </h1>
-      <h1 className="text-3xl font-bold underline">
-        Sevices
-      </h1>
-     
-    </div>
-  </div>
-
-
-    </div>
+    </>
   )
 }
 
