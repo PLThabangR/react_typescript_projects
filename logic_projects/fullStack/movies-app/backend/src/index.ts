@@ -30,5 +30,5 @@ app.use('/api/v1/genres',genreRoutes)
 app.listen(process.env.PORT,()=>
 console.log(`Server running on port ${process.env.PORT}`))
 //Connect to DB
-//connectDB()
+connectDB()
 
