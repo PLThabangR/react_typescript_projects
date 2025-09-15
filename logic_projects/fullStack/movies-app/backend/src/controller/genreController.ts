@@ -6,8 +6,8 @@ export const createGnere = async(req: Request, res: Response) => {
     try {
         //get genre from request body
     const { name } = req.body;
-   
-
+  
+////Defenssive programmig
     if(!name){
      throw new Error("Please add genre name");
     }
@@ -17,11 +17,11 @@ export const createGnere = async(req: Request, res: Response) => {
     if(genreExists){
         throw new Error("Genre already exists");
     }
+   
 
-    //upper case first letter before saving
-   const  nameUpper = name.charAt(0).toUpperCase() + name.slice(1);
+
     //create genre in database
-    const genre = new Genre({nameUpper});
+    const genre = new Genre({name});
 
     //save genre to the database
     await genre.save();
@@ -45,6 +45,7 @@ const getAllGenres = async(req: Request, res: Response) => {
 }
 
 export const updateGenre = async(req: Request, res: Response) => {
+
     const { id } = req.params;
     const { name } = req.body;
 
@@ -62,6 +63,7 @@ export const updateGenre = async(req: Request, res: Response) => {
         if(!existingGenre){
            throw new Error("Genre not found");
         }
+
         //update existingGenre name
         existingGenre.name = name;
         //save existingGenre to the database
@@ -70,9 +72,32 @@ export const updateGenre = async(req: Request, res: Response) => {
         res.status(200).json(existingGenre);
     } catch (error) {
         //throw error 
-        res.status(401).json({message: (error as Error).message})
+        res.status(500).json({message: (error as Error).message})
     }
-    
+    }
 
 
-}
+    export const deleteGenre = async(req: Request, res: Response) => {
+        const { id } = req.params;
+        try {
+            //Defenssive programmig
+            if(!id){
+                throw new Error("No genre id");
+            }
+            //get genre from database
+            const existingGenre = await Genre.findByIdAndDelete(id);
+            //if existingGenre not found
+            if(!existingGenre){
+               throw new Error("Genre not found");
+            }
+            /*//delete genre from the database
+              // const existingGenre = await Genre.findById(id);
+            // await Genre.deleteOne({ _id: id });
+            */
+            //send response with existingGenre details
+            res.status(200).json({message:"Genre deleted",existingGenre});
+        } catch (error) {
+            //throw error 
+            res.status(500).json({message: (error as Error).message})
+        }
+        }
