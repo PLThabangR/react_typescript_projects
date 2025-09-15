@@ -1,4 +1,4 @@
-
+import appleKeyword from "../public/applekeyword.png"
 
 const Home = () => {
     //#FCFCFC -header  font color
@@ -22,49 +22,66 @@ const Home = () => {
 {/* projects */}
 <section>
   <h1 className="text-2xl font-bold text-center">Projects</h1> 
-<div className="flex flex-col gap-5 m-2 p-2 justify-center items-center md:flex-row xl:flex-row md:flex-wrap xl:flex-wrap ">
-<div  className="w-full p-5 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 md:w-100 xl:w-100 sm:w-100"> 
-   <h3 className="text-2xl font-bold text-center">App 1</h3> 
-  <div className="w-full flex flex-col  justify-center mt-2 md:flex-row xl:flex-row">
-     
-    <p className="text-1xl">with hands-on experience in developing web applications using React and Node.js</p>
-    <img src="https://images.unsplash.com/photo-1495462911434-be47104d70fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" className="w-1/4 bg-cover ml-5 " alt="company logo" />
+<div className="flex flex-col gap-5 m-2  p-2 justify-center items-center md:flex-row xl:flex-row md:flex-wrap xl:flex-wrap ">
+
+ <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+      {/* Image */}
+      <img
+        src={appleKeyword}
+        alt="Card"
+        className="w-full h-48 object-cover"
+      />
+
+      {/* Content */}
+      <div className="p-4">
+        <h2 className="text-xl font-semibold text-gray-800">Card Title</h2>
+        <p className="text-gray-600 mt-2">
+          This is a short description of the card content. You can use it to
+          explain what the card is about.
+        </p>
+
+        {/* Link */}
+        <a
+          href="https://example.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
+        >
+          Visit Website →
+        </a>
+      </div>
+    </div>
+
+    {/* more cards */}
+ <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:scale-100">
+      {/* Image */}
+      <img
+        src={appleKeyword}
+        alt="Card"
+        className="w-full h-48 object-cover"
+      />
+
+      {/* Content */}
+      <div className="p-4">
+        <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
+        <p className="text-gray-600 mt-2">
+         A simple Data filtering application built with React, TypeScript and state management with react toolkit.
+
+        </p>
+
+        {/* Link */}
+        <a
+          href="https://deluxe-licorice-5369b6.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
+        >
+          Visit Website →
+        </a>
+      </div>
+    </div>
 
 
-  </div>
-</div>
-
-<div  className="w-full p-5 bg-white justify-center rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 md:w-100 xl:w-100 sm:w-100"> 
-   <h3 className="text-2xl font-bold text-center">App 1</h3> 
-  <div className="w-full flex flex-col  justify-center mt-2 md:flex-row xl:flex-row">
-     
-    <p className="text-1xl">with hands-on experience in developing web applications using React and Node.js</p>
-    <img src="https://images.unsplash.com/photo-1495462911434-be47104d70fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" className="w-1/4 bg-cover ml-5 " alt="company logo" />
-
-
-  </div>
-</div>
-
-<div  className="w-full p-5 bg-white justify-center rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 md:w-100 xl:w-100 sm:w-100"> 
-   <h3 className="text-2xl font-bold text-center">App 1</h3> 
-  <div className="w-full flex flex-col  justify-center mt-2 md:flex-row xl:flex-row">
-     
-    <p className="text-1xl">with hands-on experience in developing web applications using React and Node.js</p>
-    <img src="https://images.unsplash.com/photo-1495462911434-be47104d70fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" className="w-1/4 bg-cover ml-5 " alt="company logo" />
-
-
-  </div>
-</div>
-<div  className="w-full p-5 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 md:w-100 xl:w-100 sm:w-100"> 
-   <h3 className="text-2xl font-bold text-center">App 1</h3> 
-  <div className="w-full flex flex-col  justify-center mt-2 md:flex-row xl:flex-row">
-     
-    <p className="text-1xl">with hands-on experience in developing web applications using React and Node.js</p>
-    <img src="https://images.unsplash.com/photo-1495462911434-be47104d70fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" className="w-1/4 bg-cover ml-5 " alt="company logo" />
-
-
-  </div>
-</div>
 
 
 
