@@ -13,15 +13,16 @@ const Nav = () => {
 
      <div className='flex space-x-4'>
       <h1 className="text-3xl font-bold underline">
-        Project
+        Projects
       </h1>
 
       <h1 className="text-3xl font-bold underline">
-        Project
+        Experinces
       </h1>
       <h1 className="text-3xl font-bold underline">
-        Project
+        Sevices
       </h1>
+     
     </div>
   </div>
 
