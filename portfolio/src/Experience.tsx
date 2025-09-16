@@ -27,6 +27,16 @@ const Experience = () => {
     </div> 
 
     {/* plumblink */}
+      <div className="max-w-md bg-white rounded-2xl  items-center shadow-lg p-6 border-l-4 border-gray-900">
+      <h3 className="text-xl font-semibold text-gray-800">Founder & Software Developer</h3>
+      <p className="text-sm text-gray-500">TR IT Software Development • September 2025 – present</p>
+      <ul className="mt-3 text-gray-600 list-disc list-inside space-y-1">
+        
+        <li> Oversees company strategy, client acquisition, and partnerships</li>
+        <li> Involved in software development and project management</li>
+       
+      </ul>
+    </div> 
 
     {/* da */}
      <div className="max-w-md bg-white rounded-2xl  items-center shadow-lg p-6 border-l-4 border-gray-900">

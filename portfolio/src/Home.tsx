@@ -26,7 +26,7 @@ const Home = () => {
 <section>
   <div className="flex flex-col justify-center items-center m-2 p-2">
 <h1 className="text-5xl font-bold text-gray-900 mt-2 mb-2">Junior <span className="bg-gray-900 text-white">Software Developer</span></h1>  
-<p className="text-2xl mt-2 p-2  text-gray-900"> with hands-on experience in developing web applications using Javascript</p>
+<p className="text-2xl mt-2 p-2  text-gray-900"> with hands-on experience in developing <span className="bg-gray-900 text-white font-bold"> web applications using Javascript</span></p>
 <p className="text-1xl mt-2 p-2  text-gray-900">focus is on crafting intuitive user interfaces, robust backends, and seamless digital experiences</p>
 <div className="flex flex-col gap-2 m-2 p-2 items-center md:flex-row xl:flex-row ">
   <a className="text-1xl "  href="https://www.linkedin.com/in/ttrakgoropo/"><FaLinkedin  className="text-blue-400 text-2xl hover:scale-110 transition-transform"/></a>
