@@ -1,6 +1,16 @@
 
-import appleKeyword from "../public/applekeyword.png"
-import jobTracker from "../public/jobtrackerUI.png"
+import appleKeyword from "../public/moredetails.png"
+import jobTracker from "../public/jobtracker.png"
+import weather from "../public/darktheme_weath.png"
+import shoppinglistUI from "../public/home_page.png"
+import vaultUI from "../public/links.png"
+import movieUI from "../public/MovieUI.png"
+import quickCV from "../public/quickcv.png"
+import trfinance from "../public/fm.png"
+import art from "../public/art.png"
+import coffee from "../public/coffee.png"
+
+
 
 const Project = () => {
   return (
@@ -8,7 +18,7 @@ const Project = () => {
     <section>
   <h1 className="text-2xl font-bold text-center">Projects</h1> 
 <div className="flex flex-col gap-5 m-2  p-2 justify-center items-center md:flex-row xl:flex-row md:flex-wrap xl:flex-wrap ">
-
+    {/* Job Tracker */}
  <div className="max-w-md bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300  hover:translate-y-2">
       {/* Image */}
       <img
@@ -19,9 +29,9 @@ const Project = () => {
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Card Title</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Job Tracker</h2>
         <p className="text-gray-600 mt-2">
-           Job tracking application built with React and TypeScript, powered by <span className="font-bold">Firestore RealtimeDB </span> with user authentication.
+           Job tracking application built with React and TypeScript, powered by <span className="font-bold">Firestore RealtimeDB, Bootstrap And Zustand  </span>for state management with user authentication.
         </p>
 
         {/* Link */}
@@ -35,8 +45,8 @@ const Project = () => {
         </a>
       </div>
     </div>
-
-    {/* more cards */}
+{/* End of job tracker */}
+    {/* Store filter*/}
  <div className="max-w-md bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
@@ -49,8 +59,8 @@ const Project = () => {
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
-
+         A complex data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server, Tailwind and Redux Toolkit </span>
+          to filter data based on Side Bar options.
         </p>
 
         {/* Link */}
@@ -64,27 +74,29 @@ const Project = () => {
         </a>
       </div>
     </div>
+
+    {/* End of store filter */}
 
     {/* third project weather */}
     <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
-        src={appleKeyword}
+        src={weather}
         alt="Card"
         className="w-full h-48 object-cover"
       />
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Weather Forecast</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
-
+         Weather application built with React, TypeScript and state management with Redux powerd by <span className="font-bold">Open Weather api </span>.
+        .This app provides real-time weather forecasts for current user location.
         </p>
 
         {/* Link */}
         <a
-          href="https://deluxe-licorice-5369b6.netlify.app/"
+          href="https://weather-app-brown-kappa-92.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
@@ -93,56 +105,60 @@ const Project = () => {
         </a>
       </div>
     </div>
-    {/* other */}
+
+    {/* End of weather app */}
+    {/* shopping list */}
 
     <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
-        src={appleKeyword}
+        src={shoppinglistUI}
         alt="Card"
         className="w-full h-48 object-cover"
       />
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Shopping list</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
-
+         A beautiful shopping list application with user authentication built with React, TypeScript and state management with <span className="font-bold">Redux toolkit</span> powerd by <span className="font-bold">Json Server and Tailwind </span>.
+          Users can search, add, update and remove items from the list.
         </p>
 
         {/* Link */}
         <a
-          href="https://deluxe-licorice-5369b6.netlify.app/"
+          href=""
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
         >
-          Visit Website →
+        In progress →
         </a>
       </div>
     </div>
+    {/* End of shopping list */}
 
-    {/* other more */}
+    {/* vault */}
+    
     <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
-        src={appleKeyword}
+        src={vaultUI}
         alt="Card"
         className="w-full h-48 object-cover"
       />
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Vault</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
-
+         A simple crud application built with React, TypeScript and react hooks for state management  powerd by <span className="font-bold">local storage and plain css </span>.
+        Users can search add, update and remove items from the list .
         </p>
 
         {/* Link */}
         <a
-          href="https://deluxe-licorice-5369b6.netlify.app/"
+          href="https://react-crud-b479gvij3-plthabangrs-projects.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
@@ -151,87 +167,89 @@ const Project = () => {
         </a>
       </div>
     </div>
-
-    {/* more */}
+{/* end of vault */}
+    {/* Movie app */}
 
     <div className="max-w-md bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
-        src={appleKeyword}
+        src={movieUI}
         alt="Card"
         className="w-full h-48 object-cover"
       />
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Movie App</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
+         Complex application built with React, TypeScript  powerd by <span className="font-bold">Express, RTK Query, MongoDB and Tailwind </span>.
+         User and Admin authentication is implemented with advanced features like pagination, search, sorting and filtering.
 
         </p>
 
         {/* Link */}
         <a
-          href="https://deluxe-licorice-5369b6.netlify.app/"
+          href=""
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
         >
-          Visit Website →
+          In Progress →
         </a>
       </div>
     </div>
-
-    {/* more */}
+{/* end of Movie app */}
+    {/* Quick cv */}
     <div className="max-w-md bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
-        src={appleKeyword}
+        src={quickCV}
         alt="Card"
         className="w-full h-48 object-cover"
       />
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Quick CV</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
-
+         A user friendly application built with Angular, TypeScript and state is fetch from backend <span className="font-bold">Spring boot,My SQL and MDB bootstrap </span>.
+        Users can create cv with form editor and view changes immediately then choose theme and download as pdf
         </p>
 
         {/* Link */}
         <a
-          href="https://deluxe-licorice-5369b6.netlify.app/"
+          href=""
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
         >
-          Visit Website →
+          No webiste copyright →
         </a>
       </div>
     </div>
+    {/* end of Quick cv */}
 
-    {/* more */}
+    {/*  */}
 
 <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
-        src={appleKeyword}
+        src={trfinance}
         alt="Card"
         className="w-full h-48 object-cover"
       />
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Finance managament</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
-
+         A fullstack application built with React, TypeScript and state management with Context api powerd by <span className="font-bold">Express, MongoDB, GoogleAuth, Bootstrap </span>.
+          Users can create and manage their finances.
         </p>
 
         {/* Link */}
         <a
-          href="https://deluxe-licorice-5369b6.netlify.app/"
+          href="https://trfinanceplatformjhb.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
@@ -241,26 +259,26 @@ const Project = () => {
       </div>
     </div>
 
-    {/* more */}
+    {/* coffee */}
     <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
       {/* Image */}
       <img
-        src={appleKeyword}
+        src={coffee}
         alt="Card"
         className="w-full h-48 object-cover"
       />
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Coffee shop</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
+         User-friendly landing page developed with<span className="font-bold"> HTML and Tailwind CSS</span>, demonstrating the creation of a clean, responsive, and visually engaging interface.
 
         </p>
 
         {/* Link */}
         <a
-          href="https://deluxe-licorice-5369b6.netlify.app/"
+          href="https://devspark-coffee-409a26.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
@@ -271,6 +289,33 @@ const Project = () => {
     </div>
 
     {/* still mopre */}
+    <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300   hover:translate-y-2">
+      {/* Image */}
+      <img
+        src={art}
+        alt="Card"
+        className="w-full h-48 object-cover"
+      />
+
+      {/* Content */}
+      <div className="p-4">
+        <h2 className="text-xl font-semibold text-gray-800">Art Landing page</h2>
+        <p className="text-gray-600 mt-2">
+         User friendly UI landing page built with HTML, powered by <span className="font-bold"> Tailwind css </span>.
+        This page demonstrates the use of Tailwind CSS to create a visually appealing and responsive user interface for a website.
+        </p>
+
+        {/* Link */}
+        <a
+          href="https://superb-kheer-167dde.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
+        >
+          Visit Website →
+        </a>
+      </div>
+    </div>
 </div>
 
 </section>
