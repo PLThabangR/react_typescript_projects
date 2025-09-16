@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { FaBars, FaTimes } from "react-icons/fa";
-import Experience from './Experience';
+
 import { Link } from 'react-router-dom';
-import Services from './Services';
+
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -12,7 +12,7 @@ const Nav = () => {
         {/* Logo / Brand */}
         <h1 className="text-xl font-bold">TR IT</h1>
 
-        {/* Desktop Menu */}
+        {/* Desktop Menu  this will be hidden in small devices*/}
         <ul className="hidden md:flex space-x-6">
            <Link to="/home">
            <li className="block hover:text-indigo-400">Home</li>
@@ -33,11 +33,12 @@ const Nav = () => {
           className="md:hidden"
           onClick={() => setIsOpen(!isOpen)}
         >
+          {/* Icon fa time is a close icon X and fa bars is a menu icon */}
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu  md:is hidden in small devices*/}
       {isOpen && (
         <ul className="md:hidden mt-4 space-y-4 bg-gray-800 p-4 rounded-lg">
           <Link to="/home">
