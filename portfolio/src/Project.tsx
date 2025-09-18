@@ -152,8 +152,8 @@ const Project = () => {
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">Vault</h2>
         <p className="text-gray-600 mt-2">
-         A simple crud application built with React, TypeScript and react hooks for state management  powerd by <span className="font-bold">local storage and plain css </span>.
-        Users can search add, update and remove items from the list .
+        A springboot application server with restful services     <span className="font-bold"> </span>.
+       
         </p>
 
         {/* Link */}

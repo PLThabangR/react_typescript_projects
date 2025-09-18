@@ -25,7 +25,7 @@ const Home = () => {
 <div className="m-5">
 <section>
   <div className="flex flex-col justify-center items-center m-2 p-2">
-<h1 className="text-5xl font-bold text-gray-900 mt-2 mb-2">Junior <span className="bg-gray-900 text-white">Software Developer</span></h1>  
+<h1 className="text-5xl font-bold text-gray-900 mt-2 mb-2">Junior <span className="md:bg-gray-900 md:text-white">Software Developer</span></h1>  
 <p className="text-2xl mt-2 p-2  text-gray-900"> with hands-on experience in developing <span className="bg-gray-900 text-white font-bold"> web applications using Javascript</span></p>
 <p className="text-1xl mt-2 p-2  text-gray-900">focus is on crafting intuitive user interfaces, robust backends, and seamless digital experiences</p>
 <div className="flex flex-col gap-2 m-2 p-2 items-center md:flex-row xl:flex-row ">
@@ -52,7 +52,7 @@ const Home = () => {
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">Job Tracker</h2>
         <p className="text-gray-600 mt-2">
-           Job tracking application built with React and TypeScript, powered by <span className="font-bold">Firestore RealtimeDB </span> with user authentication.
+             Job tracking application built with React and TypeScript, powered by <span className="font-bold">Firestore RealtimeDB, Bootstrap And Zustand  </span>for state management with user authentication.
         </p>
 
         {/* Link */}
@@ -80,7 +80,8 @@ const Home = () => {
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">Store filter</h2>
         <p className="text-gray-600 mt-2">
-         A simple Data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server </span>.
+         A complex data filtering application built with React, TypeScript and state management with react toolkit powerd by <span className="font-bold">Dummy data server, Tailwind and Redux Toolkit </span>
+          to filter data based on Side Bar options.
 
         </p>
 
