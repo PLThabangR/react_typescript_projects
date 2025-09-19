@@ -8,7 +8,7 @@ const GenreForm = ({value,handleSubmit,setValue,handleDelete,buttonText="Submit"
 
         <input type="text" value={value}
 
-        className="py-3 px-4 border rounded-lg w-[60rem]"
+        className="py-3 px-4 border rounded-lg w-[60rem] text-white-900"
          onChange={(e) => setValue(e.target.value)} 
          placeholder="Genre name"/>
 
