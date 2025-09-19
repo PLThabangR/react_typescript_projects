@@ -5,17 +5,20 @@ import store  from './app/store'
 import { Provider } from 'react-redux'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from 'react-router-dom'
 import Home from './Pages/Home.tsx'
+// Auth components
 import Register from './Pages/Auth/Register.tsx'
 import Login from './Pages/Auth/Login.tsx'
+import AdminRoutes from './Pages/Admin/AdminRoutes.tsx'
+// Restricted components
 import PrivateRoute from './Pages/Auth/PrivateRoute.tsx'
 import Profile from './Pages/User/Profile.tsx'
+import GenreList from './Pages/Admin/GenreList.tsx'
 
-//Auth 
 
 
-//Restricted
-
+// Create router instance
 const router = createBrowserRouter(
+
     createRoutesFromElements(
         
         <Route path='/' element={<App/>}>
@@ -31,6 +34,12 @@ const router = createBrowserRouter(
 
         </Route>
         {/* end of private routes */}
+
+        {/* Admin routes */}
+        <Route path="/" element={<AdminRoutes/>}>
+            <Route path="/genres" element={<GenreList/>}/>
+        </Route>
+        {/* end of admin routes */}
         </Route>
         
     )
