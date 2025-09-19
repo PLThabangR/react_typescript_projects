@@ -2,7 +2,21 @@
 const username = "John Doe";
 
 //String reverse
-for(let i=username.length-1;i>=0;i--)
+
+    function reverseString(str) {
+        //convert string to array
+        let arr = str.split("")
+
+        let reversed = ""
+        for(let i=arr.length-1;i>=0;i--)
     {
-       console.log(username[i])
+        reversed += username[i]
     }
+ 
+
+
+    return reversed
+
+      }
+
+      console.log(reverseString(username));
