@@ -1,8 +1,8 @@
 import appleKeyword from "../public/applekeyword.png"
 import jobTracker from "../public/jobtrackerUI.png"
-import { FaLinkedin, FaNodeJs, FaReact,FaJava  } from "react-icons/fa";
+import { FaLinkedin, FaNodeJs, FaReact,FaJava,FaAmazon  } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import { SiTypescript , SiJavascript, SiMongodb, SiPostgresql, SiTailwindcss } from "react-icons/si";
+import { SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiTailwindcss, SiMeta } from 'react-icons/si';
 
   const techs = [
     { name: "React", icon: <FaReact className="text-sky-500 text-4xl" /> },
@@ -31,6 +31,11 @@ const Home = () => {
 <div className="flex flex-col gap-2 m-2 p-2 items-center md:flex-row xl:flex-row ">
   <a className="text-1xl "  href="https://www.linkedin.com/in/ttrakgoropo/"><FaLinkedin  className="text-blue-400 text-2xl hover:scale-110 transition-transform"/></a>
 <a className="text-1xl"  href="https://github.com/PLThabangR"><FaGithub  className="text-black-400 text-2xl hover:scale-110 transition-transform"/></a>
+<a className="text-1xl"  href="https://coursera.org/share/7f854036935922102e4e22d1c117ef00"><FaAmazon  className="text-black-400 text-2xl hover:scale-110 transition-transform"/></a>
+<a className="text-1xl"  href="https://www.coursera.org/account/accomplishments/specialization/TKCEAZAN7K7Y"><SiMeta  className="text-sky-600 text-2xl hover:scale-110 transition-transform"/></a>
+
+
+
 </div>
 
 </div>

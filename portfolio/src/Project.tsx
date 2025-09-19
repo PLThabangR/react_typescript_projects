@@ -152,15 +152,14 @@ const Project = () => {
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">This shopping list</h2>
         <p className="text-gray-600 mt-2">
-          A front-end interface using HTML, CSS, and JavaScript for adding, modifying, and deleting items. 
-           This app implement the server-side logic using Spring Boot to handle HTTP requests.
-          Springboot provide the required RESTful API endpoints that serve the front-end.
+          A front-end interface using <span className="font-bold">HTML, CSS, and JavaScript</span> for adding, modifying, and deleting items. 
+           This app implement the server-side logic using <span className="font-bold">Springboot and MySQL</span> to provide the required RESTful API endpoints that serve the front-end.
        
         </p>
 
         {/* Link */}
         <a
-          href="https://react-crud-b479gvij3-plthabangrs-projects.vercel.app/"
+          href="https://github.com/PLThabangR/Javascript_Spring-boot_CRUD_on_Quick-cart"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 text-indigo-600 font-medium hover:text-indigo-800 transition-colors"
