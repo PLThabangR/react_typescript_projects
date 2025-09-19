@@ -7,7 +7,7 @@ import Modal from "../../components/Modal";
 
 const GenreList = () => {
     // fetch all genres
-    const {data :genres,refech} = useGetAllGenresQuery({});
+    const {data :genres,refetch} = useGetAllGenresQuery({});
 
     // Destructure RTK Query functions
     // create genre
@@ -48,10 +48,18 @@ const handleCreateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
 
         setName('');
         toast.success('Genre created successfully');
-        refech();
-
-        toast.success('Genre created successfully');
+        refetch();
     } catch (error:any) {
+        toast.error(error?.data?.message || error.message );
+    }
+}
+
+//delete genre
+const handleDeleteGenre = async(id:string) => {
+    
+  try {
+      
+    }catch (error:any) {
         toast.error(error?.data?.message || error.message );
     }
 }
@@ -88,7 +96,7 @@ const handleUpdateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
                 <h1>Manage genres</h1>
 
                 {/* reuase genre form component  for create */} 
-                <GenreForm value={name} setValue={setName} handleSubmit={createGenre} handleDelete={deleteGenre}  />
+                <GenreForm value={name} setValue={setName} handleSubmit={handleCreateGenre} handleDelete={deleteGenre}  />
 
 
                 <br></br>
@@ -102,7 +110,7 @@ const handleUpdateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
                      
                      onClick={()=>{
                       // open modal
-                      setSelectedGenreId(genre);
+                      setSelectedGenreId(genre.id);
                       setUpdateName(genre.name);
                       setModalVisible(true);
                      }}
