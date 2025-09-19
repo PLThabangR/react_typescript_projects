@@ -7,7 +7,7 @@ import { GENRE_URL } from "../constants";
 //we use injectEndpoints to create endpoints
 export const genresApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getGenres: builder.query({
+        getAllGenres: builder.query({
             query: () => ({
                 url: GENRE_URL,
             }),
@@ -21,10 +21,10 @@ export const genresApiSlice = apiSlice.injectEndpoints({
             }),
         }),//end of create genre
         updateGenre: builder.mutation({
-            query: (data) => ({
-                url: `${GENRE_URL}/${data.id}`,
+            query: (newGenre) => ({
+                url: `${GENRE_URL}/${newGenre.id}`,
                 method: "PUT",
-                body: data,
+                body: newGenre,
             }),
         }),//end of update genre
 
@@ -43,3 +43,12 @@ export const genresApiSlice = apiSlice.injectEndpoints({
           
         })//end of endpoints
     })//end of injectEndpoints
+
+    //we export the hooks to be used in our components
+    export const {
+        useGetAllGenresQuery,
+        useGetGenreByIdQuery,
+        useCreateGenreMutation,
+        useUpdateGenreMutation,
+        useDeleteGenreMutation,
+      } = genresApiSlice
