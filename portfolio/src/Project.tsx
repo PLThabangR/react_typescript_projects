@@ -150,9 +150,11 @@ const Project = () => {
 
       {/* Content */}
       <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">Vault</h2>
+        <h2 className="text-xl font-semibold text-gray-800">This shopping list</h2>
         <p className="text-gray-600 mt-2">
-        A springboot application server with restful services     <span className="font-bold"> </span>.
+          A front-end interface using HTML, CSS, and JavaScript for adding, modifying, and deleting items. 
+           This app implement the server-side logic using Spring Boot to handle HTTP requests.
+          Springboot provide the required RESTful API endpoints that serve the front-end.
        
         </p>
 
