@@ -2,6 +2,7 @@ import { useSelector,useDispatch } from "react-redux"
 import { useGetAllGenresQuery, useDeleteGenreMutation, useCreateGenreMutation, useUpdateGenreMutation,useGetGenreByIdQuery } from "../../app/api/genre"
 import {toast} from 'react-toastify'
 import { use, useState } from "react";
+import GenreForm from "../../components/GenreForm";
 
 const GenreList = () => {
     // fetch all genres
@@ -39,7 +40,7 @@ const [modalVisible,setModalVisible] = useState(false);
         <div className="md:w-3/4 p-3">
                 <h1>Manage genres</h1>
 
-                <GenreForm value={name} setValue={setName} handleSubmit={createGenre} />
+                <GenreForm value={name} setValue={setName} handleSubmit={createGenre} handleDelete={deleteGenre} / >
 
 
                 
