@@ -69,11 +69,13 @@ const handleDeleteGenre = async(id:string) => {
 
 const handleUpdateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-
-      if(updateName === ''){
+    if(updateName === ''){
         toast.error('Please enter a genre name');
       }
+      //Defenssive programmig
+    try {
+
+      
         //update genre function from rtk
         const res = await updateGenre({id:selectedGenreId,name:updateName}).unwrap();
        

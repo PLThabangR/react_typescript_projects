@@ -1,6 +1,12 @@
+interface GenreFormProps {
+  value: string,
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void,
+  setValue: (value: string) => void,
+  handleDelete?: () => void,
+  buttonText?: string
+}
 
-
-const GenreForm = ({value,handleSubmit,setValue,handleDelete,buttonText="Submit"}) => {
+const GenreForm = ({value,handleSubmit,setValue,handleDelete,buttonText="Submit"}: GenreFormProps) => {
   return (
     <div className="p-3">
 
