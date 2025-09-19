@@ -86,15 +86,15 @@ console.log(myArray)
 
 
 
-//console.log("Index 1 : ",myArray.get(1));
+console.log("Index 1 : ",myArray.get(1));
 
 
-// myArray.pop();
-// console.log("After pop : ",myArray);
+myArray.pop();
+console.log("After pop : ",myArray);
 
 
-// myArray.shift();
-// console.log("After shift : ",myArray);
+myArray.shift();
+console.log("After shift : ",myArray);
 
 
 myArray.delete(1);
