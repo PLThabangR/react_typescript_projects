@@ -1,5 +1,8 @@
-import { time } from "console";
-import mongoose from "mongoose";    
+
+import mongoose from "mongoose";   
+import Review from "./Review";
+
+
 
 //Destructuring the object id
 const ObjectId = mongoose.Schema.Types.ObjectId
@@ -13,7 +16,7 @@ const movieSchema = new mongoose.Schema({
     details: {type: String,required: true},
   genre: {type: ObjectId, ref: 'Genre',required: true},
 cast : {type: String,required: true },  
-    reviews :[eviewSchema] ,
+    reviews :[Review] ,
     numRiviews : { type: Number,required: true,default: 0},
     createdAt:{type : Date,default: Date.now()}
 
