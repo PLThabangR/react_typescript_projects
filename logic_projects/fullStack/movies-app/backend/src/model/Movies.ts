@@ -1,6 +1,7 @@
 
 import mongoose from "mongoose";   
 import Review from "./Review";
+import { Movie } from "../types/Movies";
 
 
 
@@ -8,7 +9,7 @@ import Review from "./Review";
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 
-const movieSchema = new mongoose.Schema({
+const movieSchema = new mongoose.Schema<Movie>({
 
     title: { type: String,required: true},
        image: { type: String,required: true},
@@ -26,5 +27,6 @@ cast : {type: String,required: true },
    
       
 
+const MovieModel = mongoose.model('Movie', movieSchema)
 
-export default mongoose.model('Movie', movieSchema)
+export default MovieModel

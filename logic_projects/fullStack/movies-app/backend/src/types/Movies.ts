@@ -1,3 +1,4 @@
+import { Genre } from "./Genre"
 import { Review } from "./Review"
 export interface Movie{
     _id: string,
@@ -5,7 +6,7 @@ export interface Movie{
     image: string,
     year: number,
     details: string,
-    genre: string,
+    genre: Genre,
     cast: string,
     reviews: Review[],
     numRiviews: number
