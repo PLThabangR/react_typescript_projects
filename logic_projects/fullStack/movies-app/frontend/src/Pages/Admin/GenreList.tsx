@@ -60,9 +60,20 @@ const handleCreateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
 }
 
 //delete genre
-const handleDeleteGenre = async(id:string) => {
+const handleDeleteGenre = async() => {
     
   try {
+    //delete genre function from rtk
+    const res = await deleteGenre(selectedGenre?._id).unwrap();
+    //redirect user to home
+    toast.success(`Genre ${selectedGenre?.name} deleted successfully`);
+
+    //refetch ui
+    refetch();
+    //close modal
+    setModalVisible(false);
+    setSelectedGenre(null);
+
       
     }catch (error:any) {
         toast.error(error?.data?.message || error.message );
@@ -81,10 +92,6 @@ const handleUpdateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
       if(selectedGenre?.name === updateName){
        return toast.error('Please enter a different genre name');
       }
-
-      console.log(selectedGenre)
-      console.log(updateName)
-      console.log(selectedGenre?._id)
       //Defenssive programmig
     try {
 
@@ -124,17 +131,18 @@ const displaySelectedGenre = () => {
   return (
     <div className="ml=[10rem] flex flex-col md:flex-row">
         <div className="md:w-3/4 p-3">
-                <h1>Manage genres</h1>
+
+                <h1 className="text-2xl font-bold">Manage genres</h1>
 
                 {/* reuase genre form component  for create */} 
-                <GenreForm value={name} setValue={setName} handleSubmit={handleCreateGenre} handleDelete={deleteGenre}  />
+                <GenreForm value={name} setValue={setName} handleSubmit={handleCreateGenre}  />
 
 
                 <br></br>
                 {/* display all genres */}
                 <div className="flex flex-wrap">
-                  {genres?.map((genre: Genre) => (
-                    <div key={genre?._id} className="p-2">
+                  {genres?.map((genre: Genre, index:any) => (
+                    <div key={index} className="p-2">
                       <button
                       className="bg-white text-teal-500 border border-teal-500 py-2 px-4 rounded-lg hover:bg-teal-500
                       hover:text-white focus:outline  focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
@@ -155,7 +163,7 @@ const displaySelectedGenre = () => {
                   {/* create modal */}
                 <Modal isOpen ={modalVisible} onClose={() => setModalVisible(false)}>
                   {/* reuse genre form component for update */}
-                  <GenreForm value={updateName} setValue={setUpdateName} handleSubmit={handleUpdateGenre} handleDelete={deleteGenre} buttonText="Update" />
+                  <GenreForm value={updateName} setValue={setUpdateName} handleSubmit={handleUpdateGenre} handleDelete={handleDeleteGenre} buttonText="Update" />
                 </Modal>
                 {/* end of create modal */}
                 
