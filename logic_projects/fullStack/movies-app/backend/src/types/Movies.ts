@@ -10,4 +10,5 @@ export interface Movie{
     cast: string,
     reviews: Review[],
     numRiviews: number
+    createdAt: Date
 }
