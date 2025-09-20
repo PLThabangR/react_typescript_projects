@@ -45,9 +45,9 @@ export const getAllGenres = async(req: Request, res: Response) => {
 }
 
 export const updateGenre = async(req: Request, res: Response) => {
-
+    console.log("update genre api is hit")
     const { id } = req.params;
-    const { name } = req.body;
+    const { name } = req.body || {};
 
     try {
         //Defenssive programmig

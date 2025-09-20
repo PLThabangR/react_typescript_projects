@@ -2,7 +2,10 @@ import { apiSlice } from "./apiSlice";
 import { GENRE_URL } from "../constants";
 
 
-
+interface Genre {
+  _id: Object;
+  name: string;
+}
 
 //we use injectEndpoints to create endpoints
 export const genresApiSlice = apiSlice.injectEndpoints({
@@ -21,11 +24,12 @@ export const genresApiSlice = apiSlice.injectEndpoints({
             }),
         }),//end of create genre
         updateGenre: builder.mutation({
-            query: (newGenre) => ({
-                url: `${GENRE_URL}/${newGenre.id}`,
+            query: ({id, name}) => ({
+                url: `${GENRE_URL}/${id}`,
                 method: "PUT",
-                body: newGenre,
+                body: {name},
             }),
+            
         }),//end of update genre
 
             deleteGenre: builder.mutation({

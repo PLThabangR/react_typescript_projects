@@ -1,9 +1,14 @@
-import { useSelector,useDispatch } from "react-redux"
+
 import { useGetAllGenresQuery, useDeleteGenreMutation, useCreateGenreMutation, useUpdateGenreMutation,useGetGenreByIdQuery } from "../../app/api/genre"
 import {toast} from 'react-toastify'
-import { use, useState } from "react";
+import { useEffect, useState } from "react";
 import GenreForm from "../../components/GenreForm";
 import Modal from "../../components/Modal";
+
+interface Genre {
+  _id: Object;
+  name: string;
+}
 
 const GenreList = () => {
     // fetch all genres
@@ -17,15 +22,15 @@ const GenreList = () => {
     // delete genre
     const [deleteGenre] = useDeleteGenreMutation();
 
-    // get genre by id
-    const {data :genre} = useGetGenreByIdQuery({id:""});
+    // // get genre by id
+    // const {data :genre} = useGetGenreByIdQuery({id:""});
 
 
     //creat state hooks
-   const  [name,setName] = useState('');
-const [selectedGenreId,setSelectedGenreId] = useState('');
-const [updateName,setUpdateName] = useState('');
-const [modalVisible,setModalVisible] = useState(false);
+   const  [name,setName] = useState<string>('');
+const [selectedGenre,setSelectedGenre] = useState<Genre| null>(null);
+const [updateName,setUpdateName] = useState<string>('');
+const [modalVisible,setModalVisible] = useState<boolean>(false);
 
 
 //functions 
@@ -69,26 +74,50 @@ const handleDeleteGenre = async(id:string) => {
 
 const handleUpdateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(updateName === ''){
-        toast.error('Please enter a genre name');
+    // Valit\dations checks
+    
+     
+     
+      if(selectedGenre?.name === updateName){
+       return toast.error('Please enter a different genre name');
       }
+
+      console.log(selectedGenre)
+      console.log(updateName)
+      console.log(selectedGenre?._id)
       //Defenssive programmig
     try {
 
-      
         //update genre function from rtk
-        const res = await updateGenre({id:selectedGenreId,name:updateName}).unwrap();
-       
+        const res = await updateGenre({id:selectedGenre?._id,name:updateName}).unwrap();
+
+        if(res.error){
+          return toast.error(res.error.data.message);
+        }
         //redirect user to home
         toast.success('Genre updated successfully');
+        refetch();
+        //close modal
+        setModalVisible(false);
+        //reset state
+        setSelectedGenre(null);
+        setUpdateName('');
+        
+       
+
     } catch (error:any) {
         toast.error(error?.data?.message || error.message );
     }
 }
 
+const displaySelectedGenre = () => {
+   console.log(selectedGenre)
+}
 
-
-
+ useEffect(
+  displaySelectedGenre
+ 
+,[selectedGenre]);
 
 
     
@@ -104,15 +133,16 @@ const handleUpdateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
                 <br></br>
                 {/* display all genres */}
                 <div className="flex flex-wrap">
-                  {genres?.map((genre) => (
-                    <div key={genre.id} className="p-2">
+                  {genres?.map((genre: Genre) => (
+                    <div key={genre?._id} className="p-2">
                       <button
                       className="bg-white text-teal-500 border border-teal-500 py-2 px-4 rounded-lg hover:bg-teal-500
                       hover:text-white focus:outline  focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
                      
                      onClick={()=>{
                       // open modal
-                      setSelectedGenreId(genre.id);
+                      setSelectedGenre(genre);
+                     
                       setUpdateName(genre.name);
                       setModalVisible(true);
                      }}
@@ -125,7 +155,7 @@ const handleUpdateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
                   {/* create modal */}
                 <Modal isOpen ={modalVisible} onClose={() => setModalVisible(false)}>
                   {/* reuse genre form component for update */}
-                  <GenreForm value={updateName} setValue={setUpdateName} handleSubmit={updateGenre} handleDelete={deleteGenre} buttonText="Update" />
+                  <GenreForm value={updateName} setValue={setUpdateName} handleSubmit={handleUpdateGenre} handleDelete={deleteGenre} buttonText="Update" />
                 </Modal>
                 {/* end of create modal */}
                 
