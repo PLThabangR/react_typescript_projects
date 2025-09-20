@@ -37,9 +37,7 @@ const [modalVisible,setModalVisible] = useState<boolean>(false);
 const handleCreateGenre = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
    //Defenssive programmig
-      if(!name){
-       return toast.error('Please enter a genre name');
-      }
+
    
     try {
       

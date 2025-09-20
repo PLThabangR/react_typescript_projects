@@ -15,8 +15,8 @@ const GenreForm = ({value,handleSubmit,setValue,handleDelete,buttonText="Submit"
 
         <input type="text" value={value}
 
-        className="py-3 px-4 border rounded-lg w-[60rem] text-white-900"
-         onChange={(e) => setValue(e.target.value)} 
+        className="py-3 px-4 border rounded-lg w-[60rem] text-black bg-white"
+         onChange={(e) => setValue((e.target.value).trim().charAt(0).toUpperCase() + (e.target.value).trim().slice(1))} 
          placeholder="Genre name"/>
 
         <div className="flex justify-between">
