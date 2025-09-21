@@ -2,16 +2,17 @@ import express from "express";
 
 //import middlewares
 import { authenticateUser ,authorizationAdmin} from "../middleware/authMiddleware";
-
 import  checkId  from "../middleware/checkId";
-import { createMovie, getAllMovies } from "../controller/moviesController";
+
+//import controllers
+import { createMovie, getAllMovies, getMovieById } from "../controller/moviesController";
 
 
 const router = express.Router();
 
 //public routes
 router.get("/all-movies",getAllMovies);
-// router.get("/:id",getMovieById)
+ router.get("/:id",checkId,getMovieById)
 
 //restricted routes
 router.post("/create-movie",authenticateUser,authorizationAdmin,createMovie);
