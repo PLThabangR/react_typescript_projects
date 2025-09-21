@@ -67,10 +67,10 @@ export const createMovie = async (req: Request,res: Response) => {
 }
 
 
-export const getAllMovies = async (res: Response, req: Request) => {
+export const getAllMovies = async (req: Request,res: Response) => {
     try{
             //all movies
-        const movies = await MovieModel.find({}).populate('genre');
+        const movies = await MovieModel.find();
         //send response
         res.status(200).json(movies);
     }catch(error:any){
@@ -79,11 +79,11 @@ export const getAllMovies = async (res: Response, req: Request) => {
 }
 
 
-export const getMovieById = async (res: Response, req: Request) => {}
+export const getMovieById = async (req: Request,res: Response) => {}
 
 
-export const updateMovie = async (res: Response, req: Request) => {}
+export const updateMovie = async (req: Request,res: Response) => {}
 
 
-export const deleteMovie = async (res: Response, req: Request) => {}
+export const deleteMovie = async (req: Request,res: Response) => {}
 

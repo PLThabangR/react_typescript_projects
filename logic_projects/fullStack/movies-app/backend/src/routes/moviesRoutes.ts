@@ -10,7 +10,7 @@ import { createMovie, getAllMovies } from "../controller/moviesController";
 const router = express.Router();
 
 //public routes
-router.get("/",getAllMovies);
+router.get("/all-movies",getAllMovies);
 // router.get("/:id",getMovieById)
 
 //restricted routes
