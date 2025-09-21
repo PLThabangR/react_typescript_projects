@@ -1,16 +1,18 @@
+
 import { Request, Response , NextFunction} from "express";
-import Movie from "../model/Movies";
-import Genre from "../model/Genre";
+import MovieModel from "../model/Movies";
+import type{Genre} from "../model/Genre";
+import type { Movie } from "../types/Movies";
 
 export const createMovie = async (res: Response, req: Request, next: NextFunction) => {
-    const { title, image, year, details, genre, cast } = req.body;
+    const { title: title, image, year, details, genre, cast } = req.body;
     try{
         if(!title || !image || !year || !details || !genre || !cast){
             throw new Error("All fields are required");
         }
 
         //check if movie already exists
-        const movieExists = await Movie.findOne({title});
+        const movieExists = await MovieModel.findOne({title});
         if(movieExists){
             throw new Error("Movie already exists");
         }
@@ -21,12 +23,22 @@ export const createMovie = async (res: Response, req: Request, next: NextFunctio
             throw new Error("Genre does not exist");
         }
 
+        const newMovie:Movie ={
+            title: title.toString(),
+            image : image.toString(),
+            year : Number(year),
+            details : details.toString(),
+            genre:Genre,
+            cast: cast.toString(),
+         
+        }
+
         //create new movie object
-        const newMovie = new Movie({title, image, year, details, genre, cast});
+        const createdMovie = new MovieModel({...newMovie});
 
 
         //save movie to the database
-        await newMovie.save();
+        await createdMovie.save();
         //send response with new movie details
         res.status(201).json(newMovie);
 

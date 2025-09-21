@@ -21,7 +21,7 @@ cast : {type: String,required: true },
     numRiviews : { type: Number,required: true,default: 0},
     createdAt:{type: Date,default: Date.now()}
 
-}
+},
 {timestamps: true}
 )//end of schema
    

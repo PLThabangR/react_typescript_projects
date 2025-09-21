@@ -1,8 +1,9 @@
 
 
 export interface Review{
-    name: string,
-    rating: number,
-    comment: string,
-    user: Object
+     _id?: Object;
+    name: string;
+    rating: number;
+    comment: string;
+    user: Object;
 } 
