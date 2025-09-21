@@ -1,6 +1,6 @@
 
 import mongoose from "mongoose";   
-import Review from "./Review";
+import {reviewSchema,} from "./Review";
 import { Movie } from "../types/Movies";
 
 
@@ -17,8 +17,8 @@ const movieSchema = new mongoose.Schema<Movie>({
     details: {type: String,required: true},
   genre: {type: ObjectId, ref: 'Genre',required: true},
 cast : {type: String,required: true },  
-    reviews :[Review] ,
-    numRiviews : { type: Number,required: true,default: 0},
+    reviews :[reviewSchema],
+    numReviews : { type: Number,required: true,default: 0},
     createdAt:{type: Date,default: Date.now()}
 
 },

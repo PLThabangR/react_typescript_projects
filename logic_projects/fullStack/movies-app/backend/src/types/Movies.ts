@@ -1,5 +1,7 @@
-import { Genre } from "./Genre"
-import { Review } from "./Review"
+import { Types } from "mongoose";
+import type { Genre } from "./Genre"
+import type { Review } from "./Review"
+
 export interface Movie{
     _id?: Object;
     title: string;
@@ -8,7 +10,7 @@ export interface Movie{
     details: string;
     genre: Genre;
     cast: string;
-    reviews?: Review[];
-    numRiviews?: number;
+    reviews?: (Review | Types.ObjectId)[];
+    numReviews?: number;
     createdAt?: Date;
 }

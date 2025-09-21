@@ -6,4 +6,5 @@ export interface Review{
     rating: number;
     comment: string;
     user: Object;
+    createdAt?: Date
 } 

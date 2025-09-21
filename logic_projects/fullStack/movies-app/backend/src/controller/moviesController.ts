@@ -1,12 +1,28 @@
+//type
+import type { Movie } from './../types/Movies';
+import type { Genre } from '../types/Genre';
 
+//express 
 import { Request, Response , NextFunction} from "express";
-import MovieModel from "../model/Movies";
-import type{Genre} from "../model/Genre";
-import type { Movie } from "../types/Movies";
 
-export const createMovie = async (res: Response, req: Request, next: NextFunction) => {
-    const { title: title, image, year, details, genre, cast } = req.body;
+//Model
+import MovieModel from "../model/Movies";
+import GenreModel from "../model/Genre";
+
+
+export const createMovie = async (res: Response, req: Request) => {
+    const { title, image, year, details, genre, cast } = req.body;
+
+   
     try{
+         if(!req.body){
+        throw new Error("Request body is empty");
+    }
+   
+
+
+
+
         if(!title || !image || !year || !details || !genre || !cast){
             throw new Error("All fields are required");
         }
@@ -18,27 +34,30 @@ export const createMovie = async (res: Response, req: Request, next: NextFunctio
         }
 
         //check if genre exists
-        const genreExists = await Genre.findOne({name: genre});
+        const genreExists = await GenreModel.findOne({name: genre});
         if(!genreExists){
             throw new Error("Genre does not exist");
         }
-
-        const newMovie:Movie ={
+        
+      //  const  reviewExists = await ReviewModel.findById({movieExists.Reviews._id});
+            
+        
+        const newMovie= new MovieModel<Movie>({
             title: title.toString(),
             image : image.toString(),
             year : Number(year),
             details : details.toString(),
-            genre:Genre,
-            cast: cast.toString(),
-         
-        }
+            genre:genreExists, //refence to genre document
+            cast: cast as string ,// ensure its always a array
+       
+            
+        })
 
-        //create new movie object
-        const createdMovie = new MovieModel({...newMovie});
+      
 
 
         //save movie to the database
-        await createdMovie.save();
+        await newMovie.save();
         //send response with new movie details
         res.status(201).json(newMovie);
 
@@ -48,14 +67,14 @@ export const createMovie = async (res: Response, req: Request, next: NextFunctio
 }
 
 
-export const getAllMovies = async (res: Response, req: Request, next: NextFunction) => {}
+export const getAllMovies = async (res: Response, req: Request) => {}
 
 
-export const getMovieById = async (res: Response, req: Request, next: NextFunction) => {}
+export const getMovieById = async (res: Response, req: Request) => {}
 
 
-export const updateMovie = async (res: Response, req: Request, next: NextFunction) => {}
+export const updateMovie = async (res: Response, req: Request) => {}
 
 
-export const deleteMovie = async (res: Response, req: Request, next: NextFunction) => {}
+export const deleteMovie = async (res: Response, req: Request) => {}
 

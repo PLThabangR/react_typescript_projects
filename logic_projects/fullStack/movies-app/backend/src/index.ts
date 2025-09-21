@@ -8,7 +8,7 @@ import genreRoutes from './routes/genreRoutes';
 
 //importing packages
 import cookieParser from 'cookie-parser'
-import path from 'path'
+
 import movieRouter from './routes/moviesRoutes';
 
 //Instace of express
