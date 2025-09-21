@@ -16,7 +16,7 @@ const movieSchema = new mongoose.Schema<Movie>({
     year :{type: Number,required: true },
     details: {type: String,required: true},
   genre: {type: ObjectId, ref: 'Genre',required: true},
-cast : {type: String,required: true },  
+cast : [{type: String }],  
     reviews :[reviewSchema],
     numReviews : { type: Number,required: true,default: 0},
     createdAt:{type: Date,default: Date.now()}

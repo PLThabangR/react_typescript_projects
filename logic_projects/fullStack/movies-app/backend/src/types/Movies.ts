@@ -9,7 +9,7 @@ export interface Movie{
     year: number;
     details: string;
     genre: Genre;
-    cast: string;
+    cast: string[];
     reviews?: (Review | Types.ObjectId)[];
     numReviews?: number;
     createdAt?: Date;

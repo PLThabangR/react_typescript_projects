@@ -4,13 +4,13 @@ import express from "express";
 import { authenticateUser ,authorizationAdmin} from "../middleware/authMiddleware";
 
 import  checkId  from "../middleware/checkId";
-import { createMovie } from "../controller/moviesController";
+import { createMovie, getAllMovies } from "../controller/moviesController";
 
 
 const router = express.Router();
 
 //public routes
-// router.get("/",getAllMovies);
+router.get("/",getAllMovies);
 // router.get("/:id",getMovieById)
 
 //restricted routes
