@@ -9,6 +9,7 @@ import genreRoutes from './routes/genreRoutes';
 //importing packages
 import cookieParser from 'cookie-parser'
 import path from 'path'
+import movieRouter from './routes/moviesRoutes';
 
 //Instace of express
 const app : Express = express()
@@ -23,6 +24,7 @@ app.use(cookieParser())
 //Routes
 app.use('/api/v1/users',userRoutes)
 app.use('/api/v1/genres',genreRoutes)
+app.use('/api/v1/movies',movieRouter)
 
 
 
