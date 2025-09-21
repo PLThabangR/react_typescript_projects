@@ -11,9 +11,10 @@ const router = express.Router();
 //public routes
 router.get("/",getAllMovies);
 router.get("/:id",getMovieById)
+
 //restricted routes
-router.post("/",authenticateUser,authorizationAdmin,createMovie);
-router.put("/:id",authenticateUser,authorizationAdmin,checkId,updateMovie);
+router.post("/create-moview",authenticateUser,authorizationAdmin,createMovie);
+router.put("/edit-movie/:id",authenticateUser,authorizationAdmin,checkId,updateMovie);
 router.delete("/:id",authenticateUser,authorizationAdmin,checkId,deleteMovie)
 
 
