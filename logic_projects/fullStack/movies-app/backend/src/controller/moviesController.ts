@@ -41,14 +41,14 @@ export const createMovie = async (req: Request,res: Response) => {
         
       //  const  reviewExists = await ReviewModel.findById({movieExists.Reviews._id});
             
-        
+        //
         const newMovie= new MovieModel<Movie>({
             title: title.toString(),
             image : image.toString(),
             year : Number(year),
             details : details.toString(),
             genre:genreExists, //refence to genre document
-            cast: cast as string ,// ensure its always a array
+            cast: cast as string[]  ,// ensure its always a array
        
             
         })
@@ -102,7 +102,37 @@ try{
 }
 
 
-export const updateMovie = async (req: Request,res: Response) => {}
+export const updateMovie = async (req: Request,res: Response) => {
+ const {id} = req.params;
+
+
+ try{
+     if(!id){
+        return res.status(404).json({message: "id not found"});
+     }
+        //get movie by id
+        const movie = await MovieModel.findById(id);
+        //if movie not found
+        if(!movie){
+            return res.status(404).json({message: "Movie not found"});
+        }
+
+       
+     const updatedMovie = await MovieModel.findByIdAndUpdate(id,req.body,{new: true});
+      
+   
+        //send response
+        res.status(200).json(updatedMovie);
+
+
+ }catch(error:any){
+    res.status(500).json({message: (error as Error).message});
+ }
+
+
+
+
+}
 
 
 export const deleteMovie = async (req: Request,res: Response) => {}

@@ -5,7 +5,7 @@ import { authenticateUser ,authorizationAdmin} from "../middleware/authMiddlewar
 import  checkId  from "../middleware/checkId";
 
 //import controllers
-import { createMovie, getAllMovies, getMovieById } from "../controller/moviesController";
+import { createMovie, getAllMovies, getMovieById, updateMovie } from "../controller/moviesController";
 
 
 const router = express.Router();
@@ -16,8 +16,8 @@ router.get("/all-movies",getAllMovies);
 
 //restricted routes
 router.post("/create-movie",authenticateUser,authorizationAdmin,createMovie);
-// router.put("/edit-movie/:id",authenticateUser,authorizationAdmin,checkId,updateMovie);
-// router.delete("/:id",authenticateUser,authorizationAdmin,checkId,deleteMovie)
+ router.put("/edit-movie/:id",authenticateUser,authorizationAdmin,updateMovie);
+ //router.delete("/:id",authenticateUser,authorizationAdmin,checkId,deleteMovie)
 
 
 
