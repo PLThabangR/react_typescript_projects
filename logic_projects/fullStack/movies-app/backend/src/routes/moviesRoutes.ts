@@ -6,18 +6,22 @@ import  checkId  from "../middleware/checkId";
 
 //import controllers
 import { createMovie, deleteMovie, getAllMovies, getMovieById, updateMovie } from "../controller/moviesController";
+import { addReview } from "../controller/reviewMovieController";
 
 
 const router = express.Router();
 
-//public routes
+//public routes all users can access without authentication
 router.get("/all-movies",getAllMovies);
  router.get("/:id",checkId,getMovieById)
 
-//restricted routes
+//restricted routes for admin
 router.post("/create-movie",authenticateUser,authorizationAdmin,createMovie);
  router.put("/edit-movie/:id",authenticateUser,authorizationAdmin,checkId,updateMovie);
  router.delete("/:id",authenticateUser,authorizationAdmin,checkId,deleteMovie)
+
+//Movie review only the authenticate user can commnet on a movie
+router.post("/review-movie/:id",authenticateUser,checkId,addReview)
 
 
 
