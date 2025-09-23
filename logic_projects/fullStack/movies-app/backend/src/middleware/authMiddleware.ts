@@ -1,7 +1,7 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import User from '../model/User';
-import { asyncHandler } from './asyncHandler';
+
 
 import dotenv from 'dotenv';
 
