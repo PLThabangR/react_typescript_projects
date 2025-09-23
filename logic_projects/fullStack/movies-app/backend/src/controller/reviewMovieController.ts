@@ -1,48 +1,89 @@
-import { Request, Response } from "express";
-import MovieModel from "../model/Movies";
-import type { Review } from "../types/Review";
-import { ObjectId, Types } from "mongoose";
+import { Request, Response } from 'express';
+import mongoose, { Types } from 'mongoose';
 
-export const addReview =async (req: Request, res: Response) => {
-        const {rating,comment} = req.body
-        const {id} = req.params
-      
+import type { Review } from '../types/Review';
+import MovieModel from '../model/Movies';
+
+export const addReview = async (req: Request, res: Response) => {
+    const { rating, comment, name, } = req.body;
+    const { id } = req.params;
+
     try {
-
-        if(!id){
-            throw new Error("No movie id");
+        // Input validation
+        if (!name) {
+            return res.status(400).json({ message: "Username is required" });
         }
-        //find movie by id so we can add comment
+
+        if (!id || !mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: "Valid movie ID is required" });
+        }
+
+        if (!rating || rating < 1 || rating > 5) {
+            return res.status(400).json({ message: "Rating must be between 1 and 5" });
+        }
+
+        if (!comment?.trim()) {
+            return res.status(400).json({ message: "Comment is required" });
+        }
+
+        // Find movie by id
         const movie = await MovieModel.findById(id);
-
-        //if movie not found
-        if(!movie){
-            throw new Error("Movie not found");
-        }
-        //check if user has already reviewed
-        const existingReview = movie?.reviews?.find((review:Review| Types.ObjectId) => 
-           {  // If populated (Review object)
-  if ("user" in (review as Review)) {
-    return (review as Review).user?.toString() === id.toString();
-  }
-
-  // If it's just an ObjectId (unpopulated), can't match user directly
-  return false;
-
-
-           });
-        if(existingReview){
-            throw new Error("You have already reviewed this movie");
+        if (!movie) {
+            return res.status(404).json({ message: "Movie not found" });
         }
 
-        // //add review to movie
-        // movie.reviews.push({rating,comment});
-        // movie.numReviews = movie.reviews.length;
-        // movie.rating = movie.reviews.reduce((acc, item) => item.rating + acc, 0) / movie.reviews.length;
-          
+        // Check if user has already reviewed (using id from request body)
+        if (id) {
+            const existingReview = movie.reviews?.find((review: Review | Types.ObjectId) => {
+                // Handle both populated and unpopulated reviews
+                if (review instanceof Types.ObjectId) {
+                    return false; // Can't check user ID on unpopulated ObjectId
+                }
+                
+                const reviewObj = review as Review;
+                return reviewObj.user?.toString() === id.toString();
+            });
+
+            if (existingReview) {
+                return res.status(400).json({ message: "You have already reviewed this movie" });
+            }
+        }
+
+        // Create review object
+        const newReview: Partial<Review> = {
+            name,
+            rating: Number(rating),
+            comment: comment.trim(),
+            user: id 
+        };
+
+        // Add review to movie
+        movie.reviews = movie.reviews || [];
+        movie.reviews.push(newReview as Review);
         
-    } catch (error:any) {
-        return res.status(500).json({message: (error as Error).message});
-    }
+        // Update number of reviews
+        movie.numReviews = movie.reviews.length;
+        
+        // Calculate average rating
+        // if (movie.numReviews > 0) {
+        //     const totalRating = movie.reviews.reduce((acc:any, review: Review) => 
+        //         acc + review.rating, 0);
+        //     movie.rating = Number((totalRating / movie.numReviews).toFixed(1));
+        // }
 
-}
+        // Save the movie with new review
+        await movie.save();
+
+
+        return res.status(201).json({
+            message: "Review added successfully"
+        });
+
+    } catch (error: any) {
+        console.error("Error adding review:", error);
+        return res.status(500).json({ 
+            message: "Internal server error",
+            error: error.message 
+        });
+    }
+};
