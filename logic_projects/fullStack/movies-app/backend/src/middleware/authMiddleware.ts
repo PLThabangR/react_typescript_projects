@@ -10,12 +10,12 @@ import type { User } from '../types/User';
 dotenv.config();
 
 //extend the request so typescript will know user is any
-interface AuthRerquest extends Request{
+interface AuthRequest extends Request{
     user?: User
 }
 
 //check if user is authenticated
-const authenticateUser = async (req: AuthRerquest, res: Response, next: NextFunction) => {
+const authenticateUser = async (req: AuthRequest, res: Response, next: NextFunction) => {
    let token;
   //Get jwt from cookies and save it in new variable token
      token = req.cookies.jwt;
