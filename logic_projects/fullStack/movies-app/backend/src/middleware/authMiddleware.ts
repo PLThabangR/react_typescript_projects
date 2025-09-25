@@ -1,16 +1,17 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import User from '../model/User';
+import UserModel from '../model/User';
 
 
 import dotenv from 'dotenv';
+import type { User } from '../types/User';
 
 //Dotenv
 dotenv.config();
 
 //extend the request so typescript will know user is any
 interface AuthRerquest extends Request{
-    user?: any
+    user?: User
 }
 
 //check if user is authenticated
@@ -25,7 +26,7 @@ try {
         
          //if token available then verify
        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
-       const user = await User.findById(decoded.userId).select('-password');
+       const user = await UserModel.findById(decoded.userId).select('-password');
 
        //if user not found
        if(!user){

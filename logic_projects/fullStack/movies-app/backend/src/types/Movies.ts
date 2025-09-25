@@ -11,6 +11,7 @@ export interface Movie{
     genre: Genre;
     cast: string[];
     reviews?: (Review | Types.ObjectId)[];
+    rating?: number;
     numReviews?: number;
     createdAt?: Date;
 }

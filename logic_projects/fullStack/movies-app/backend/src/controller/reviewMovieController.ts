@@ -59,17 +59,19 @@ export const addReview = async (req: Request, res: Response) => {
 
         // Add review to movie
         movie.reviews = movie.reviews || [];
+        //
         movie.reviews.push(newReview as Review);
         
-        // Update number of reviews
+        // increment and decrement number of reviews
         movie.numReviews = movie.reviews.length;
         
         // Calculate average rating
-        // if (movie.numReviews > 0) {
-        //     const totalRating = movie.reviews.reduce((acc:any, review: Review) => 
-        //         acc + review.rating, 0);
-        //     movie.rating = Number((totalRating / movie.numReviews).toFixed(1));
-        // }
+             const totalRating = movie.reviews.reduce((acc, item :any) => 
+                 acc + item.rating
+             ,0);
+
+         movie.rating = Number((totalRating / movie.numReviews).toFixed(1));
+     
 
         // Save the movie with new review
         await movie.save();
