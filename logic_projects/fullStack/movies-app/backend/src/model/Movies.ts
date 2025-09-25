@@ -27,6 +27,6 @@ cast : [{type: String }],
    
       
 
-const MovieModel = mongoose.model('Movie', movieSchema)
+const MovieModel = mongoose.model<Movie>('Movie', movieSchema)
 
 export default MovieModel

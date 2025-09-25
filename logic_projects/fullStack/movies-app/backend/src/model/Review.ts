@@ -18,5 +18,5 @@ user: {type:ObjectId, ref: 'User'},
 
 )
 
- const ReviewModel = mongoose.model('Review', reviewSchema)
+ const ReviewModel = mongoose.model<Review>('Review', reviewSchema)
 export default  ReviewModel;

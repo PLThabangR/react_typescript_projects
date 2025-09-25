@@ -17,6 +17,6 @@ const genreSchema = new mongoose.Schema<Genre>({
 })
 
 
-export default mongoose.model('Genre', genreSchema) 
+export default mongoose.model<Genre>('Genre', genreSchema) 
 
 
