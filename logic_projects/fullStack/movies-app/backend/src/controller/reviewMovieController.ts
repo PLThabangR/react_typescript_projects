@@ -92,3 +92,41 @@ export const addReview = async (req: AuthRequest, res: Response) => {
         });
     }
 };
+
+
+export const deleteComment = async (req: AuthRequest, res: Response)=>{
+
+try{
+
+    const {movieId,reviewId} = req.body;
+
+    const movie = await MovieModel.findById(movieId);
+
+    if(!movie){
+        return res.status(404).json({message: "Movie not found"});
+    }
+
+    const review = movie.reviews?.findIndex((r)=> r?._id.toString() === reviewId);
+        // Handle both populated and unpopulated reviews
+        if(review === -1){
+            return res.status(404).json({message: "Comment not found"});
+        }
+        //remove that index
+    movie.reviews?.splice(review as number,1);
+        //update the length
+    movie.numReviews = movie.reviews?.length || 0;
+
+    //update the rating
+    if(movie.numReviews > 0){
+        const totalRating = movie.reviews?.reduce((acc, item :any) => acc + item.rating,0);
+        movie.rating = Number((totalRating / movie.numReviews).toFixed(1));
+    }
+
+    await movie.save();
+    return res.status(200).json({message: "Comment deleted successfully"});
+
+}catch(error:any){
+
+}
+
+}

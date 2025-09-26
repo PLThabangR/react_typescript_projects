@@ -10,6 +10,8 @@ import genreRoutes from './routes/genreRoutes';
 import cookieParser from 'cookie-parser'
 
 import movieRouter from './routes/moviesRoutes';
+import { logger } from './middleware/logger';
+import { notFoundErrorHandler } from './middleware/error';
 
 //Instace of express
 const app : Express = express()
@@ -20,6 +22,8 @@ dotenv.config()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
+app.use(logger)
+app.use(notFoundErrorHandler)
 
 //Routes
 app.use('/api/v1/users',userRoutes)

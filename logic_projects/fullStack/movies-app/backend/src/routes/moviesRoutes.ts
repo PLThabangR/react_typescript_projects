@@ -19,6 +19,7 @@ router.get("/all-movies",getAllMovies);
 router.post("/create-movie",authenticateUser,authorizationAdmin,createMovie);
  router.put("/edit-movie/:id",authenticateUser,authorizationAdmin,checkId,updateMovie);
  router.delete("delete-movie/:id",authenticateUser,authorizationAdmin,checkId,deleteMovie)
+  router.delete("delete-comment/:id",authenticateUser,authorizationAdmin,checkId,deleteMovie)
 
 
 //Movie review only the authenticate user can commnet on a movie
