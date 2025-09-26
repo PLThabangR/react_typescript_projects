@@ -136,6 +136,7 @@ export const updateMovie = async (req: Request,res: Response) => {
 
 
 export const deleteMovie = async (req: Request,res: Response) => {
+    console.log("delete movie api is hit")
 const {id} = req.params;
 
 try{

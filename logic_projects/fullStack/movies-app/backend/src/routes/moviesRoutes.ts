@@ -18,7 +18,8 @@ router.get("/all-movies",getAllMovies);
 //restricted routes for admin
 router.post("/create-movie",authenticateUser,authorizationAdmin,createMovie);
  router.put("/edit-movie/:id",authenticateUser,authorizationAdmin,checkId,updateMovie);
- router.delete("/:id",authenticateUser,authorizationAdmin,checkId,deleteMovie)
+ router.delete("delete-movie/:id",authenticateUser,authorizationAdmin,checkId,deleteMovie)
+
 
 //Movie review only the authenticate user can commnet on a movie
 router.post("/review-movie/:id",authenticateUser,checkId,addReview)
