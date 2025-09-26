@@ -57,7 +57,7 @@ export const addReview = async (req: AuthRequest, res: Response) => {
             name: req.user?.name,//this comes from the auth middleware
             rating: Number(rating),
             comment: comment.trim(),
-            user: req.user?._id //this comes from the auth middleware
+            user: req.user?._id, //this comes from the auth middleware
         };
 
         // Add review to movie

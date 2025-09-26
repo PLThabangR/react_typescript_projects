@@ -1,10 +1,11 @@
+import { ObjectId } from "mongoose";
 
 
 export interface Review{
      _id?: Object;
-    name?: string;
+    name?: any;
     rating: number;
     comment: string;
-    user: Object;
+    user:any ;
     createdAt?: Date
 } 
