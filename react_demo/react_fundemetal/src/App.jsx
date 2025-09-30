@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import Person from './pages/Person'
+import Card from './pages/Card'
 
 function App() {
 
@@ -9,12 +11,15 @@ const employes = [{name:"ram", age: 30},{name:"shyam", age: 20},{name:"hari", ag
 const date = new Date()
   return (
     <>
-      
-   { employes.map((employee,index)=>(
-    <ul key={index}>
-      <li>{employee.name},{employee.age}</li>
-    </ul>
-   ))}
+
+    
+    <Card>
+      <h1>App </h1>
+      <p>This is a app display through card</p>
+    </Card>
+
+
+ 
      
     </>
   )
