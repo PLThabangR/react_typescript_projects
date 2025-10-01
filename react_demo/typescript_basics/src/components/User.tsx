@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
-import Card from './Card'
-import Display from './Display';
+
 
 interface UserProfile{
     name: string,
@@ -28,7 +27,17 @@ export const User = () => {
     <input type="number" placeholder='Age' onChange={(e) => setAge(parseInt(e.target.value))} />
     <button type='submit'>Update User</button>
    </form>
+
+
+   {user&& (
+    <>
+    <p>Name: {user.name}</p>
+    <p>Age: {user.age}</p>
+    </>
+   )}
   
    </>
+
+
   )
 }
