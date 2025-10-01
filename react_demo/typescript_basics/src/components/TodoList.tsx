@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 
 interface Todo{
+    id?: number,
     name: string,
     status: boolean,
 
@@ -14,7 +15,10 @@ export const User = () => {
 
  const handleClick = () => {
     if(!name || !status) return;
-
+    const newTodo = {
+        id: Date.now(),
+        name,status};
+        
     setTodo((prevTodo) => [...prevTodo,{name,status}]);
     setName('');
     setStatus(false);

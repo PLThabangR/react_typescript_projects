@@ -2,42 +2,58 @@
 import { useState } from 'react';
 
 
-interface UserProfile{
+interface Todo{
+    id?: number,
     name: string,
-    age: number,
+    status: boolean,
 
 }
 export const User = () => {
-  const [user, setUser] = useState<UserProfile>({name: '', age: 0})
-  const [age,setAge] = useState<number>();
-  const [name,setName] = useState<string>();
+ const [todo,setTodo] = useState<Todo[]>([]);
+ const [name,setName] = useState<string>('');
+ const [status,setStatus] = useState<boolean>(false);
 
-  const handleUpdateUser = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  if(!name || !age) return
-
-    setUser({...user, name, age});
-
-  }
+ const handleClick = () => {
+    if(!name || !status) return;
+    const newTodo = {
+        id: Date.now(),
+        name,status};
+    setTodo((prevTodo) => [...prevTodo,newTodo]);
+    setName('');
+    setStatus(false);
+    console.log(todo);
+ }
+  
   return (
    <>
-   
-   <form onSubmit={handleUpdateUser}>
-    <input type="text" placeholder='Name' onChange={(e) => setName(e.target.value)} />
-    <input type="number" placeholder='Age' onChange={(e) => setAge(parseInt(e.target.value))} />
-    <button type='submit'>Update User</button>
-   </form>
+    <form>
+    <label htmlFor="name">Name</label>
+<input type="text" name="name" id="name" onChange={(e) => setName(e.target.value)}   />
+
+<label htmlFor="status">Status</label>
+<input type="text" name="status" id="name" onChange={(e) => setStatus(Boolean(e.target.value))}   />
+
+<button type='button' onClick={handleClick}>Submit</button>
+    </form>
 
 
-   {user&& (
-    <>
-    <p>Name: {user.name}</p>
-    <p>Age: {user.age}</p>
-    </>
-   )}
+    {
+        todo.length>0 && (
+            todo.map((item:Todo,index)=>(
+                <div key={index}>
+                    <p>{item.id}</p>
+                    <p>{item.name}</p>
+                    <p>{item.status.toString()}</p>
+                </div>
+            ))
+
+
+            
+        )
+    }
   
    </>
-
-
   )
+
 }
+
