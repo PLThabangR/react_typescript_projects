@@ -9,17 +9,19 @@ interface Todo{
 
 }
 export const User = () => {
+    // 
  const [todo,setTodo] = useState<Todo[]>([]);
  const [name,setName] = useState<string>('');
  const [status,setStatus] = useState<boolean>(false);
 
  const handleClick = () => {
     if(!name || !status) return;
+   //We can create new todo seperately
     const newTodo = {
-        id: Date.now(),
+        id: todo.length+1,
         name,status};
         
-    setTodo((prevTodo) => [...prevTodo,{name,status}]);
+    setTodo((prevTodo) => [...prevTodo,newTodo]);
     setName('');
     setStatus(false);
     console.log(todo);
