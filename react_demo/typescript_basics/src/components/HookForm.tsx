@@ -1,5 +1,5 @@
 
-import {useForm} from 'react-hook-form'
+import {useForm, type SubmitHandler} from 'react-hook-form'
 
 interface FormData{
     name:string,
@@ -16,9 +16,20 @@ const HookForm = () => {
 //handleSubmit is a function to handle submission
 
 //errors contaian validation errors fot the form
+
+//Creating the on Submit functiopn
+const onsubmit :SubmitHandler<FormData> = (data) => {
+    console.log(data)
+}
   return (
     <>
+<form onSubmit={handleSubmit(onsubmit)}>
+    <input type="text" placeholder='Name' {...register('name')} />
+    <input type="email" placeholder='Email' {...register('email')} />
+    <input type="password" placeholder='Password' {...register('password')} />
+    <button type='submit' disabled={isSubmitting}>Submit</button>
 
+</form>
     </>
   )
 }
