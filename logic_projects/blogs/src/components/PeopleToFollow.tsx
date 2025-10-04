@@ -1,4 +1,5 @@
 import React from 'react'
+import USerCard from './USerCard'
 
 interface PeopleToFollow{
 name:string,
@@ -15,7 +16,15 @@ const peopleToFollow:PeopleToFollow[] =[
 
 const PeopleToFollow = () => {
   return (
-    <div>Peop</div>
+    <div className='bg-white p-4 rounded-lg shadow'>
+        <h3 className='font-semibold text-lg mb-4'>People to follow</h3>
+        <div className='space-y-4'>
+        { peopleToFollow.map((person, index) => (
+                <USerCard key={index} name={person.name} following={person.following} />
+        ))}
+        </div>
+
+    </div>
   )
 }
 
