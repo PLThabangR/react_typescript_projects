@@ -44,7 +44,7 @@ function App() {
         </div>
         {/* Render article lists  */}
         {isOpen &&( <BlogModal onClose={()=>setIsOpen(false)}>
-            <BlogForm />
+            <BlogForm exitingBlog={editingBlog} onClose={()=>setIsOpen(false)} />
           </BlogModal>)}
 
         {/* side content */}
