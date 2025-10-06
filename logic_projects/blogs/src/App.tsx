@@ -9,58 +9,29 @@ import { useState } from 'react'
 import type { Blog } from './types/blogs'
 import BlogModal from './components/BlogModal'
 import BlogForm from './components/BlogForm'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-//import actions
-import { addBlog } from "./app/features/blogSlice";
+
 
 function App() {
   //Satae
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [editingBlog,setIsEditingBlog] = useState<Blog|null>(null)
-
-  //Create hooks
-  const  [title,setTitle] = useState<string>('')
-  const [description,setDescription] = useState<string>('')
-  const [image,setImage] = useState<string>('')
-  const [date,setDate] = useState<string>('')
-  const [author,setAuthor] = useState<string>('')
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [editingBlog, setIsEditingBlog] = useState<Blog | null>(null);
 
   //Rdedx hook
-         const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { blog } = useSelector((state: any) => state.blogs);
   //Functions
-  const createBlog =async (e: React.FormEvent<HTMLFormElement>) => {
-   
-      const newBlog: Blog = {
-        id: Math.floor(Math.random() * 1000),
-        title,
-        description,
-        image,
-        date,
-        author,
-      }
-      dispatch(addBlog(newBlog))
 
-      //reset state
-      setTitle('')
-      setDescription('')
-      setImage('')
-      setDate('')
-      setAuthor('')
-      //close modal after creating a blog
-      setIsOpen(false)
-      
+  const openModalForNewBlog = () => {
+    setIsOpen(true);
+    setIsEditingBlog(null);
+  };
+
+  const openModalForEdidting = () => {
+    setIsOpen(true)
+    setIsEditingBlog(blog)
   }
-
-  const openModal = () => {
-     setIsOpen(true)
-    // openModalForEdidting(null)
-  }
-
-  // const openModalForEdidting = () => {
-  //   setIsOpen(true)
-  //   setIsEditingBlog(null)
-  // }
 
   return (
     <>
@@ -71,7 +42,7 @@ function App() {
         <div className="mx-auto p-6">
           <div>
             <button
-              onClick={openModal}
+              onClick={openModalForNewBlog}
               className="ml-[4rem] bg-black flex justify-center items-center  hover:bg-blue-700 text-white  py-2 px-4 rounded-lg"
             >
               Add Blog
@@ -80,9 +51,14 @@ function App() {
           </div>
         </div>
         {/* Render article lists  */}
-        {isOpen &&( <BlogModal onClose={()=>setIsOpen(false)}>
-            {/* <BlogForm exitingBlog={editingBlog} onClose={()=>setIsOpen(false)} /> */}
-          </BlogModal>)}
+        {isOpen && (
+          <BlogModal onClose={() => setIsOpen(false)}>
+            <BlogForm
+              exitingBlog={editingBlog}
+              onClose={() => setIsOpen(false)}
+            />
+          </BlogModal>
+        )}
 
         {/* side content */}
         <div className="w-[30%]">

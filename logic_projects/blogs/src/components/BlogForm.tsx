@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import type { Blog } from '../types/blogs'
+
+
 
 
 
 interface BlogForm {
   exitingBlog?: Blog;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  setBlog: (blog: Blog) => void;
-  handleDelete?: () => void;
-  buttonText?: string;
   onClose: () => void;
 }
 
-const BlogForm = ({  exitingBlog, handleSubmit, setBlog, handleDelete, onClose,buttonText="Submit" }: BlogForm) => {
+const BlogForm = ({  exitingBlog,onClose  }: BlogForm) => {
+//Redux state intances
+const dispatch = useAppDispatch()
+
+
+
  const [title, setTitle] = useState(existingBlog?.title || "");
  const [description, setDescription] = useState(
    existingBlog?.description || ""
@@ -20,6 +23,17 @@ const BlogForm = ({  exitingBlog, handleSubmit, setBlog, handleDelete, onClose,b
  const [image, setImage] = useState(existingBlog?.image || "");
  const [date, setDate] = useState(existingBlog?.date || "");
  const [author, setAuthor] = useState(existingBlog?.author || "");
+
+useEffect(() => {
+  if (existingBlog) {
+    setTitle(existingBlog.title);
+    setDescription(existingBlog.description);
+    setImage(existingBlog.image);
+    setDate(existingBlog.date);
+    setAuthor(existingBlog.author);
+  }
+}, [existingBlog]);
+
   return <>
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
