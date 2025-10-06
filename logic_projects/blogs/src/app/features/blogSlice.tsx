@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { Blog } from "../../types/blogs";
 
+
 //State  interface
 interface BlogState {
   blogs: Blog[];

@@ -9,21 +9,58 @@ import { useState } from 'react'
 import type { Blog } from './types/blogs'
 import BlogModal from './components/BlogModal'
 import BlogForm from './components/BlogForm'
+import { useDispatch } from 'react-redux'
+
+//import actions
+import { addBlog } from "./app/features/blogSlice";
 
 function App() {
   //Satae
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [editingBlog,setIsEditingBlog] = useState<Blog|null>(null)
 
-  const openModal = () => {
-     setIsOpen(true)
-     openModalForEdidting(null)
+  //Create hooks
+  const  [title,setTitle] = useState<string>('')
+  const [description,setDescription] = useState<string>('')
+  const [image,setImage] = useState<string>('')
+  const [date,setDate] = useState<string>('')
+  const [author,setAuthor] = useState<string>('')
+
+  //Rdedx hook
+         const dispatch = useDispatch()
+  //Functions
+  const createBlog =async (e: React.FormEvent<HTMLFormElement>) => {
+   
+      const newBlog: Blog = {
+        id: Math.floor(Math.random() * 1000),
+        title,
+        description,
+        image,
+        date,
+        author,
+      }
+      dispatch(addBlog(newBlog))
+
+      //reset state
+      setTitle('')
+      setDescription('')
+      setImage('')
+      setDate('')
+      setAuthor('')
+      //close modal after creating a blog
+      setIsOpen(false)
+      
   }
 
-  const openModalForEdidting = () => {
-    setIsOpen(true)
-    setIsEditingBlog(null)
+  const openModal = () => {
+     setIsOpen(true)
+    // openModalForEdidting(null)
   }
+
+  // const openModalForEdidting = () => {
+  //   setIsOpen(true)
+  //   setIsEditingBlog(null)
+  // }
 
   return (
     <>
@@ -44,7 +81,7 @@ function App() {
         </div>
         {/* Render article lists  */}
         {isOpen &&( <BlogModal onClose={()=>setIsOpen(false)}>
-            <BlogForm exitingBlog={editingBlog} onClose={()=>setIsOpen(false)} />
+            {/* <BlogForm exitingBlog={editingBlog} onClose={()=>setIsOpen(false)} /> */}
           </BlogModal>)}
 
         {/* side content */}
