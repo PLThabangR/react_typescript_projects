@@ -14,8 +14,10 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 function App() {
-  //Satae
+  //State
+  //Open modal
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  // Blog to be edited
   const [editingBlog, setIsEditingBlog] = useState<Blog | null>(null);
 
   //Rdedx hook
@@ -54,7 +56,8 @@ function App() {
         {isOpen && (
           <BlogModal onClose={() => setIsOpen(false)}>
             <BlogForm
-              exitingBlog={editingBlog}
+             
+              existingBlog={editingBlog}
               onClose={() => setIsOpen(false)}
             />
           </BlogModal>

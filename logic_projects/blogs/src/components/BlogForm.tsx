@@ -1,21 +1,25 @@
-import React, { use, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import type { Blog } from '../types/blogs'
+
+//import blogs hooks
+import { UseDispatch,useSelector } from 'react-redux';
+import { addBlog,updateBlog } from '../app/features/blogSlice';
 
 
 
 
 
 interface BlogForm {
-  exitingBlog?: Blog;
+  existingBlog?: Blog;
   onClose: () => void;
 }
 
-const BlogForm = ({  exitingBlog,onClose  }: BlogForm) => {
+const BlogForm = ({  existingBlog,onClose  }: BlogForm) => {
 //Redux state intances
 const dispatch = useAppDispatch()
 
 
-
+//create form state
  const [title, setTitle] = useState(existingBlog?.title || "");
  const [description, setDescription] = useState(
    existingBlog?.description || ""
@@ -24,6 +28,7 @@ const dispatch = useAppDispatch()
  const [date, setDate] = useState(existingBlog?.date || "");
  const [author, setAuthor] = useState(existingBlog?.author || "");
 
+ //set form state when page loads
 useEffect(() => {
   if (existingBlog) {
     setTitle(existingBlog.title);
