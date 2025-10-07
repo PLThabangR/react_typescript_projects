@@ -2,7 +2,7 @@ import React, { use, useEffect, useState } from 'react'
 import type { Blog } from '../types/blogs'
 
 //import blogs hooks
-import { UseDispatch,useSelector } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { addBlog,updateBlog } from '../app/features/blogSlice';
 
 
@@ -16,14 +16,12 @@ interface BlogForm {
 
 const BlogForm = ({  existingBlog,onClose  }: BlogForm) => {
 //Redux state intances
-const dispatch = useAppDispatch()
+const dispatch = useDispatch()
 
 
 //create form state
  const [title, setTitle] = useState(existingBlog?.title || "");
- const [description, setDescription] = useState(
-   existingBlog?.description || ""
- );
+ const [description, setDescription] = useState(existingBlog?.description || "");
  const [image, setImage] = useState(existingBlog?.image || "");
  const [date, setDate] = useState(existingBlog?.date || "");
  const [author, setAuthor] = useState(existingBlog?.author || "");
@@ -39,40 +37,76 @@ useEffect(() => {
   }
 }, [existingBlog]);
 
-  return <>
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold mb-4">{exitingBlog ? "Edit Blog" : "Add Blog"}</h2>
-        <form className="space-y-4" onSubmit={handleSubmit}>
+  return (
+    <>
+      <div className="bg-white p-4 rounded-lg shadow-lg w-96">
+        <h3 className="text-xl font-semibold mb-2 text-gray-800">
+          {existingBlog ? "Edit Blog" : "Add Blog"}
+        </h3>
+        <form className="space-y-4">
           <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
-            <input type="text" id="title" className="mt-1 p-2 w-full border rounded-md" placeholder="Enter title" onChange={(e) => setBlog({ ...blog, title: e.target.value })} />
+            <input
+              type="text"
+              id="title"
+              className="block px-4 py-2 border border-gray-300 w-full rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+              placeholder="Enter title"
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
-            <textarea id="description" className="mt-1 p-2 w-full border rounded-md" placeholder="Enter description"></textarea>
+            <textarea
+              id="description"
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Enter description"
+              className="block px-4 py-2 border border-gray-300 w-full rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+            ></textarea>
           </div>
           <div>
-            <label htmlFor="image" className="block text-sm font-medium text-gray-700">Image URL</label>
-            <input type="text" id="image" className="mt-1 p-2 w-full border rounded-md" placeholder="Enter image URL" />
+            <input
+              type="text"
+              id="image"
+              className="block px-4 py-2 border border-gray-300 w-full rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+              onChange={(e) => setImage(e.target.value)}
+              placeholder="Enter image URL"
+            />
           </div>
           <div>
-            <label htmlFor="date" className="block text-sm font-medium text-gray-700">Date</label>
-            <input type="text" id="date" className="mt-1 p-2 w-full border rounded-md" placeholder="Enter date" />
+            <input
+              type="text"
+              id="date"
+              className="block px-4 py-2 border border-gray-300 w-full rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+              onChange={(e) => setDate(e.target.value)}
+              placeholder="Enter date"
+            />
           </div>
           <div>
-            <label htmlFor="author" className="block text-sm font-medium text-gray-700">Author</label>
-            <input type="text" id="author" className="mt-1 p-2 w-full border rounded-md" placeholder="Enter author" />
+            <input
+              type="text"
+              id="author"
+              className="block px-4 py-2 border border-gray-300 w-full rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+              onChange={(e) => setAuthor(e.target.value)}
+              placeholder="Enter author"
+            />
           </div>
           <div className="flex justify-end">
-            <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">{buttonText}</button>
-            <button type="button" onClick={onClose} className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md ml-2">Cancel</button>
-</div>
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+            >
+              buttonText
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md ml-2"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
-    </div>
-  
-  </>;
+    </>
+  );
 };
 
 export default BlogForm

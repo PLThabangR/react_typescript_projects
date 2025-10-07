@@ -22,7 +22,7 @@ function App() {
 
   //Rdedx hook
   const dispatch = useDispatch();
-  const { blog } = useSelector((state: any) => state.blogs);
+ // const { blog } = useSelector((state: any) => state.blogs);
   //Functions
 
   const openModalForNewBlog = () => {
