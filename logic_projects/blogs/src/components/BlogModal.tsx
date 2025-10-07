@@ -8,8 +8,8 @@ interface BlogModal{
 
 const BlogModal = ({children,onClose}:BlogModal) => {
   return (
-    <div className="fixed insert-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-4 rounded-lg shadow relative">
+    <div className="fixed insert-0  bg-opacity-50  flex items-center justify-center">
+      <div className="insert-0 bg-white p-4 rounded-lg shadow relative">
         {children}
         <button
           onClick={onClose}

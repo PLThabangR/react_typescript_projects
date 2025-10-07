@@ -26,6 +26,31 @@ const dispatch = useDispatch()
  const [date, setDate] = useState(existingBlog?.date || "");
  const [author, setAuthor] = useState(existingBlog?.author || "");
 
+ //handle form submission
+ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+   e.preventDefault();
+  //Create a new blog or update an existing one
+   const blog: Blog = {
+    id: existingBlog ? existingBlog.id : Date.now(), 
+    title,
+     description,
+     image,
+     date,
+     author,
+   };
+
+   //If blog already exists update it else create a new one
+   if (existingBlog) {
+     dispatch(updateBlog(blog));
+     onClose();
+   } else {
+     dispatch(addBlog(blog));
+     onClose();
+   }
+
+
+ 
+ }
  //set form state when page loads
 useEffect(() => {
   if (existingBlog) {
@@ -88,12 +113,13 @@ useEffect(() => {
               placeholder="Enter author"
             />
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-end mt-6 space-x-4">
             <button
               type="submit"
+              onClick={handleSubmit}
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
             >
-              buttonText
+              {existingBlog ? "Update Blog" : "Add Blog"}
             </button>
             <button
               type="button"
