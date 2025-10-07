@@ -1,15 +1,22 @@
 
+//import icons
 import { IoMdAddCircle } from 'react-icons/io'
+//import css
 import './App.css'
-import Navigation from './components/Navigation'
-import PeopleToFollow from './components/PeopleToFollow'
-import TopicList from './components/TopicList'
-import TrendzList from './components/TrendzList'
+//import hooks
 import { useState } from 'react'
+// import types
 import type { Blog } from './types/blogs'
+
+//import components
 import BlogModal from './components/BlogModal'
 import BlogForm from './components/BlogForm'
-import { useDispatch, useSelector } from 'react-redux'
+import Navigation from "./components/Navigation";
+import PeopleToFollow from "./components/PeopleToFollow";
+import TopicList from "./components/TopicList";
+import TrendzList from "./components/TrendzList";
+//import from redux
+import { useSelector } from 'react-redux'
 
 
 
@@ -21,8 +28,8 @@ function App() {
   const [editingBlog, setIsEditingBlog] = useState<Blog | null>(null);
 
   //Rdedx hook
-  const dispatch = useDispatch();
- // const { blog } = useSelector((state: any) => state.blogs);
+ 
+  const { blog } = useSelector((state: any) => state.blogs);
   //Functions
 
   const openModalForNewBlog = () => {
