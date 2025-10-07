@@ -17,6 +17,7 @@ import TopicList from "./components/TopicList";
 import TrendzList from "./components/TrendzList";
 //import from redux
 import { useSelector } from 'react-redux'
+import Article from './components/Article'
 
 
 
@@ -42,6 +43,8 @@ function App() {
     setIsEditingBlog(blog)
   }
 
+
+
   return (
     <>
       <Navigation />
@@ -57,13 +60,14 @@ function App() {
               Add Blog
               <IoMdAddCircle className="ml-2" />
             </button>
+            {/* Render article lists  */}
+            <Article />
           </div>
         </div>
-        {/* Render article lists  */}
+
         {isOpen && (
           <BlogModal onClose={() => setIsOpen(false)}>
             <BlogForm
-             
               existingBlog={editingBlog}
               onClose={() => setIsOpen(false)}
             />

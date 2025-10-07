@@ -9,7 +9,7 @@ interface BlogModal{
 const BlogModal = ({children,onClose}:BlogModal) => {
   return (
     <div className="fixed insert-0  bg-opacity-50  flex items-center justify-center">
-      <div className="insert-0 bg-white p-4 rounded-lg shadow relative">
+      <div className=" bg-white p-4 rounded-lg shadow-lg relative">
         {children}
         <button
           onClick={onClose}
