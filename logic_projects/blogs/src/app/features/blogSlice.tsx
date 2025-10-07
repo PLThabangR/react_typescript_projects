@@ -4,7 +4,7 @@ import type { Blog } from "../../types/blogs";
 
 //State  interface
 interface BlogState {
-  blogs: Blog[];
+  blogs: Blog[] ;
 }
 //Initial state
 const initialState: BlogState = {
@@ -12,7 +12,7 @@ const initialState: BlogState = {
 }; 
 //Creating u\our slice
 export const blogSlice = createSlice({
-  name: "blog",
+  name: "blogs",
   initialState,
   reducers: {
     addBlog: (state, action) => {
