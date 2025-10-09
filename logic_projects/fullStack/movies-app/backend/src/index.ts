@@ -13,7 +13,7 @@ import { notFoundErrorHandler } from './middleware/error';
 import cookieParser from 'cookie-parser'
 import path from 'path';
 //importiojng routes
-// import uploadRoutes from './routes/uploadRoutes'
+ import uploadRoutes from './routes/uploadRoutes'
 import movieRouter from './routes/moviesRoutes';
 import userRoutes from './routes/usersRoute';
 import genreRoutes from './routes/genreRoutes';
@@ -36,13 +36,14 @@ app.use(notFoundErrorHandler)
 app.use('/api/v1/users',userRoutes)
 app.use('/api/v1/genres',genreRoutes)
 app.use('/api/v1/movies',movieRouter)
-//app.use('/api/v1/upload',uploadRoutes)
+app.use('/api/v1/upload',uploadRoutes)
 
 
-//Get the local directory
-//const __dirname = path.resolve()
+//Get the local directory nasme
+const _dirname = path.resolve()
 
-//app.use("/uploads",express.static(path.join(__dirname,"/uploads")))
+//We add the upload inside the directory name
+app.use("/uploads",express.static(path.join(_dirname,"/uploads")))
 
 
 
