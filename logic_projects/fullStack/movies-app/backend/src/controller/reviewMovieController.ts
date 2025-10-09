@@ -94,39 +94,41 @@ export const addReview = async (req: AuthRequest, res: Response) => {
 };
 
 
-export const deleteComment = async (req: AuthRequest, res: Response)=>{
+//Admin cannot delete Id yet still having issues with typescript in rating and index
 
-try{
+// export const deleteComment = async (req: AuthRequest, res: Response)=>{
 
-    const {movieId,reviewId} = req.body;
+// try{
 
-    const movie = await MovieModel.findById(movieId);
+//     const {movieId,reviewId} = req.body;
 
-    if(!movie){
-        return res.status(404).json({message: "Movie not found"});
-    }
+//     const movie = await MovieModel.findById(movieId);
 
-    const review = movie.reviews?.findIndex((r)=> r?._id.toString() === reviewId);
-        // Handle both populated and unpopulated reviews
-        if(review === -1){
-            return res.status(404).json({message: "Comment not found"});
-        }
-        //remove that index
-    movie.reviews?.splice(review as number,1);
-        //update the length
-    movie.numReviews = movie.reviews?.length || 0;
+//     if(!movie){
+//         return res.status(404).json({message: "Movie not found"});
+//     }
 
-    //update the rating
-    if(movie.numReviews > 0){
-        const totalRating = movie.reviews?.reduce((acc, item :any) => acc + item.rating,0);
-        movie.rating = Number((totalRating / movie.numReviews).toFixed(1));
-    }
+//     const review = movie.reviews?.findIndex((r)=> r?._id.toString() === reviewId);
+//         // Handle both populated and unpopulated reviews
+//         if(review === -1){
+//             return res.status(404).json({message: "Comment not found"});
+//         }
+//         //remove that index
+//     movie.reviews?.splice(review as number,1);
+//         //update the length
+//     movie.numReviews = movie.reviews?.length || 0;
 
-    await movie.save();
-    return res.status(200).json({message: "Comment deleted successfully"});
+//     //update the rating
+//     if(movie.numReviews > 0){
+//         const totalRating = movie.reviews?.reduce((acc, item :any) => acc + item.rating,0);
+//         movie.rating = Number((totalRating / movie.numReviews).toFixed(1));
+//     }
 
-}catch(error:any){
+//     await movie.save();
+//     return res.status(200).json({message: "Comment deleted successfully"});
 
-}
+// }catch(error:any){
 
-}
+// }
+
+// }

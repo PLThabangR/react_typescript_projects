@@ -61,7 +61,7 @@ function App() {
               <IoMdAddCircle className="ml-2" />
             </button>
             {/* Render article lists  */}
-            <Article />
+            <Article  onEdit={openModalForEdidting} />
           </div>
         </div>
 
