@@ -1,17 +1,22 @@
 import express from 'express';
 import type { Express } from 'express';
 import dotenv from 'dotenv';
-//importing modules
+
+//importing middlewares
 import connectDB from './config/db';
-import userRoutes from './routes/usersRoute';
-import genreRoutes from './routes/genreRoutes';
+import { logger } from './middleware/logger';
+import { notFoundErrorHandler } from './middleware/error';
+
+
 
 //importing packages
 import cookieParser from 'cookie-parser'
 
+//importiojng routes
+import uploadRoutes from './routes/uploadRoutes'
 import movieRouter from './routes/moviesRoutes';
-import { logger } from './middleware/logger';
-import { notFoundErrorHandler } from './middleware/error';
+import userRoutes from './routes/usersRoute';
+import genreRoutes from './routes/genreRoutes';
 
 //Instace of express
 const app : Express = express()
@@ -29,6 +34,8 @@ app.use(notFoundErrorHandler)
 app.use('/api/v1/users',userRoutes)
 app.use('/api/v1/genres',genreRoutes)
 app.use('/api/v1/movies',movieRouter)
+app.use('/api/v1/upload',uploadRoutes)
+
 
 
 
