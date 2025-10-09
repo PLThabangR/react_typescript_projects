@@ -5,7 +5,7 @@ import { authenticateUser ,authorizationAdmin} from "../middleware/authMiddlewar
 import  checkId  from "../middleware/checkId";
 
 //import controllers
-import { createMovie, deleteMovie, getAllMovies, getMovieById, updateMovie,getNewMovies } from "../controller/moviesController";
+import { createMovie, deleteMovie, getAllMovies, getMovieById, updateMovie,getNewMovies,topMovies } from "../controller/moviesController";
 import { addReview } from "../controller/reviewMovieController";
 
 
@@ -13,8 +13,11 @@ const router = express.Router();
 
 //public routes all users can access without authentication
 router.get("/all-movies",getAllMovies);
+ router.get("/new-movies",getNewMovies)
+ router.get("/top-movies",topMovies);
  router.get("/:id",checkId,getMovieById);
- router.get("new-movies",getNewMovies)
+
+ 
 
 //restricted routes for admin
 router.post("/create-movie",authenticateUser,authorizationAdmin,createMovie);

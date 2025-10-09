@@ -159,12 +159,24 @@ try{
 }
 
 export const  getNewMovies = async(req: Request, res: Response) => { 
-
+    console.log("getting new movies");
     try{
         //-1 wil get us latest movies using the sort method from mongodb
         //Limit will return the number of movies to be returned in the query
         const movies = await MovieModel.find().sort({createdAt: -1}).limit(10);
         res.status(200).json(movies);
+    }catch(error:any){
+        res.status(500).json({message: (error as Error).message});
+    }
+}
+
+export const topMovies = async(req: Request, res: Response) => {
+    
+    try{
+        //-1 wil get us latest movies using the sort method from mongodb
+        //Limit will return the number of movies to be returned in the query
+        const topRatedMovies = await MovieModel.find().sort({numReviews: -1}).limit(10);
+        res.status(200).json(topRatedMovies);
     }catch(error:any){
         res.status(500).json({message: (error as Error).message});
     }
