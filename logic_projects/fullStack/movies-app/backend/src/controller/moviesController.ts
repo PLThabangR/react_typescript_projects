@@ -185,7 +185,7 @@ export const topMovies = async(req: Request, res: Response) => {
 export const randomMovies = async(req: Request, res: Response) => {
     
     try{
-        
+        //Getting random movies
         const randomMovies = await MovieModel.aggregate([{$sample: {size: 10}}]);
         res.status(200).json(randomMovies);
     }catch(error:any){

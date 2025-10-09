@@ -5,7 +5,7 @@ import { authenticateUser ,authorizationAdmin} from "../middleware/authMiddlewar
 import  checkId  from "../middleware/checkId";
 
 //import controllers
-import { createMovie, deleteMovie, getAllMovies, getMovieById, updateMovie,getNewMovies,topMovies } from "../controller/moviesController";
+import { createMovie, deleteMovie, getAllMovies, getMovieById, updateMovie,getNewMovies,topMovies, randomMovies } from "../controller/moviesController";
 import { addReview } from "../controller/reviewMovieController";
 
 
@@ -15,6 +15,7 @@ const router = express.Router();
 router.get("/all-movies",getAllMovies);
  router.get("/new-movies",getNewMovies)
  router.get("/top-movies",topMovies);
+ router.get("/random-movies",randomMovies);
  router.get("/:id",checkId,getMovieById);
 
  
