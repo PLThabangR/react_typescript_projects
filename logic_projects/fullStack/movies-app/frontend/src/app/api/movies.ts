@@ -90,3 +90,18 @@ export const movieApiSlice = apiSlice.injectEndpoints({
  
     })//end of movieApiSlice
 
+
+    //rxport to be used as hooks 
+export const {
+    useGetAllMoviesQuery,
+    useCreateMovieMutation,
+    useUpdateMovieMutation,
+    useAddMovieReviewMutation,
+    useGetMovieByIdQuery,
+    useDeleteMovieMutation,
+    useGrtRandomMoviesQuery,
+    useGetLatestMoviesQuery,
+    useGetTopMoviesQuery,
+    // useGetMoviesByGenreQuery,
+    useUpoloadMovieImageMutation
+} = movieApiSlice
