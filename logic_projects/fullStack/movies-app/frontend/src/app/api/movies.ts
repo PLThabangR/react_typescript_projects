@@ -1,4 +1,4 @@
-import { createMovie } from './../../../../backend/src/controller/moviesController';
+
 import {apiSlice} from './apiSlice'
 import {MOVIE_URL,UPLOAD_URL} from '../constants'
 
@@ -11,7 +11,7 @@ export const movieApiSlice = apiSlice.injectEndpoints({
             }),
         }),//end of get all movies
         createMovie: builder.mutation({
-            query: (newMovie: any) => ({
+            query: (newMovie) => ({
                 url: `${MOVIE_URL}/create-movie`,
                 method: 'POST',
                 body: {...newMovie}
@@ -24,7 +24,7 @@ export const movieApiSlice = apiSlice.injectEndpoints({
                 body: {...updatedMovie}
             })
         }),//end of update movie
-
+            //Start of add revieww
         addMovieReview: builder.mutation({
             query: ({id,rating,comment}) => ({
                 url: `${MOVIE_URL}/review-movie/${id}`,
@@ -34,6 +34,13 @@ export const movieApiSlice = apiSlice.injectEndpoints({
             
         }),//end of add movie review
 
+        //start get movie
+        getMovieById: builder.query({
+            query: (id) => ({
+                url: `${MOVIE_URL}/${id}`,
+            }),
+        }),//end of get movie by id
+
         deleteMovie: builder.mutation({
             query: (id) => ({
                 url: `${MOVIE_URL}/delete-movie/${id}`,
@@ -41,8 +48,38 @@ export const movieApiSlice = apiSlice.injectEndpoints({
             })
         }),//end of delete movie
 
+        grtRandomMovies: builder.query({
+            query: () => ({
+                url: `${MOVIE_URL}/random-movies`,
+            }),
+        }),//end of get random movies
 
+        getLatestMovies: builder.query({
+            query: () => ({
+                url: `${MOVIE_URL}/latest-movies`,
+            }),
+        }),//end of get latest movies
+
+        getTopMovies: builder.query({
+            query: () => ({
+                url: `${MOVIE_URL}/top-movies`,
+            }),
+        }),
             
+        // getMoviesByGenre: builder.query({
+        //     query: (genre) => ({
+        //         url: `${MOVIE_URL}/movies-by-genre/${genre}`,
+        //     }),
+        // }),
+
+     upoloadMovieImage: builder.mutation({
+            query: (data) => ({
+                url: `${UPLOAD_URL}`,
+                method: 'POST',
+                body: data
+            })
+        }),
+
 
 
 
