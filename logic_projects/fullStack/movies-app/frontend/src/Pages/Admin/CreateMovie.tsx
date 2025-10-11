@@ -1,19 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useGetAllGenresQuery } from "../../app/api/genre";
 import { useCreateMovieMutation,useUpoloadMovieImageMutation } from "../../app/api/movies"
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import type { Movie } from "../../types/Movie";
 
 
 
 const CreateMovie = () => {
   // Destructure RTK Query functions
-    const { createMovie } = useCreateMovieMutation();
-  const { getAllGenres } = useGetAllGenresQuery({});
-  const { uploadMovieImage } = useUpoloadMovieImageMutation();
+    const [createMovie,{ isLoading:isCreating, error:createMovieErrorDetail }] = useCreateMovieMutation();
+  const [uploadMovieImage,{ isLoading:isUploading, error:uploadMovieImageErrorDetail }] = useUpoloadMovieImageMutation();
 
+   const {data :genres,refetch, isLoading:isGenresLoading, isError:isGenresError } = useGetAllGenresQuery({});
   // useNavigate router instance
-  const    useNavigate = useNavigate0();
+  const navigate = useNavigate();
 
 //hooks to create movie
 const [movieData,setMovieData] = useState<Movie>({
@@ -29,7 +29,22 @@ const [movieData,setMovieData] = useState<Movie>({
  numReviews: 0
  , createdAt: new Date()
 });  
+const [selectedImage,setSelectedImage] = useState<File | null>(null);
+
+//On the first load we want to get all genres
+useEffect(()=>{ 
+// get all genres and set initial state values
+if(genres){
+  setMovieData((movieData) => ({
+    ...movieData,
+    genre: genres[0]._id,
+    name: genres[0].name || { _id: {}, name: "" },
+  }));
+}
+
+},[genres])
     
+
   return (
 
   
