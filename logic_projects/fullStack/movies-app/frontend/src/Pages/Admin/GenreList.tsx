@@ -1,14 +1,12 @@
 
-import { useGetAllGenresQuery, useDeleteGenreMutation, useCreateGenreMutation, useUpdateGenreMutation,useGetGenreByIdQuery } from "../../app/api/genre"
+import { useGetAllGenresQuery, useDeleteGenreMutation, useCreateGenreMutation, useUpdateGenreMutation } from "../../app/api/genre"
 import {toast} from 'react-toastify'
 import { useEffect, useState } from "react";
 import GenreForm from "../../components/GenreForm";
 import Modal from "../../components/Modal";
+import type { Genre } from "../../types/Genre";
 
-interface Genre {
-  _id: Object;
-  name: string;
-}
+
 
 const GenreList = () => {
     // fetch all genres
@@ -62,7 +60,7 @@ const handleDeleteGenre = async() => {
     
   try {
     //delete genre function from rtk
-    const res = await deleteGenre(selectedGenre?._id).unwrap();
+     await deleteGenre(selectedGenre?._id).unwrap();
     //redirect user to home
     toast.success(`Genre ${selectedGenre?.name} deleted successfully`);
 
