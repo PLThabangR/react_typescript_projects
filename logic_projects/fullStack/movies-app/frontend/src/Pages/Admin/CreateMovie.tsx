@@ -117,20 +117,46 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           <div>
             <label className="block">
               Genre:
-             <select name="genre" value={movieData.genre} onChange={handleChange}
-             className="w-full px-2 py-2 border bg-white border-gray-300 rounded-md ">
-              {/* {genres?.map((genre) => (
-                <option key={genre._id} value={genre._id}>
-                  {genre.name}
-                </option>
-              ))} */}
-             </select>
+              <select
+                name="genre"
+                value={movieData.genre.name}
+                onChange={handleChange}
+                className="w-full px-2 py-2 border bg-white border-gray-300 rounded-md "
+              >
+                {isGenresLoading ? (
+                  <option>Loading...</option>
+                ) : (
+                  genres?.map((genre) => (
+                    <option key={genre._id} value={genre._id}>
+                      {genre.name}
+                    </option>
+                  ))
+                )}
+              </select>
             </label>
           </div>
+
+
+          <div>
+            <label className="block">
+              Image:
+              <input
+                type="file"
+                className="w-full px-2 py-2 border bg-white border-gray-300 rounded-md "
+               // onChange={handleImageChange}
+              />
+            </label>
+          </div>
+
+          <button type="button" 
+         // onClick={handleCreateMovie}
+          className="bg-teal-500 text-white px-4 py-2 rounded"
+          disabled={isCreating || isUploading}
+          >{isCreating || isUploading ? "Creating..." : "Create Movie"}</button>
         </form>
       </div>
     </>
-  );
+  ); 
 }
 
 export default CreateMovie
