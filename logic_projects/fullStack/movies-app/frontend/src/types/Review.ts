@@ -1,8 +1,8 @@
 export interface Review{
      _id?: object;
-    name?: any;
+    name?: string;
     rating: number;
     comment: string;
-    user:any ;
+    user:object ;
     createdAt?: Date
 } 

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useGetAllGenresQuery } from "../../app/api/genre";
 import { useCreateMovieMutation,useUpoloadMovieImageMutation } from "../../app/api/movies"
 import { use, useState } from "react";
+import type { Movie } from "../../types/Movie";
 
 
 
@@ -16,12 +17,17 @@ const CreateMovie = () => {
 
 //hooks to create movie
 const [movieData,setMovieData] = useState<Movie>({
-  title: '',
-  genreId: '',
-  numberInStock: 0,
- 
 
-  image: '',
+ title: "",
+ image: "",
+ year: 0,
+ details: "",
+ genre: { _id: {}, name: "" },
+ cast: [],
+ reviews: [],
+ rating: 0,
+ numReviews: 0
+ , createdAt: new Date()
 });  
     
   return (
