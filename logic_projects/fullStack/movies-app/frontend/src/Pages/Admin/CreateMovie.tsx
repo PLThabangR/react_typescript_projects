@@ -42,20 +42,95 @@ if(genres){
   }));
 }
 
-},[genres])
+},[genres])//end of useEffect
+
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+ 
+};
     
 
   return (
-
-  
-    
     <>
+      <div className="container flex  items-center justify-center mt-4 ">
+        <form>
+          <p className="text-green-200  w-[50rem] text-2xl mb-4">
+            Create movie
+          </p>
+          <div>
+            <label className="block">
+              Name:
+              <input
+                type="text"
+                placeholder="Movie name"
+                className="w-full px-2 py-2 border bg-white border-gray-300 rounded-md "
+                value={movieData.title}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
 
+          <div>
+            <label className="block">
+              Year:
+              <input
+                type="text"
+                placeholder="Movie year"
+                className="w-full px-2 py-2 border bg-white border-gray-300 rounded-md "
+                value={movieData.year}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
 
-      <h1>Create Movie</h1>
+          <div>
+            <label className="block">
+              Details:
+              <textarea
+                name="details"
+                placeholder="Movie description"
+                className="w-full px-2 py-2 border bg-white border-gray-300 rounded-md "
+                value={movieData.details}
+                onChange={handleChange}
+              ></textarea>
+            </label>
+          </div>
 
+          <div>
+            <label className="block">
+              Cast(comma-seperated):
+              <input
+                type="text"
+                placeholder="Movie Cast"
+                className="w-full px-2 py-2 border bg-white border-gray-300 rounded-md "
+                value={movieData.cast.join(",")}
+                onChange={(e) =>
+                  setMovieData({
+                    ...movieData,
+                    cast: e.target.value.split(", "),
+                  })
+                }
+              />
+            </label>
+          </div>
+
+          <div>
+            <label className="block">
+              Genre:
+             <select name="genre" value={movieData.genre} onChange={handleChange}
+             className="w-full px-2 py-2 border bg-white border-gray-300 rounded-md ">
+              {/* {genres?.map((genre) => (
+                <option key={genre._id} value={genre._id}>
+                  {genre.name}
+                </option>
+              ))} */}
+             </select>
+            </label>
+          </div>
+        </form>
+      </div>
     </>
-  )
+  );
 }
 
 export default CreateMovie
