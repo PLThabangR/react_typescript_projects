@@ -46,7 +46,27 @@ if(genres){
 },[genres])//end of useEffect
 
 const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Get the name and value of the input
   const { name, value } = e.target;
+
+  // Check if the input name is 'genre' THEN UPDATE THE GENRE ELSE OTHER VALUES IN THE STATE
+  if(name==='genre'){
+    // Find the genre object with the matching name
+    const selectedGenre = genres?.find((genre) => genre.name === value);
+
+    // Update the movieData 
+     setMovieData((prevData) => ({
+       ...prevData,
+       genre: selectedGenre?.name || { _id: {}, name  :"" ,},
+    }));
+  }else{
+    // Update the movieData state with the new value
+    setMovieData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+  }
  
 };
     
